@@ -11,7 +11,7 @@ import Certifications from '@/components/landing/Certifications';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col text-gray-800">
+    <div className="flex min-h-screen flex-col text-white">
       <Header />
       <main className="flex-1">
         <Hero />

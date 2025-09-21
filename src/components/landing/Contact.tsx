@@ -61,83 +61,85 @@ export default function Contact() {
 
   return (
     <AnimatedSection id="contact">
-      <div className="text-center">
-        <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl font-headline">Get In Touch</h2>
-        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-          Have a question or want to work together? Drop me a message!
-        </p>
-      </div>
-      <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 md:grid-cols-2 gap-12">
-        <div className="bg-white p-8 rounded-lg border border-gray-200/90 shadow-lg">
-            <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                    <FormItem>
-                    <FormLabel className="text-gray-700">Name</FormLabel>
-                    <FormControl>
-                        <Input placeholder="Your Name" {...field} className="bg-gray-100/80 border-gray-300 text-gray-800 focus:ring-gray-500" />
-                    </FormControl>
-                    <FormMessage />
-                    </FormItem>
-                )}
-                />
-                <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                    <FormItem>
-                    <FormLabel className="text-gray-700">Email</FormLabel>
-                    <FormControl>
-                        <Input placeholder="your.email@example.com" {...field} className="bg-gray-100/80 border-gray-300 text-gray-800 focus:ring-gray-500"/>
-                    </FormControl>
-                    <FormMessage />
-                    </FormItem>
-                )}
-                />
-                <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                    <FormItem>
-                    <FormLabel className="text-gray-700">Message</FormLabel>
-                    <FormControl>
-                        <Textarea
-                        placeholder="Tell me what's on your mind..."
-                        className="min-h-[120px] bg-gray-100/80 border-gray-300 text-gray-800 focus:ring-gray-500"
-                        {...field}
+        <div className="container mx-auto bg-gray-900/40 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-xl">
+            <div className="text-center">
+                <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl font-headline">Get In Touch</h2>
+                <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+                Have a question or want to work together? Drop me a message!
+                </p>
+            </div>
+            <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 md:grid-cols-2 gap-12">
+                <div className="bg-black/30 p-8 rounded-lg border border-white/10 shadow-lg">
+                    <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                        <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormLabel className="text-gray-300">Name</FormLabel>
+                            <FormControl>
+                                <Input placeholder="Your Name" {...field} className="bg-gray-800/80 border-gray-600 text-white focus:ring-teal-500" />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
                         />
-                    </FormControl>
-                    <FormMessage />
-                    </FormItem>
-                )}
-                />
-                <div className="text-center pt-2">
-                <Button type="submit" size="lg" className="rounded-full bg-teal-500 text-white hover:bg-teal-600 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-10 py-3 text-lg">
-                    Send Message <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                        <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormLabel className="text-gray-300">Email</FormLabel>
+                            <FormControl>
+                                <Input placeholder="your.email@example.com" {...field} className="bg-gray-800/80 border-gray-600 text-white focus:ring-teal-500"/>
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                        />
+                        <FormField
+                        control={form.control}
+                        name="message"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormLabel className="text-gray-300">Message</FormLabel>
+                            <FormControl>
+                                <Textarea
+                                placeholder="Tell me what's on your mind..."
+                                className="min-h-[120px] bg-gray-800/80 border-gray-600 text-white focus:ring-teal-500"
+                                {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                        />
+                        <div className="text-center pt-2">
+                        <Button type="submit" size="lg" className="rounded-full bg-teal-500 text-white hover:bg-teal-600 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-10 py-3 text-lg">
+                            Send Message <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                        </div>
+                    </form>
+                    </Form>
                 </div>
-            </form>
-            </Form>
-        </div>
-        <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-gray-800">Quick Contact</h3>
-            {contactLinks.map(link => (
-                 <div key={link.name} className="flex items-start gap-4 p-4 rounded-lg bg-white border border-gray-200/90 shadow-lg">
-                    <div className="bg-gray-100/70 p-3 rounded-full">
-                        <link.icon className="h-6 w-6 text-gray-800" />
-                    </div>
-                    <div>
-                        <h4 className="font-semibold text-gray-800">{link.name}</h4>
-                        <Link href={link.href} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900 transition-colors break-all">
-                            {link.value}
-                        </Link>
-                    </div>
-                 </div>
-            ))}
-        </div>
+                <div className="space-y-6">
+                    <h3 className="text-2xl font-bold text-white">Quick Contact</h3>
+                    {contactLinks.map(link => (
+                        <div key={link.name} className="flex items-start gap-4 p-4 rounded-lg bg-black/30 border border-white/10 shadow-lg">
+                            <div className="bg-gray-800/70 p-3 rounded-full">
+                                <link.icon className="h-6 w-6 text-white" />
+                            </div>
+                            <div>
+                                <h4 className="font-semibold text-white">{link.name}</h4>
+                                <Link href={link.href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors break-all">
+                                    {link.value}
+                                </Link>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
       </div>
     </AnimatedSection>
   );

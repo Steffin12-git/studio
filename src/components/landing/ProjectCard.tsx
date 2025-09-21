@@ -33,7 +33,7 @@ export function ProjectCard({ title, description, tags, image, githubUrl, langua
     <div
       ref={ref}
       className={cn(
-        'group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-lg border border-gray-200/80 transition-all duration-500 hover:shadow-xl hover:-translate-y-2',
+        'group relative flex flex-col overflow-hidden rounded-lg bg-black/30 shadow-lg border border-white/10 transition-all duration-500 hover:shadow-xl hover:-translate-y-2',
         'opacity-0 translate-y-10',
         inView && 'opacity-100 translate-y-0'
       )}
@@ -52,11 +52,11 @@ export function ProjectCard({ title, description, tags, image, githubUrl, langua
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-xl font-bold text-gray-800">{title}</h3>
+        <h3 className="text-xl font-bold text-white">{title}</h3>
         <div className="mt-2 flex flex-wrap gap-2">
-            {tags.map(tag => <Badge key={tag} variant="secondary" className="bg-gray-200/70 text-gray-800 border border-gray-300/80">{tag}</Badge>)}
+            {tags.map(tag => <Badge key={tag} variant="secondary" className="bg-gray-700/70 text-gray-200 border border-gray-500/80">{tag}</Badge>)}
         </div>
-        <p className="mt-4 flex-1 text-gray-600">{description}</p>
+        <p className="mt-4 flex-1 text-gray-300">{description}</p>
         <div className="mt-6 flex items-center justify-between">
           <div className="flex gap-2">
             <Button size="sm" asChild className="bg-gray-800 text-white hover:bg-gray-700">
@@ -67,14 +67,14 @@ export function ProjectCard({ title, description, tags, image, githubUrl, langua
             </Button>
             <Dialog>
               <DialogTrigger asChild>
-                <Button size="sm" variant="outline" className="text-gray-800 border-gray-400 hover:bg-gray-100 hover:text-gray-900">
+                <Button size="sm" variant="outline" className="text-white border-gray-400 hover:bg-gray-800 hover:text-white">
                   <BrainCircuit className="mr-2 h-4 w-4" />
                   AI Analysis
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[60vw] bg-white border-gray-200 text-gray-800">
+              <DialogContent className="sm:max-w-[60vw] bg-gray-900 border-gray-700 text-white">
                 <DialogHeader>
-                  <DialogTitle className="font-headline text-2xl text-gray-800">AI Project Analysis: {title}</DialogTitle>
+                  <DialogTitle className="font-headline text-2xl text-white">AI Project Analysis: {title}</DialogTitle>
                 </DialogHeader>
                 <div className="max-h-[70vh] overflow-y-auto p-1 pr-4">
                   <ProjectAnalysis repoUrl={githubUrl} language={language} />
