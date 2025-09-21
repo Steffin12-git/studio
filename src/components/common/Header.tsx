@@ -21,15 +21,16 @@ export default function Header() {
   }, []);
 
   const NavLinks = ({ isMobile = false }) => (
-    <nav className={cn('flex items-center gap-2', isMobile ? 'flex-col items-start' : 'flex-row')}>
+    <nav className={cn('flex items-center gap-2', isMobile ? 'flex-col items-start w-full' : 'flex-row')}>
       {navLinks.map((link) => (
         <Button
           key={link.name}
           variant="link"
           asChild
           className={cn(
-            'text-muted-foreground hover:text-foreground font-semibold text-base transition-colors duration-300',
-            isMobile && 'w-full justify-start text-lg py-4'
+            'text-gray-300 hover:text-white font-semibold text-base transition-colors duration-300',
+            'hover:no-underline hover:bg-white/10 rounded-md',
+            isMobile && 'w-full justify-start text-lg py-4 px-4'
           )}
           onClick={() => isMobile && setIsMobileMenuOpen(false)}
         >
@@ -43,30 +44,30 @@ export default function Header() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        scrolled ? 'bg-background/90 backdrop-blur-xl border-b border-border/50' : 'bg-transparent'
+        scrolled ? 'bg-black/80 backdrop-blur-xl border-b border-gray-800' : 'bg-transparent'
       )}
     >
-      <div className="container mx-auto flex h-24 items-center justify-between px-4">
-        <Link href="#home" className="flex items-center gap-2 group">
-          <div className="p-2 bg-primary rounded-full group-hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
-            <Rocket className="h-6 w-6 text-primary-foreground" />
+      <div className="container mx-auto flex h-20 items-center justify-between px-4">
+        <Link href="#home" className="flex items-center gap-3 group">
+          <div className="p-2 bg-magenta-600 rounded-full group-hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
+            <Rocket className="h-6 w-6 text-white" />
           </div>
-          <span className="text-2xl font-bold font-headline">MyPortfolio</span>
+          <span className="text-2xl font-bold font-headline text-white">Steffin Thomas</span>
         </Link>
         
-        <div className="hidden md:flex">
+        <div className="hidden md:flex bg-black/30 border border-gray-800 rounded-full px-2 py-1">
           <NavLinks />
         </div>
 
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
                 <Menu />
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[80vw] p-4 pt-16 bg-background">
+            <SheetContent side="right" className="w-[80vw] p-4 pt-16 bg-gray-900 border-l border-gray-800">
                 <NavLinks isMobile />
             </SheetContent>
           </Sheet>

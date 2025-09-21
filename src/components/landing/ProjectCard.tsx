@@ -2,8 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Github, ExternalLink, BrainCircuit } from 'lucide-react';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Github, BrainCircuit } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { ProjectAnalysis } from './ProjectAnalysis';
@@ -13,68 +12,62 @@ import { Badge } from '@/components/ui/badge';
 type ProjectCardProps = {
   title: string;
   description: string;
+  tags: string[];
   image: { id: string; hint: string };
   githubUrl: string;
-  liveUrl?: string;
   language: string;
 };
 
-export function ProjectCard({ title, description, image, githubUrl, liveUrl, language }: ProjectCardProps) {
+export function ProjectCard({ title, description, tags, image, githubUrl, language }: ProjectCardProps) {
   const placeholderImage = PlaceHolderImages.find((img) => img.id === image.id);
 
   return (
-    <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group bg-card">
+    <div className="group relative flex flex-col overflow-hidden rounded-lg bg-gray-800/60 shadow-lg border border-gray-700 transition-all duration-300 hover:border-magenta-500/50 hover:shadow-magenta-500/10 hover:-translate-y-1">
       <div className="relative aspect-video w-full overflow-hidden">
         {placeholderImage && (
           <Image
             src={placeholderImage.imageUrl}
-            alt={description}
+            alt={title}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
             data-ai-hint={placeholderImage.imageHint}
           />
         )}
-         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
       </div>
-      <CardHeader>
-        <CardTitle className="font-headline text-2xl">{title}</CardTitle>
-        <Badge variant="secondary" className="w-fit">{language}</Badge>
-      </CardHeader>
-      <CardContent className="flex-grow">
-        <p className="text-muted-foreground">{description}</p>
-      </CardContent>
-      <CardFooter className="flex justify-between items-center">
-        <div className="flex gap-2">
-          <Button variant="ghost" size="icon" asChild>
-            <Link href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">
-              <Github />
-            </Link>
-          </Button>
-          {liveUrl && (
-            <Button variant="ghost" size="icon" asChild>
-              <Link href={liveUrl} target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
-                <ExternalLink />
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="text-xl font-bold text-white">{title}</h3>
+        <div className="mt-2 flex flex-wrap gap-2">
+            {tags.map(tag => <Badge key={tag} variant="secondary" className="bg-magenta-900/50 text-magenta-300 border border-magenta-800">{tag}</Badge>)}
+        </div>
+        <p className="mt-4 flex-1 text-gray-400">{description}</p>
+        <div className="mt-6 flex items-center justify-between">
+          <div className="flex gap-2">
+            <Button variant="outline" size="sm" asChild className="border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white">
+              <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
+                <Github className="mr-2 h-4 w-4" />
+                GitHub
               </Link>
             </Button>
-          )}
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="sm" className="border-magenta-500/50 bg-magenta-900/30 text-magenta-400 hover:bg-magenta-900/50 hover:text-magenta-300">
+                  <BrainCircuit className="mr-2 h-4 w-4" />
+                  AI Analysis
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[60vw] bg-gray-900 border-gray-700 text-white">
+                <DialogHeader>
+                  <DialogTitle className="font-headline text-2xl text-magenta-400">AI Project Analysis: {title}</DialogTitle>
+                </DialogHeader>
+                <div className="max-h-[70vh] overflow-y-auto p-1 pr-4">
+                  <ProjectAnalysis repoUrl={githubUrl} language={language} />
+                </div>
+              </DialogContent>
+            </Dialog>
+          </div>
         </div>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="outline" className="bg-primary/10 border-primary/30 text-primary-foreground hover:bg-primary/20">
-              <BrainCircuit className="mr-2 h-4 w-4" />
-              AI Analysis
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[60vw]">
-            <DialogHeader>
-              <DialogTitle className="font-headline text-2xl">AI Project Analysis: {title}</DialogTitle>
-            </DialogHeader>
-            <div className="max-h-[70vh] overflow-y-auto p-1 pr-4">
-              <ProjectAnalysis repoUrl={githubUrl} language={language} />
-            </div>
-          </DialogContent>
-        </Dialog>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 }

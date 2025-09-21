@@ -1,39 +1,40 @@
-import { skillsData } from '@/lib/data';
+import { skillsData, socialLinks } from '@/lib/data';
 import { AnimatedSection } from '../common/AnimatedSection';
-
-const SkillCategory = ({ title, skills }: { title: string; skills: (string | { [key: string]: string[] })[] }) => {
-  return (
-    <div className="p-8 rounded-2xl bg-card shadow-lg border border-border/50 transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-      <h3 className="font-headline text-3xl font-bold mb-6 text-primary">{title}</h3>
-      <ul className="space-y-6">
-        {Object.entries(skills).map(([subCategory, skillList], index) => (
-          <li key={index}>
-            <h4 className="font-bold text-lg mb-3 text-foreground">{subCategory}</h4>
-            <div className="flex flex-wrap gap-3">
-              {(skillList as string[]).map((skill, skillIndex) => (
-                <span key={skillIndex} className="bg-accent/10 text-accent-foreground font-semibold px-4 py-2 rounded-full text-sm transition-colors hover:bg-accent/20">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+import { Button } from '../ui/button';
+import Link from 'next/link';
 
 export default function Skills() {
   return (
-    <AnimatedSection id="skills">
-      <div className="text-center">
-        <h2 className="text-5xl font-headline font-bold">My Skills & Toolkit</h2>
-        <p className="mt-4 text-lg text-muted-foreground">The technologies and tools I use to build things.</p>
-      </div>
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {Object.entries(skillsData).map(([category, skills], index) => (
-          <SkillCategory key={index} title={category} skills={skills as any} />
-        ))}
+    <AnimatedSection id="skills" className="bg-gray-900/50">
+      <div className="container mx-auto text-center">
+        <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl font-headline">
+          My Toolkit
+        </h2>
+        <p className="mt-4 text-lg text-gray-400">
+          The technologies and tools I use to turn data into insights.
+        </p>
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+          {Object.entries(skillsData).map(([category, skills]) => (
+            <div key={category} className="rounded-lg bg-gray-800/60 p-6 backdrop-blur-sm shadow-lg border border-gray-700 hover:border-magenta-500/50 transition-colors duration-300">
+              <h3 className="text-xl font-bold text-magenta-400 mb-4">{category}</h3>
+              <ul className="space-y-2">
+                {(skills as string[]).map((skill) => (
+                  <li key={skill} className="text-gray-300">{skill}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className="mt-12 flex items-center justify-center gap-x-6">
+           {socialLinks.map((link) => (
+            <Button key={link.name} variant="outline" size="lg" asChild className="border-magenta-500 text-magenta-500 hover:bg-magenta-500 hover:text-white transition-colors duration-300">
+              <Link href={link.url} target="_blank" rel="noopener noreferrer">
+                <link.icon className="mr-2 h-5 w-5" />
+                {link.name}
+              </Link>
+            </Button>
+          ))}
+        </div>
       </div>
     </AnimatedSection>
   );

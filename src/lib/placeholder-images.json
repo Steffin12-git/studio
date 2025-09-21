@@ -2,21 +2,27 @@
   "placeholderImages": [
     {
       "id": "1",
-      "description": "A stylish and modern website for a creative agency, showcasing portfolio work.",
-      "imageUrl": "https://picsum.photos/seed/corp/600/400",
-      "imageHint": "creative agency"
+      "description": "Dashboard showing hospitality revenue analysis.",
+      "imageUrl": "https://picsum.photos/seed/hospitality/600/400",
+      "imageHint": "hospitality revenue"
     },
     {
       "id": "2",
-      "description": "An interactive dashboard with colorful charts and graphs visualizing data.",
-      "imageUrl": "https://picsum.photos/seed/dataviz/600/400",
-      "imageHint": "data dashboard"
+      "description": "HR analytics dashboard predicting employee churn.",
+      "imageUrl": "https://picsum.photos/seed/hr-analytics/600/400",
+      "imageHint": "churn prediction"
     },
     {
       "id": "3",
-      "description": "A user interacting with an AI chatbot interface on a laptop screen.",
-      "imageUrl": "https://picsum.photos/seed/chatbot/600/400",
-      "imageHint": "ai chatbot"
+      "description": "Dashboard showing EV market entry strategy.",
+      "imageUrl": "https://picsum.photos/seed/ev-market/600/400",
+      "imageHint": "ev market"
+    },
+    {
+      "id": "4",
+      "description": "COVID-19 data pipeline and dashboard.",
+      "imageUrl": "https://picsum.photos/seed/covid-dash/600/400",
+      "imageHint": "covid dashboard"
     }
   ]
 }
