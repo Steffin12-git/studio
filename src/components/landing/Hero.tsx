@@ -19,7 +19,7 @@ export default function Hero() {
         </div>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           {socialLinks.map((link) => (
-            <Button key={link.name} size="lg" asChild className="bg-magenta-600 text-white hover:bg-magenta-500 transition-colors duration-300">
+            <Button key={link.name} size="lg" asChild className="bg-gray-200 text-gray-800 hover:bg-gray-300 transition-colors duration-300">
               <Link href={link.url} target="_blank" rel="noopener noreferrer">
                 <link.icon className="mr-2 h-5 w-5" />
                 {link.name}

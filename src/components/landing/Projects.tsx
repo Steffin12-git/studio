@@ -20,7 +20,7 @@ export default function Projects() {
         <div className="mt-16 text-center bg-gray-800/50 p-8 rounded-lg border border-gray-700">
             <h3 className="text-2xl font-bold text-white">Explore More Projects</h3>
             <p className="mt-2 text-gray-400">Including Machine Learning (Classification, Regression, and Time-Series Forecasting)</p>
-            <Button asChild size="lg" className="mt-6 bg-magenta-600 text-white hover:bg-magenta-500 rounded-full px-8 py-3 text-lg group">
+            <Button asChild size="lg" className="mt-6 bg-gray-200 text-gray-800 hover:bg-gray-300 rounded-full px-8 py-3 text-lg group">
                 <Link href="https://github.com/Steffin12-git" target="_blank" rel="noopener noreferrer">
                     <Github className="mr-2 h-5 w-5"/>
                     View on GitHub
