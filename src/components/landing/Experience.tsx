@@ -11,7 +11,7 @@ export default function Experience() {
         <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl font-headline">Work Experience</h2>
         <div className="mt-16 max-w-4xl mx-auto space-y-8">
           {experienceData.map((job, index) => (
-            <Card key={index} className="transform transition-transform duration-500 hover:scale-[1.02] bg-black/30 border-l-4 border-teal-400 text-white shadow-lg overflow-hidden border-white/10">
+            <Card key={index} className="transform transition-transform duration-500 hover:scale-[1.02] bg-black/30 border-l-4 border-accent text-white shadow-lg overflow-hidden border-white/10">
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between">
                   <div>

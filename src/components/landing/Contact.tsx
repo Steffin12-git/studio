@@ -79,7 +79,7 @@ export default function Contact() {
                             <FormItem>
                             <FormLabel className="text-gray-300">Name</FormLabel>
                             <FormControl>
-                                <Input placeholder="Your Name" {...field} className="bg-gray-800/80 border-gray-600 text-white focus:ring-teal-500" />
+                                <Input placeholder="Your Name" {...field} className="bg-gray-800/80 border-gray-600 text-white focus:ring-accent" />
                             </FormControl>
                             <FormMessage />
                             </FormItem>
@@ -92,7 +92,7 @@ export default function Contact() {
                             <FormItem>
                             <FormLabel className="text-gray-300">Email</FormLabel>
                             <FormControl>
-                                <Input placeholder="your.email@example.com" {...field} className="bg-gray-800/80 border-gray-600 text-white focus:ring-teal-500"/>
+                                <Input placeholder="your.email@example.com" {...field} className="bg-gray-800/80 border-gray-600 text-white focus:ring-accent"/>
                             </FormControl>
                             <FormMessage />
                             </FormItem>
@@ -107,7 +107,7 @@ export default function Contact() {
                             <FormControl>
                                 <Textarea
                                 placeholder="Tell me what's on your mind..."
-                                className="min-h-[120px] bg-gray-800/80 border-gray-600 text-white focus:ring-teal-500"
+                                className="min-h-[120px] bg-gray-800/80 border-gray-600 text-white focus:ring-accent"
                                 {...field}
                                 />
                             </FormControl>
@@ -116,7 +116,7 @@ export default function Contact() {
                         )}
                         />
                         <div className="text-center pt-2">
-                        <Button type="submit" size="lg" className="rounded-full bg-teal-500 text-white hover:bg-teal-600 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-10 py-3 text-lg">
+                        <Button type="submit" size="lg" className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-10 py-3 text-lg">
                             Send Message <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                         </Button>
                         </div>
