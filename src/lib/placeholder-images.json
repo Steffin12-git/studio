@@ -2,21 +2,21 @@
   "placeholderImages": [
     {
       "id": "1",
-      "description": "An abstract representation of an online shopping interface with various product cards.",
-      "imageUrl": "https://picsum.photos/seed/1/600/400",
-      "imageHint": "online shopping"
+      "description": "A stylish and modern website for a creative agency, showcasing portfolio work.",
+      "imageUrl": "https://picsum.photos/seed/corp/600/400",
+      "imageHint": "creative agency"
     },
     {
       "id": "2",
-      "description": "A clean dashboard view of a task management tool, showing lists and cards for tasks.",
-      "imageUrl": "https://picsum.photos/seed/2/600/400",
-      "imageHint": "team collaboration"
+      "description": "An interactive dashboard with colorful charts and graphs visualizing data.",
+      "imageUrl": "https://picsum.photos/seed/dataviz/600/400",
+      "imageHint": "data dashboard"
     },
     {
       "id": "3",
-      "description": "A stylish and modern personal portfolio website layout on a laptop screen.",
-      "imageUrl": "https://picsum.photos/seed/3/600/400",
-      "imageHint": "personal website"
+      "description": "A user interacting with an AI chatbot interface on a laptop screen.",
+      "imageUrl": "https://picsum.photos/seed/chatbot/600/400",
+      "imageHint": "ai chatbot"
     }
   ]
 }

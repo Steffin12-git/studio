@@ -9,33 +9,26 @@ type TypewriterProps = {
 
 export function Typewriter({ text, speed = 50 }: TypewriterProps) {
   const [displayedText, setDisplayedText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
 
   useEffect(() => {
-    let ticker: NodeJS.Timeout;
-
-    const handleTyping = () => {
-      setDisplayedText(text.substring(0, displayedText.length + 1));
-
-      if (displayedText === text) {
-        // Pause at the end
-        setTimeout(() => setIsDeleting(false), 20000); // long pause
+    let i = 0;
+    setDisplayedText(''); // Reset on text change
+    const timer = setInterval(() => {
+      if (i < text.length) {
+        setDisplayedText(prev => prev + text.charAt(i));
+        i++;
+      } else {
+        clearInterval(timer);
       }
-    };
-    
-    // Simple one-time type effect
-    if (displayedText.length < text.length) {
-      ticker = setTimeout(handleTyping, speed);
-    }
+    }, speed);
 
-    return () => clearTimeout(ticker);
-  }, [displayedText, isDeleting, text, speed]);
+    return () => clearInterval(timer);
+  }, [text, speed]);
 
   return (
     <span>
       {displayedText}
-      <span className="animate-ping">|</span>
+      <span className="animate-pulse text-primary">|</span>
     </span>
   );
 }

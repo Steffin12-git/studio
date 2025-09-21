@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
+import { Send } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -54,14 +55,14 @@ export default function Contact() {
   return (
     <AnimatedSection id="contact">
       <div className="text-center">
-        <h2 className="text-4xl font-headline font-bold">Contact Me</h2>
-        <p className="mt-4 text-lg text-muted-foreground">
-          Have a project in mind or just want to say hi? I'd love to hear from you.
+        <h2 className="text-5xl font-headline font-bold">Get In Touch</h2>
+        <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+          I'm always excited to connect! Whether you have a project idea, a question, or just want to say hello, my inbox is open.
         </p>
       </div>
       <div className="mx-auto mt-12 max-w-xl">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
               name="name"
@@ -96,7 +97,7 @@ export default function Contact() {
                   <FormLabel>Message</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Tell me about your project or just say hello!"
+                      placeholder="Tell me what's on your mind..."
                       className="min-h-[150px]"
                       {...field}
                     />
@@ -105,9 +106,9 @@ export default function Contact() {
                 </FormItem>
               )}
             />
-            <div className="text-center">
-              <Button type="submit" size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                Send Message
+            <div className="text-center pt-4">
+              <Button type="submit" size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-10 py-6 text-lg font-bold group">
+                Send Message <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
           </form>

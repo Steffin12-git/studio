@@ -8,79 +8,82 @@ export const navLinks = [
 ];
 
 export const skillsData = {
-  "Core Competencies": {
-    "Web Development": ["React", "Next.js", "Node.js", "Express", "HTML5", "CSS3"],
-    "Databases": ["MongoDB", "PostgreSQL", "Firebase"],
-    "Cloud & DevOps": ["Docker", "AWS", "Vercel", "Git"],
+  "Frontend": {
+    "Languages": ["HTML5", "CSS3", "JavaScript (ES6+)", "TypeScript"],
+    "Frameworks": ["React", "Next.js", "Vue.js"],
+    "Styling": ["Tailwind CSS", "Sass", "Styled Components"],
   },
-  "Programming Languages": {
-    "Primary": ["JavaScript", "TypeScript", "Python"],
-    "Familiar": ["Java", "C++"],
+  "Backend": {
+    "Languages": ["Node.js", "Python"],
+    "Frameworks": ["Express.js", "Django", "Genkit"],
+    "Databases": ["PostgreSQL", "MongoDB", "Firebase"],
   },
-  "Tools & Technologies": {
-    "Development Tools": ["VS Code", "Postman", "Webpack"],
-    "Design": ["Figma", "Adobe XD"],
+  "Tools & DevOps": {
+    "Tools": ["Git", "Docker", "Webpack", "Figma"],
+    "Platforms": ["Vercel", "AWS", "Firebase Hosting"],
   }
 };
 
 export const projectsData = [
   {
-    title: 'E-commerce Platform',
-    description: 'A full-stack e-commerce solution with features like product catalog, shopping cart, user authentication, and order management.',
-    image: { id: "1", hint: "online shopping" },
+    title: 'Creative Agency Website',
+    description: 'A sleek, modern website for a creative agency, featuring smooth animations and a content management system.',
+    image: { id: "1", hint: "creative agency" },
     githubUrl: 'https://github.com/firebase/genkit',
-    language: 'TypeScript',
+    liveUrl: '#',
+    language: 'Next.js',
   },
   {
-    title: 'Task Management App',
-    description: 'A collaborative task management application that helps teams organize, track, and manage their work efficiently.',
-    image: { id: "2", hint: "team collaboration" },
+    title: 'Data Visualization Dashboard',
+    description: 'An interactive dashboard for visualizing complex datasets, built with React and D3.js for a seamless user experience.',
+    image: { id: "2", hint: "data dashboard" },
     githubUrl: 'https://github.com/firebase/firebase-hosting-samples',
-    language: 'JavaScript',
+    liveUrl: '#',
+    language: 'React',
   },
   {
-    title: 'Portfolio Website',
-    description: 'A personal portfolio website built with Next.js to showcase projects, skills, and professional experience.',
-    image: { id: "3", hint: "personal website" },
+    title: 'AI-Powered Chatbot',
+    description: 'A smart chatbot application using Genkit to provide intelligent, conversational responses to user queries.',
+    image: { id: "3", hint: "ai chatbot" },
     githubUrl: 'https://github.com/google/generative-ai-docs',
-    language: 'TypeScript',
+    language: 'Genkit',
   },
 ];
 
 export const educationData = [
   {
-    institution: 'University of Technology',
-    degree: 'Master of Science in Computer Science',
-    duration: '2020 - 2022',
-    description: 'Focused on advanced algorithms, machine learning, and distributed systems. Thesis on scalable web architectures.',
+    institution: 'University of Innovation',
+    degree: 'M.Sc. in Human-Computer Interaction',
+    duration: '2021 - 2023',
+    description: 'Specialized in user interface design, user experience research, and building intuitive digital products.',
   },
   {
-    institution: 'State College',
-    degree: 'Bachelor of Science in Software Engineering',
-    duration: '2016 - 2020',
-    description: 'Graduated with honors. Core curriculum included data structures, software design patterns, and database management.',
+    institution: 'Tech State University',
+    degree: 'B.Sc. in Computer Science',
+    duration: '2017 - 2021',
+    description: 'Graduated with high honors. Focused on software development fundamentals, algorithms, and web technologies.',
   },
 ];
 
 export const experienceData = [
   {
-    company: 'Innovatech Solutions',
-    role: 'Senior Software Engineer',
-    duration: '2022 - Present',
+    company: 'Pixel Perfect Inc.',
+    role: 'Frontend Developer',
+    duration: '2023 - Present',
     responsibilities: [
-      'Lead development of a new SaaS platform using Next.js, TypeScript, and PostgreSQL.',
-      'Mentor junior developers and conduct code reviews to maintain high code quality.',
-      'Design and implement scalable cloud infrastructure on AWS.',
+      'Developed and maintained responsive user interfaces for high-traffic web applications using React and Next.js.',
+      'Collaborated with UI/UX designers to translate wireframes into pixel-perfect, functional components.',
+      'Improved website performance and loading speeds by over 20% through code optimization and best practices.',
     ],
   },
   {
-    company: 'Digital Creations Inc.',
-    role: 'Software Developer',
-    duration: '2020 - 2022',
+    company: 'CodeCrafters LLC',
+    role: 'Junior Web Developer',
+    duration: '2021 - 2023',
     responsibilities: [
-      'Developed and maintained client websites using React and Node.js.',
-      'Collaborated with designers to create responsive and user-friendly interfaces.',
-      'Integrated third-party APIs for payment processing and analytics.',
+      'Assisted in building and deploying full-stack web applications for various clients.',
+      'Wrote clean, maintainable code and participated in regular code reviews.',
+      'Gained experience with modern web development tools and agile methodologies.',
     ],
   },
 ];
