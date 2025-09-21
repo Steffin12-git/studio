@@ -12,7 +12,7 @@ export default function Hero() {
 
   return (
     <AnimatedSection id="home" className="flex h-screen items-center justify-center text-center">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-5xl">
         <h1 className="font-headline text-5xl font-bold tracking-tight text-gray-900 sm:text-7xl">
           Steffin Thomas
         </h1>

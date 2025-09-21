@@ -9,7 +9,7 @@ export default function Education() {
         <div className="text-center">
           <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl font-headline">Education</h2>
         </div>
-        <div className="relative mt-16 max-w-2xl mx-auto">
+        <div className="relative mt-16 max-w-3xl mx-auto">
           <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-gray-200" aria-hidden="true"></div>
           {educationData.map((item, index) => (
             <div key={index} className={`relative mb-12 flex items-center ${index % 2 === 0 ? 'justify-start text-left' : 'justify-end text-right'}`}>

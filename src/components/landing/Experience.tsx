@@ -10,7 +10,7 @@ export default function Experience() {
       <div className="text-center">
         <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl font-headline">Work Experience</h2>
       </div>
-      <div className="mt-16 max-w-3xl mx-auto">
+      <div className="mt-16 max-w-4xl mx-auto">
         {experienceData.map((job, index) => (
           <Card key={index} className="transform transition-transform duration-500 hover:scale-[1.02] bg-white border-l-4 border-gray-800 text-gray-800 shadow-lg overflow-hidden">
             <CardHeader>
