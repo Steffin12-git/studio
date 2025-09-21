@@ -116,7 +116,7 @@ export default function Contact() {
                         )}
                         />
                         <div className="text-center pt-2">
-                        <Button type="submit" size="lg" className="rounded-full bg-primary text-white hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-10 py-3 text-lg">
+                        <Button type="submit" size="lg" className="rounded-full bg-teal-500 text-white hover:bg-teal-600 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-10 py-3 text-lg">
                             Send Message <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                         </Button>
                         </div>

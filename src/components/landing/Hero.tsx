@@ -27,7 +27,7 @@ export default function Hero() {
               key={link.name}
               size="lg"
               asChild
-              className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+              className="rounded-full bg-teal-500 text-white hover:bg-teal-600 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
             >
               <Link href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center">
                 <link.icon className="mr-2 h-5 w-5" />

@@ -1,9 +1,7 @@
 'use client';
 
-import { skillsData, socialLinks } from '@/lib/data';
+import { skillsData } from '@/lib/data';
 import { AnimatedSection } from '../common/AnimatedSection';
-import { Button } from '../ui/button';
-import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '@/lib/utils';
 
@@ -41,16 +39,6 @@ export default function Skills() {
               </div>
             );
           })}
-        </div>
-        <div className="mt-12 flex items-center justify-center gap-x-6">
-           {socialLinks.map((link) => (
-            <Button key={link.name} size="lg" asChild className="rounded-full bg-fuchsia-600 text-white hover:bg-fuchsia-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-              <Link href={link.url} target="_blank" rel="noopener noreferrer">
-                <link.icon className="mr-2 h-5 w-5" />
-                {link.name}
-              </Link>
-            </Button>
-          ))}
         </div>
       </div>
     </AnimatedSection>
