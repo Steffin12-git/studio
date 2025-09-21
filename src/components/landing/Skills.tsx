@@ -27,7 +27,7 @@ export default function Skills() {
         </div>
         <div className="mt-12 flex items-center justify-center gap-x-6">
            {socialLinks.map((link) => (
-            <Button key={link.name} variant="outline" size="lg" asChild className="border-magenta-500 text-magenta-500 hover:bg-magenta-500 hover:text-white transition-colors duration-300">
+            <Button key={link.name} size="lg" asChild className="bg-magenta-600 text-white hover:bg-magenta-500 transition-colors duration-300">
               <Link href={link.url} target="_blank" rel="noopener noreferrer">
                 <link.icon className="mr-2 h-5 w-5" />
                 {link.name}

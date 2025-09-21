@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Typewriter } from './Typewriter';
 import { socialLinks } from '@/lib/data';
-import { ArrowDown, Briefcase } from 'lucide-react';
 import { AnimatedSection } from '../common/AnimatedSection';
 
 export default function Hero() {

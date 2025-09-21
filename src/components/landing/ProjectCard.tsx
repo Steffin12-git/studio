@@ -43,7 +43,7 @@ export function ProjectCard({ title, description, tags, image, githubUrl, langua
         <p className="mt-4 flex-1 text-gray-400">{description}</p>
         <div className="mt-6 flex items-center justify-between">
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" asChild className="border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white">
+            <Button size="sm" asChild className="bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white">
               <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-4 w-4" />
                 GitHub
@@ -51,7 +51,7 @@ export function ProjectCard({ title, description, tags, image, githubUrl, langua
             </Button>
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="outline" size="sm" className="border-magenta-500/50 bg-magenta-900/30 text-magenta-400 hover:bg-magenta-900/50 hover:text-magenta-300">
+                <Button size="sm" className="bg-magenta-600 text-white hover:bg-magenta-500">
                   <BrainCircuit className="mr-2 h-4 w-4" />
                   AI Analysis
                 </Button>
