@@ -21,13 +21,16 @@ export default function Header() {
   }, []);
 
   const NavLinks = ({ isMobile = false }) => (
-    <nav className={cn('flex items-center gap-1', isMobile ? 'flex-col' : 'flex-row')}>
+    <nav className={cn('flex items-center gap-1', isMobile ? 'flex-col items-start' : 'flex-row')}>
       {navLinks.map((link) => (
         <Button
           key={link.name}
-          variant="ghost"
+          variant="link"
           asChild
-          className={cn(isMobile && 'w-full justify-start text-lg py-6')}
+          className={cn(
+            'text-muted-foreground hover:text-foreground transition-colors',
+            isMobile && 'w-full justify-start text-lg py-4'
+          )}
           onClick={() => isMobile && setIsMobileMenuOpen(false)}
         >
           <Link href={link.href}>{link.name}</Link>
@@ -40,7 +43,7 @@ export default function Header() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        scrolled ? 'bg-card/80 backdrop-blur-sm border-b' : 'bg-transparent'
+        scrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4">

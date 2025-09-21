@@ -4,7 +4,7 @@ import { AnimatedSection } from '../common/AnimatedSection';
 
 export default function Projects() {
   return (
-    <AnimatedSection id="projects" className="bg-card">
+    <AnimatedSection id="projects">
       <div className="text-center">
         <h2 className="text-4xl font-headline font-bold">My Projects</h2>
         <p className="mt-4 text-lg text-muted-foreground">
