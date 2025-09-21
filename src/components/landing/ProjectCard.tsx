@@ -22,7 +22,7 @@ export function ProjectCard({ title, description, tags, image, githubUrl, langua
   const placeholderImage = PlaceHolderImages.find((img) => img.id === image.id);
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-lg bg-gray-800/60 shadow-lg border border-gray-700 transition-all duration-300 hover:border-magenta-500/50 hover:shadow-magenta-500/10 hover:-translate-y-1">
+    <div className="group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-lg border border-gray-200/80 transition-all duration-300 hover:border-magenta-500/50 hover:shadow-magenta-500/10 hover:-translate-y-1">
       <div className="relative aspect-video w-full overflow-hidden">
         {placeholderImage && (
           <Image
@@ -33,17 +33,17 @@ export function ProjectCard({ title, description, tags, image, githubUrl, langua
             data-ai-hint={placeholderImage.imageHint}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-xl font-bold text-white">{title}</h3>
+        <h3 className="text-xl font-bold text-gray-800">{title}</h3>
         <div className="mt-2 flex flex-wrap gap-2">
-            {tags.map(tag => <Badge key={tag} variant="secondary" className="bg-magenta-900/50 text-magenta-300 border border-magenta-800">{tag}</Badge>)}
+            {tags.map(tag => <Badge key={tag} variant="secondary" className="bg-magenta-100/70 text-magenta-800 border border-magenta-200/80">{tag}</Badge>)}
         </div>
-        <p className="mt-4 flex-1 text-gray-400">{description}</p>
+        <p className="mt-4 flex-1 text-gray-600">{description}</p>
         <div className="mt-6 flex items-center justify-between">
           <div className="flex gap-2">
-            <Button size="sm" asChild className="bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white">
+            <Button size="sm" asChild className="bg-gray-800 text-white hover:bg-gray-700">
               <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-4 w-4" />
                 GitHub
@@ -56,9 +56,9 @@ export function ProjectCard({ title, description, tags, image, githubUrl, langua
                   AI Analysis
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[60vw] bg-gray-900 border-gray-700 text-white">
+              <DialogContent className="sm:max-w-[60vw] bg-white border-gray-200 text-gray-800">
                 <DialogHeader>
-                  <DialogTitle className="font-headline text-2xl text-magenta-400">AI Project Analysis: {title}</DialogTitle>
+                  <DialogTitle className="font-headline text-2xl text-magenta-600">AI Project Analysis: {title}</DialogTitle>
                 </DialogHeader>
                 <div className="max-h-[70vh] overflow-y-auto p-1 pr-4">
                   <ProjectAnalysis repoUrl={githubUrl} language={language} />

@@ -11,15 +11,15 @@ export default function Hero() {
   return (
     <AnimatedSection id="home" className="flex h-screen items-center justify-center text-center">
       <div className="mx-auto max-w-4xl">
-        <h1 className="font-headline text-5xl font-bold tracking-tight text-white sm:text-7xl">
+        <h1 className="font-headline text-5xl font-bold tracking-tight text-gray-900 sm:text-7xl">
           Steffin Thomas
         </h1>
-        <div className="mt-6 text-lg tracking-tight text-gray-300 min-h-[3em]">
+        <div className="mt-6 text-lg tracking-tight text-gray-600 min-h-[3em]">
           <Typewriter text={tagline} />
         </div>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           {socialLinks.map((link) => (
-            <Button key={link.name} size="lg" asChild className="bg-gray-200 text-gray-800 hover:bg-gray-300 transition-colors duration-300">
+            <Button key={link.name} size="lg" asChild className="bg-magenta-600 text-white hover:bg-magenta-500 transition-colors duration-300">
               <Link href={link.url} target="_blank" rel="noopener noreferrer">
                 <link.icon className="mr-2 h-5 w-5" />
                 {link.name}

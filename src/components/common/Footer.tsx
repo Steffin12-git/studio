@@ -6,11 +6,11 @@ import { Button } from '../ui/button';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="w-full bg-black/50 border-t border-gray-800 py-6">
-      <div className="container mx-auto text-center text-gray-400">
+    <footer className="w-full bg-white border-t py-6">
+      <div className="container mx-auto text-center text-gray-500">
         <div className="flex justify-center gap-4 mb-4">
             {socialLinks.map(link => (
-                <Button key={link.name} variant="ghost" size="icon" asChild className="text-gray-400 hover:text-white hover:bg-white/10">
+                <Button key={link.name} variant="ghost" size="icon" asChild className="text-gray-500 hover:text-magenta-600 hover:bg-magenta-100/50">
                     <Link href={link.url} target="_blank" rel="noopener noreferrer">
                         <link.icon className="h-5 w-5" />
                     </Link>
