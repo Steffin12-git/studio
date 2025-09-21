@@ -1,6 +1,7 @@
+// Typewriter.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 type TypewriterProps = {
   text: string;
@@ -10,41 +11,49 @@ type TypewriterProps = {
 
 export function Typewriter({ text, speed = 50, loopDelay = 1500 }: TypewriterProps) {
   const [displayedText, setDisplayedText] = useState('');
+  const index = useRef(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    let i = 0;
     let isMounted = true;
-    let timeoutId: NodeJS.Timeout;
 
     const type = () => {
       if (!isMounted) return;
 
-      if (i < text.length) {
-        setDisplayedText(prev => prev + text.charAt(i));
-        i++;
-        timeoutId = setTimeout(type, speed);
+      if (index.current < text.length) {
+        setDisplayedText(prev => prev + text.charAt(index.current));
+        index.current++;
+        timeoutRef.current = setTimeout(type, speed);
       } else {
-        // Pause at the end, then reset
-        timeoutId = setTimeout(() => {
-          i = 0;
+        timeoutRef.current = setTimeout(() => {
+          index.current = 0;
           setDisplayedText('');
           type();
         }, loopDelay);
       }
     };
 
-    type();
+    // Start typing after a tiny delay to avoid first-character clipping
+    timeoutRef.current = setTimeout(type, 50);
 
     return () => {
       isMounted = false;
-      clearTimeout(timeoutId);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [text, speed, loopDelay]);
 
   return (
-    <span>
-      {displayedText}
-      <span className="animate-pulse text-primary">|</span>
+    <span className="inline-block">
+      {displayedText || '\u00A0'}
+      <span className="animate-blink text-primary">|</span>
+      <style jsx>{`
+        .animate-blink {
+          animation: blink 1s step-start infinite;
+        }
+        @keyframes blink {
+          50% { opacity: 0; }
+        }
+      `}</style>
     </span>
   );
 }

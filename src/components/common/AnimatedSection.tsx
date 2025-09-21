@@ -43,7 +43,7 @@ export function AnimatedSection({ children, id, className = '' }: AnimatedSectio
     <section
       id={id}
       ref={ref}
-      className={`w-full max-w-6xl px-4 py-16 md:py-24 transition-all duration-1000 ease-out ${
+      className={`mx-auto w-full max-w-6xl px-4 py-16 md:py-24 transition-all duration-1000 ease-out ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       } ${className}`}
     >
