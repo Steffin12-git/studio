@@ -1,6 +1,6 @@
 import type {Config} from 'tailwindcss';
 
-export default {
+const config = {
   darkMode: ['class'],
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -18,7 +18,7 @@ export default {
     extend: {
       fontFamily: {
         body: ['var(--font-lexend)', 'sans-serif'],
-        headline: ['var(--font-poppins)', 'sans-serif'],
+        headline: ['var(--font-playfair)', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -54,6 +54,19 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        teal: {
+          '50': '#f0fdfa',
+          '100': '#ccfbf1',
+          '200': '#99f6e4',
+          '300': '#5eead4',
+          '400': '#2dd4bf',
+          '500': '#20C4C8', // accent
+          '600': '#0d9488',
+          '700': '#0f766e',
+          '800': '#115e59',
+          '900': '#134e4a',
+          '950': '#042f2e',
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -86,3 +99,5 @@ export default {
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
+
+export default config;

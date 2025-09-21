@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="container mx-auto text-center text-gray-500">
         <div className="flex justify-center gap-4 mb-4">
             {socialLinks.map(link => (
-                <Button key={link.name} variant="ghost" size="icon" asChild className="text-gray-500 hover:text-gray-800 hover:bg-gray-100">
+                <Button key={link.name} variant="ghost" size="icon" asChild className="text-gray-500 hover:text-teal-500 hover:bg-gray-100 rounded-full transition-colors">
                     <Link href={link.url} target="_blank" rel="noopener noreferrer">
                         <link.icon className="h-5 w-5" />
                     </Link>
