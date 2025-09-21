@@ -8,7 +8,10 @@ import { socialLinks } from '@/lib/data';
 import { AnimatedSection } from '../common/AnimatedSection';
 
 export default function Hero() {
-  const tagline = '  Result Driven Data Analyst | SQL • Python • Power BI • Machine Learning';
+  const texts = [
+    'Result Driven Data Analyst',
+    'SQL • Python • Power BI • Machine Learning'
+  ];
 
   return (
     <AnimatedSection id="home" className="flex h-screen items-center justify-center text-center">
@@ -18,7 +21,7 @@ export default function Hero() {
         </h1>
 
         <div className="mt-6 text-lg tracking-tight text-gray-200 min-h-[3em]">
-          <Typewriter text={tagline} speed={60} loopDelay={1800} />
+          <Typewriter texts={texts} />
         </div>
 
         <div className="mt-10 flex items-center justify-center gap-x-6">

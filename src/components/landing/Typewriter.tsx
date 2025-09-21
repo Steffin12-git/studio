@@ -4,43 +4,63 @@
 import { useState, useEffect, useRef } from 'react';
 
 type TypewriterProps = {
-  text: string;
-  speed?: number;
-  loopDelay?: number;
+  texts: string[];
+  typingSpeed?: number;
+  deletingSpeed?: number;
+  pauseDelay?: number;
 };
 
-export function Typewriter({ text, speed = 50, loopDelay = 1500 }: TypewriterProps) {
+export function Typewriter({
+  texts,
+  typingSpeed = 100,
+  deletingSpeed = 50,
+  pauseDelay = 2000,
+}: TypewriterProps) {
   const [displayedText, setDisplayedText] = useState('');
-  const index = useRef(0);
+  const [textIndex, setTextIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [charIndex, setCharIndex] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     let isMounted = true;
 
-    const type = () => {
+    const handleTyping = () => {
       if (!isMounted) return;
+      
+      const currentText = texts[textIndex];
 
-      if (index.current < text.length) {
-        setDisplayedText(prev => prev + text.charAt(index.current));
-        index.current++;
-        timeoutRef.current = setTimeout(type, speed);
+      if (isDeleting) {
+        if (charIndex > 0) {
+          setDisplayedText(currentText.substring(0, charIndex - 1));
+          setCharIndex(charIndex - 1);
+          timeoutRef.current = setTimeout(handleTyping, deletingSpeed);
+        } else {
+          setIsDeleting(false);
+          setTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
+        }
       } else {
-        timeoutRef.current = setTimeout(() => {
-          index.current = 0;
-          setDisplayedText('');
-          type();
-        }, loopDelay);
+        if (charIndex < currentText.length) {
+          setDisplayedText(currentText.substring(0, charIndex + 1));
+          setCharIndex(charIndex + 1);
+          timeoutRef.current = setTimeout(handleTyping, typingSpeed);
+        } else {
+          timeoutRef.current = setTimeout(() => {
+            setIsDeleting(true);
+          }, pauseDelay);
+        }
       }
     };
 
-    // Start typing after a tiny delay to avoid first-character clipping
-    timeoutRef.current = setTimeout(type, 50);
+    timeoutRef.current = setTimeout(handleTyping, typingSpeed);
 
     return () => {
       isMounted = false;
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
     };
-  }, [text, speed, loopDelay]);
+  }, [charIndex, isDeleting, textIndex, texts, typingSpeed, deletingSpeed, pauseDelay]);
 
   return (
     <span className="inline-block">
