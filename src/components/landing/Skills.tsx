@@ -1,7 +1,12 @@
+'use client';
+
 import { skillsData, socialLinks } from '@/lib/data';
 import { AnimatedSection } from '../common/AnimatedSection';
 import { Button } from '../ui/button';
 import Link from 'next/link';
+import { useInView } from 'react-intersection-observer';
+import { cn } from '@/lib/utils';
+
 
 export default function Skills() {
   return (
@@ -14,16 +19,28 @@ export default function Skills() {
           The technologies and tools I use to turn data into insights.
         </p>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
-          {Object.entries(skillsData).map(([category, skills]) => (
-            <div key={category} className="rounded-lg bg-white p-6 shadow-lg border border-gray-200/80 hover:border-gray-400/50 transition-colors duration-300">
-              <h3 className="text-xl font-bold text-gray-800 mb-4">{category}</h3>
-              <ul className="space-y-2">
-                {(skills as string[]).map((skill) => (
-                  <li key={skill} className="text-gray-700">{skill}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {Object.entries(skillsData).map(([category, skills], index) => {
+            const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+            return (
+              <div
+                key={category}
+                ref={ref}
+                className={cn(
+                  'rounded-lg bg-white p-6 shadow-lg border border-gray-200/80 transition-all duration-500 hover:shadow-xl hover:-translate-y-2',
+                  'opacity-0 translate-y-10',
+                  inView && 'opacity-100 translate-y-0'
+                )}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
+                <h3 className="text-xl font-bold text-gray-800 mb-4">{category}</h3>
+                <ul className="space-y-2">
+                  {(skills as string[]).map((skill) => (
+                    <li key={skill} className="text-gray-700">{skill}</li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
         <div className="mt-12 flex items-center justify-center gap-x-6">
            {socialLinks.map((link) => (

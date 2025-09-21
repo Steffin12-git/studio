@@ -14,7 +14,7 @@ export default function Projects() {
         </h2>
         <div className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-2">
           {projectsData.map((project, index) => (
-            <ProjectCard key={index} {...project} />
+            <ProjectCard key={index} {...project} index={index} />
           ))}
         </div>
         <div className="mt-16 text-center bg-gray-100/80 p-8 rounded-lg border border-gray-200/90">

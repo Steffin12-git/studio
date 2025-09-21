@@ -8,6 +8,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { ProjectAnalysis } from './ProjectAnalysis';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '@/components/ui/badge';
+import { useInView } from 'react-intersection-observer';
+import { cn } from '@/lib/utils';
+
 
 type ProjectCardProps = {
   title: string;
@@ -16,13 +19,26 @@ type ProjectCardProps = {
   image: { id: string; hint: string };
   githubUrl: string;
   language: string;
+  index: number;
 };
 
-export function ProjectCard({ title, description, tags, image, githubUrl, language }: ProjectCardProps) {
+export function ProjectCard({ title, description, tags, image, githubUrl, language, index }: ProjectCardProps) {
   const placeholderImage = PlaceHolderImages.find((img) => img.id === image.id);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-lg border border-gray-200/80 transition-all duration-300 hover:border-gray-400/50 hover:shadow-gray-400/10 hover:-translate-y-1">
+    <div
+      ref={ref}
+      className={cn(
+        'group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-lg border border-gray-200/80 transition-all duration-500 hover:shadow-xl hover:-translate-y-2',
+        'opacity-0 translate-y-10',
+        inView && 'opacity-100 translate-y-0'
+      )}
+      style={{ transitionDelay: `${index * 150}ms` }}
+    >
       <div className="relative aspect-video w-full overflow-hidden">
         {placeholderImage && (
           <Image
