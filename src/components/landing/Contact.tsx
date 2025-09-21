@@ -61,7 +61,7 @@ export default function Contact() {
 
   return (
     <AnimatedSection id="contact">
-        <div className="container mx-auto bg-gray-900/40 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-xl">
+        <div className="container mx-auto bg-gray-900/40 backdrop-blur-md p-8 md-p-12 rounded-2xl border border-white/10 shadow-xl">
             <div className="text-center">
                 <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl font-headline">Get In Touch</h2>
                 <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
@@ -116,7 +116,7 @@ export default function Contact() {
                         )}
                         />
                         <div className="text-center pt-2">
-                        <Button type="submit" size="lg" className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-10 py-3 text-lg">
+                        <Button type="submit" size="lg" className="rounded-full bg-fuchsia-600 text-white hover:bg-fuchsia-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-10 py-3 text-lg">
                             Send Message <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                         </Button>
                         </div>
