@@ -28,8 +28,8 @@ export default function Header() {
           variant="link"
           asChild
           className={cn(
-            'text-gray-600 hover:text-gray-900 font-semibold text-base transition-colors duration-300',
-            'hover:no-underline hover:bg-gray-100/80 rounded-md',
+            'text-gray-200 hover:text-white font-semibold text-base transition-colors duration-300',
+            'hover:no-underline hover:bg-white/10 rounded-md',
             isMobile && 'w-full justify-start text-lg py-4 px-4'
           )}
           onClick={() => isMobile && setIsMobileMenuOpen(false)}
@@ -44,30 +44,30 @@ export default function Header() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        scrolled ? 'bg-white/80 backdrop-blur-xl border-b' : 'bg-transparent'
+        scrolled ? 'bg-black/30 backdrop-blur-lg border-b border-white/10' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="#home" className="flex items-center gap-3 group">
-          <div className="p-2 bg-gray-800 rounded-full group-hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
-            <Rocket className="h-6 w-6 text-white" />
+          <div className="p-2 bg-white/90 rounded-full group-hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
+            <Rocket className="h-6 w-6 text-gray-800" />
           </div>
-          <span className="text-2xl font-bold font-headline text-gray-800">Steffin Thomas</span>
+          <span className="text-2xl font-bold font-headline text-white">Steffin Thomas</span>
         </Link>
         
-        <div className="hidden md:flex bg-gray-100/80 border border-gray-200/90 rounded-full px-2 py-1">
+        <div className="hidden md:flex bg-black/20 border border-white/10 rounded-full px-2 py-1">
           <NavLinks />
         </div>
 
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-gray-800 hover:bg-gray-200/80">
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
                 <Menu />
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[80vw] p-4 pt-16 bg-white">
+            <SheetContent side="right" className="w-[80vw] p-4 pt-16 bg-gray-900/90 backdrop-blur-xl border-l border-white/20 text-white">
                 <NavLinks isMobile />
             </SheetContent>
           </Sheet>

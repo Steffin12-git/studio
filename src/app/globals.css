@@ -59,6 +59,6 @@
     @apply scroll-pt-20;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-transparent text-foreground;
   }
 }

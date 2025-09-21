@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { Poppins, Lexend } from 'next/font/google';
-import { BackgroundBlobs } from '@/components/common/BackgroundBlobs';
+import Image from 'next/image';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -29,7 +29,16 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${lexend.variable} font-body antialiased relative`}
       >
-        <BackgroundBlobs />
+        <div className="fixed inset-0 -z-10 h-full w-full">
+          <Image
+            src="https://picsum.photos/seed/background/1920/1080"
+            alt="Abstract background image"
+            fill
+            className="object-cover"
+            data-ai-hint="abstract background"
+          />
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-2xl backdrop-saturate-150" />
+        </div>
         <div className="relative z-10">{children}</div>
         <Toaster />
       </body>

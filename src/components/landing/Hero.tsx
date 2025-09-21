@@ -13,11 +13,11 @@ export default function Hero() {
   return (
     <AnimatedSection id="home" className="flex h-screen items-center justify-center text-center">
       <div className="mx-auto max-w-5xl">
-        <h1 className="font-headline text-5xl font-bold tracking-tight text-gray-900 sm:text-7xl">
+        <h1 className="font-headline text-5xl font-bold tracking-tight text-white sm:text-7xl">
           Steffin Thomas
         </h1>
 
-        <div className="mt-6 text-lg tracking-tight text-gray-600 min-h-[3em]">
+        <div className="mt-6 text-lg tracking-tight text-gray-200 min-h-[3em]">
           <Typewriter text={tagline} speed={60} loopDelay={1800} />
         </div>
 
