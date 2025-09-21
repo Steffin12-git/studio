@@ -78,7 +78,7 @@ export default function Contact() {
                     <FormItem>
                     <FormLabel className="text-gray-700">Name</FormLabel>
                     <FormControl>
-                        <Input placeholder="Your Name" {...field} className="bg-gray-100/80 border-gray-300 text-gray-800 focus:ring-magenta-500" />
+                        <Input placeholder="Your Name" {...field} className="bg-gray-100/80 border-gray-300 text-gray-800 focus:ring-gray-500" />
                     </FormControl>
                     <FormMessage />
                     </FormItem>
@@ -91,7 +91,7 @@ export default function Contact() {
                     <FormItem>
                     <FormLabel className="text-gray-700">Email</FormLabel>
                     <FormControl>
-                        <Input placeholder="your.email@example.com" {...field} className="bg-gray-100/80 border-gray-300 text-gray-800 focus:ring-magenta-500"/>
+                        <Input placeholder="your.email@example.com" {...field} className="bg-gray-100/80 border-gray-300 text-gray-800 focus:ring-gray-500"/>
                     </FormControl>
                     <FormMessage />
                     </FormItem>
@@ -106,7 +106,7 @@ export default function Contact() {
                     <FormControl>
                         <Textarea
                         placeholder="Tell me what's on your mind..."
-                        className="min-h-[120px] bg-gray-100/80 border-gray-300 text-gray-800 focus:ring-magenta-500"
+                        className="min-h-[120px] bg-gray-100/80 border-gray-300 text-gray-800 focus:ring-gray-500"
                         {...field}
                         />
                     </FormControl>
@@ -126,12 +126,12 @@ export default function Contact() {
             <h3 className="text-2xl font-bold text-gray-800">Quick Contact</h3>
             {contactLinks.map(link => (
                  <div key={link.name} className="flex items-start gap-4 p-4 rounded-lg bg-white border border-gray-200/90 shadow-lg">
-                    <div className="bg-magenta-100/70 p-3 rounded-full">
-                        <link.icon className="h-6 w-6 text-magenta-600" />
+                    <div className="bg-gray-100/70 p-3 rounded-full">
+                        <link.icon className="h-6 w-6 text-gray-800" />
                     </div>
                     <div>
                         <h4 className="font-semibold text-gray-800">{link.name}</h4>
-                        <Link href={link.href} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-magenta-600 transition-colors break-all">
+                        <Link href={link.href} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900 transition-colors break-all">
                             {link.value}
                         </Link>
                     </div>
