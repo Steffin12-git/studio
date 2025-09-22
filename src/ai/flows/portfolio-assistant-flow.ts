@@ -66,18 +66,12 @@ Your instructions:
 
 const prompt = ai.definePrompt({
   name: 'portfolioAssistantPrompt',
-  input: { schema: PortfolioAssistantInputSchema },
+  input: { schema: z.object({ formattedHistory: z.string() }) },
   output: { schema: PortfolioAssistantOutputSchema },
   system: context,
   prompt: `Continue the conversation based on the provided history.
 
-{{#each history}}
-  {{#if (eq this.role 'user')}}
-    User: {{{this.content}}}
-  {{else}}
-    Assistant: {{{this.content}}}
-  {{/if}}
-{{/each}}
+{{{formattedHistory}}}
 `,
   config: {
     model: 'googleai/gemini-2.5-flash',
@@ -92,7 +86,16 @@ const portfolioAssistantFlow = ai.defineFlow(
     outputSchema: PortfolioAssistantOutputSchema,
   },
   async (input) => {
-    const { output } = await prompt(input);
+    const formattedHistory = input.history
+      .map(message => {
+        if (message.role === 'user') {
+          return `User: ${message.content}`;
+        }
+        return `Assistant: ${message.content}`;
+      })
+      .join('\n');
+
+    const { output } = await prompt({ formattedHistory });
     return { response: output!.response };
   }
 );
