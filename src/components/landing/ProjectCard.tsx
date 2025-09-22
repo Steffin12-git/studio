@@ -25,8 +25,8 @@ type ProjectCardProps = {
 export function ProjectCard({ title, description, tags, image, githubUrl, language, index }: ProjectCardProps) {
   const placeholderImage = PlaceHolderImages.find((img) => img.id === image.id);
   const { ref, inView } = useInView({
-    triggerOnce: true,
     threshold: 0.1,
+    triggerOnce: false,
   });
 
   return (
@@ -37,7 +37,7 @@ export function ProjectCard({ title, description, tags, image, githubUrl, langua
         'opacity-0 translate-y-10',
         inView && 'opacity-100 translate-y-0'
       )}
-      style={{ transitionDelay: `${index * 150}ms` }}
+      style={{ transitionDelay: inView ? `${index * 150}ms` : '0ms' }}
     >
       <div className="relative aspect-video w-full overflow-hidden">
         {placeholderImage && (

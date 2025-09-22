@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState, type ReactNode } from 'react';
 import { cn } from '@/lib/utils';
+import { useInView } from 'react-intersection-observer';
 
 type AnimatedSectionProps = {
   children: ReactNode;
@@ -16,35 +17,10 @@ export function AnimatedSection({
   className = '',
   direction = 'left',
 }: AnimatedSectionProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1,
-      }
-    );
-
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: false, // Animate every time it comes into view
+  });
 
   const animationClasses = {
     hidden: {
@@ -59,8 +35,8 @@ export function AnimatedSection({
       id={id}
       ref={ref}
       className={cn(
-        'mx-auto w-full max-w-7xl px-4 py-16 md:py-24 transition-all duration-1000 ease-out',
-        isVisible ? animationClasses.visible : animationClasses.hidden[direction],
+        'mx-auto w-full max-w-7xl px-4 py-16 md:py-24 transition-all duration-700 ease-out',
+        inView ? animationClasses.visible : animationClasses.hidden[direction],
         className
       )}
     >

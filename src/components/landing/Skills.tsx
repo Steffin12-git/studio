@@ -16,7 +16,7 @@ export default function Skills() {
         </p>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
           {Object.entries(skillsData).map(([category, skills], index) => {
-            const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+            const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: false });
             return (
               <div
                 key={category}
@@ -26,7 +26,7 @@ export default function Skills() {
                   'opacity-0 translate-y-10',
                   inView && 'opacity-100 translate-y-0'
                 )}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                style={{ transitionDelay: inView ? `${index * 150}ms` : '0ms' }}
               >
                 <h3 className="text-xl font-bold text-white mb-4 lg:text-2xl">{category}</h3>
                 <ul className="space-y-2">
