@@ -1,12 +1,10 @@
 import { certificationsData } from '@/lib/data';
 import { Award, ExternalLink, BadgeCheck } from 'lucide-react';
-import { AnimatedSection } from '../common/AnimatedSection';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 
 export default function Certifications() {
   return (
-    <AnimatedSection id="certifications">
       <div className="container mx-auto bg-gray-900/40 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-xl">
         <div className="text-center">
           <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl font-headline">Certifications</h2>
@@ -52,6 +50,5 @@ export default function Certifications() {
             ))}
         </div>
       </div>
-    </AnimatedSection>
   );
 }

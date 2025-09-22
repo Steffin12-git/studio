@@ -8,6 +8,7 @@ import Experience from '@/components/landing/Experience';
 import Contact from '@/components/landing/Contact';
 import Footer from '@/components/common/Footer';
 import Certifications from '@/components/landing/Certifications';
+import { AnimatedSection } from '@/components/common/AnimatedSection';
 
 export default function Home() {
   return (
@@ -15,13 +16,27 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Education />
-        <Certifications />
-        <Experience />
-        <Contact />
+        <AnimatedSection id="about" direction="right">
+          <About />
+        </AnimatedSection>
+        <AnimatedSection id="skills" direction="left">
+          <Skills />
+        </AnimatedSection>
+        <AnimatedSection id="projects" direction="right">
+          <Projects />
+        </AnimatedSection>
+        <AnimatedSection id="education" direction="left">
+          <Education />
+        </AnimatedSection>
+        <AnimatedSection id="certifications" direction="right">
+          <Certifications />
+        </AnimatedSection>
+        <AnimatedSection id="experience" direction="left">
+          <Experience />
+        </AnimatedSection>
+        <AnimatedSection id="contact" direction="right">
+          <Contact />
+        </AnimatedSection>
       </main>
       <Footer />
     </div>

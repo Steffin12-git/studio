@@ -17,7 +17,6 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { AnimatedSection } from '../common/AnimatedSection';
 import Link from 'next/link';
 
 const formSchema = z.object({
@@ -60,7 +59,6 @@ export default function Contact() {
   }
 
   return (
-    <AnimatedSection id="contact">
         <div className="container mx-auto bg-gray-900/40 backdrop-blur-md p-8 md-p-12 rounded-2xl border border-white/10 shadow-xl">
             <div className="text-center">
                 <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl font-headline">Get In Touch</h2>
@@ -141,6 +139,5 @@ export default function Contact() {
                 </div>
             </div>
       </div>
-    </AnimatedSection>
   );
 }

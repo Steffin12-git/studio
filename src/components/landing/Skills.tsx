@@ -1,14 +1,12 @@
 'use client';
 
 import { skillsData } from '@/lib/data';
-import { AnimatedSection } from '../common/AnimatedSection';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '@/lib/utils';
 
 
 export default function Skills() {
   return (
-    <AnimatedSection id="skills">
       <div className="container mx-auto text-center bg-gray-900/40 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-xl">
         <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl font-headline">
           My Toolkit
@@ -41,6 +39,5 @@ export default function Skills() {
           })}
         </div>
       </div>
-    </AnimatedSection>
   );
 }

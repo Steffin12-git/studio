@@ -1,10 +1,8 @@
 import { educationData } from '@/lib/data';
 import { GraduationCap } from 'lucide-react';
-import { AnimatedSection } from '../common/AnimatedSection';
 
 export default function Education() {
   return (
-    <AnimatedSection id="education">
       <div className="container mx-auto bg-gray-900/40 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-xl">
         <div className="text-center">
           <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl font-headline">Education</h2>
@@ -24,6 +22,5 @@ export default function Education() {
           ))}
         </div>
       </div>
-    </AnimatedSection>
   );
 }
