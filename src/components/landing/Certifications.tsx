@@ -14,6 +14,7 @@ export default function Certifications() {
     offset: ['start center', 'end center'],
   });
 
+  // Spring effect for the main progress line
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -28,19 +29,30 @@ export default function Certifications() {
         </h2>
       </div>
       <div ref={timelineRef} className="relative mt-16 max-w-4xl mx-auto">
-        <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-white/20" aria-hidden="true">
-          <motion.div
-            className="absolute top-0 left-0 w-full origin-top bg-accent shadow-[0_0_8px_theme(colors.accent)]"
-            style={{ scaleY, height: '100%' }}
-          />
-        </div>
+        {/* Static timeline bar */}
+        <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-white/20" aria-hidden="true" />
+        {/* Animated progress bar */}
+        <motion.div
+          className="absolute top-0 left-1/2 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-[0_0_8px_theme(colors.accent)]"
+          style={{ scaleY, height: '100%' }}
+        />
 
         {certificationsData.map((cert, index) => {
           const stepSize = 1 / certificationsData.length;
-          const start = index * stepSize;
-          const end = start + stepSize;
-          const iconScale = useTransform(scrollYProgress, [start, (start + end)/2, end], [1, 1.5, 1]);
-          const iconShadow = useTransform(scrollYProgress, [start, (start + end)/2, end], ['0px 0px 0px hsl(var(--accent))', '0px 0px 10px hsl(var(--accent))', '0px 0px 0px hsl(var(--accent))']);
+          const stepStart = index * stepSize;
+          const stepEnd = stepStart + stepSize;
+
+          // Animate icon based on scroll progress
+          const iconScale = useTransform(scrollYProgress, [0, stepStart, stepEnd, 1], [1, 1, 1.5, 1]);
+          const iconRotate = useTransform(scrollYProgress, [stepStart, stepEnd], [0, 360]);
+          const iconColor = useTransform(scrollYProgress, 
+            [stepStart, stepEnd], 
+            ["hsl(var(--foreground))", "hsl(var(--accent))"]
+          );
+           const iconBackgroundColor = useTransform(scrollYProgress, 
+            [stepStart, stepEnd], 
+            ["hsl(var(--secondary))", "hsl(var(--accent) / 0.3)"]
+          );
 
           return (
             <div
@@ -50,7 +62,12 @@ export default function Certifications() {
               }`}
             >
               <motion.div 
-                style={{ scale: iconScale, boxShadow: iconShadow }}
+                style={{ 
+                  scale: iconScale, 
+                  rotate: iconRotate,
+                  color: iconColor,
+                  backgroundColor: iconBackgroundColor,
+                }}
                 className="absolute left-1/2 top-8 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-800 text-white shadow-lg ring-4 ring-white/10"
               >
                 <Award className="h-5 w-5" />
