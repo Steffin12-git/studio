@@ -3,9 +3,12 @@
 import { useState, useEffect } from 'react';
 
 export function BackgroundBlobs() {
+  const [isClient, setIsClient] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    setIsClient(true);
+    
     const handleMouseMove = (event: MouseEvent) => {
       setMousePosition({ x: event.clientX, y: event.clientY });
     };
@@ -23,6 +26,10 @@ export function BackgroundBlobs() {
     const y = (mousePosition.y / window.innerHeight - 0.5) * factor;
     return { transform: `translate(${x}px, ${y}px)` };
   };
+  
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <div
