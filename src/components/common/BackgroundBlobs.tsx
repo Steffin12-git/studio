@@ -13,15 +13,19 @@ export function BackgroundBlobs() {
       setMousePosition({ x: event.clientX, y: event.clientY });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('mousemove', handleMouseMove);
+    }
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('mousemove', handleMouseMove);
+      }
     };
   }, []);
 
   const getTransform = (factor: number) => {
-    if (typeof window === 'undefined') return {};
+    if (!isClient) return {};
     const x = (mousePosition.x / window.innerWidth - 0.5) * factor;
     const y = (mousePosition.y / window.innerHeight - 0.5) * factor;
     return { transform: `translate(${x}px, ${y}px)` };
