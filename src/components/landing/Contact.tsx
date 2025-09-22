@@ -63,8 +63,8 @@ export default function Contact() {
     <AnimatedSection id="contact">
         <div className="container mx-auto bg-gray-900/40 backdrop-blur-md p-8 md-p-12 rounded-2xl border border-white/10 shadow-xl">
             <div className="text-center">
-                <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl font-headline">Get In Touch</h2>
-                <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+                <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl font-headline">Get In Touch</h2>
+                <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto lg:text-xl">
                 Have a question or want to work together? Drop me a message!
                 </p>
             </div>
@@ -77,9 +77,9 @@ export default function Contact() {
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                            <FormLabel className="text-gray-300">Name</FormLabel>
+                            <FormLabel className="text-gray-300 lg:text-base">Name</FormLabel>
                             <FormControl>
-                                <Input placeholder="Your Name" {...field} className="bg-gray-800/80 border-gray-600 text-white focus:ring-accent" />
+                                <Input placeholder="Your Name" {...field} className="bg-gray-800/80 border-gray-600 text-white focus:ring-accent lg:text-base" />
                             </FormControl>
                             <FormMessage />
                             </FormItem>
@@ -90,9 +90,9 @@ export default function Contact() {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                            <FormLabel className="text-gray-300">Email</FormLabel>
+                            <FormLabel className="text-gray-300 lg:text-base">Email</FormLabel>
                             <FormControl>
-                                <Input placeholder="your.email@example.com" {...field} className="bg-gray-800/80 border-gray-600 text-white focus:ring-accent"/>
+                                <Input placeholder="your.email@example.com" {...field} className="bg-gray-800/80 border-gray-600 text-white focus:ring-accent lg:text-base"/>
                             </FormControl>
                             <FormMessage />
                             </FormItem>
@@ -103,11 +103,11 @@ export default function Contact() {
                         name="message"
                         render={({ field }) => (
                             <FormItem>
-                            <FormLabel className="text-gray-300">Message</FormLabel>
+                            <FormLabel className="text-gray-300 lg:text-base">Message</FormLabel>
                             <FormControl>
                                 <Textarea
                                 placeholder="Tell me what's on your mind..."
-                                className="min-h-[120px] bg-gray-800/80 border-gray-600 text-white focus:ring-accent"
+                                className="min-h-[120px] bg-gray-800/80 border-gray-600 text-white focus:ring-accent lg:text-base"
                                 {...field}
                                 />
                             </FormControl>
@@ -116,7 +116,7 @@ export default function Contact() {
                         )}
                         />
                         <div className="text-center pt-2">
-                        <Button type="submit" size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-10 py-3 text-lg">
+                        <Button type="submit" size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-10 py-3 text-lg lg:text-xl lg:py-4">
                             Send Message <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                         </Button>
                         </div>
@@ -124,15 +124,15 @@ export default function Contact() {
                     </Form>
                 </div>
                 <div className="space-y-6">
-                    <h3 className="text-2xl font-bold text-white">Quick Contact</h3>
+                    <h3 className="text-2xl font-bold text-white lg:text-3xl">Quick Contact</h3>
                     {contactLinks.map(link => (
                         <div key={link.name} className="flex items-start gap-4 p-4 rounded-lg bg-black/30 border border-white/10 shadow-lg">
                             <div className="bg-gray-800/70 p-3 rounded-full">
                                 <link.icon className="h-6 w-6 text-white" />
                             </div>
                             <div>
-                                <h4 className="font-semibold text-white">{link.name}</h4>
-                                <Link href={link.href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors break-all">
+                                <h4 className="font-semibold text-white lg:text-xl">{link.name}</h4>
+                                <Link href={link.href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors break-all lg:text-base">
                                     {link.value}
                                 </Link>
                             </div>

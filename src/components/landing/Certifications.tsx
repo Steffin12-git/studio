@@ -9,7 +9,7 @@ export default function Certifications() {
     <AnimatedSection id="certifications">
       <div className="container mx-auto bg-gray-900/40 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-xl">
         <div className="text-center">
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl font-headline">Certifications</h2>
+          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl font-headline">Certifications</h2>
         </div>
         <div className="relative mt-16 max-w-4xl mx-auto">
            <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-white/20" aria-hidden="true"></div>
@@ -19,20 +19,20 @@ export default function Certifications() {
                     <Award className="h-5 w-5" />
                 </div>
                 <div className={`w-full md:w-5/12 rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20`}>
-                    <p className="text-sm font-semibold text-gray-300">{cert.issuer} {cert.date && `• ${cert.date}`}</p>
-                    <h3 className="mt-1 text-lg font-bold text-white">{cert.title}</h3>
+                    <p className="text-sm font-semibold text-gray-300 lg:text-base">{cert.issuer} {cert.date && `• ${cert.date}`}</p>
+                    <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{cert.title}</h3>
                     {cert.subCourses && cert.subCourses.length > 0 && (
                         <div className="mt-3 space-y-2 text-sm">
                             {cert.subCourses.map(sub => (
                                 <div key={sub.title} className="flex items-center gap-2">
                                     <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0" />
-                                    <span className="text-gray-300">{sub.title}</span>
+                                    <span className="text-gray-300 lg:text-base">{sub.title}</span>
                                 </div>
                             ))}
                         </div>
                     )}
                     {cert.link && cert.link !== '#' && (
-                         <Button asChild variant="link" size="sm" className="p-0 h-auto mt-3 text-gray-300 hover:text-white">
+                         <Button asChild variant="link" size="sm" className="p-0 h-auto mt-3 text-gray-300 hover:text-white lg:text-base">
                              <Link href={cert.link} target="_blank" rel="noopener noreferrer">
                                  View Credential <ExternalLink className="ml-2 h-4 w-4" />
                              </Link>
