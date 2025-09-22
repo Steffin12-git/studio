@@ -3,7 +3,7 @@
 import { educationData } from '@/lib/data';
 import { GraduationCap } from 'lucide-react';
 import { useRef } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 
 export default function Education() {
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -32,16 +32,26 @@ export default function Education() {
             style={{ scaleY, height: '100%' }}
           />
         </div>
-        {educationData.map((item, index) => (
+        {educationData.map((item, index) => {
+           const stepSize = 1 / educationData.length;
+           const start = index * stepSize;
+           const end = start + stepSize;
+           const iconScale = useTransform(scrollYProgress, [start, (start + end)/2, end], [1, 1.5, 1]);
+           const iconShadow = useTransform(scrollYProgress, [start, (start + end)/2, end], ['0px 0px 0px hsl(var(--accent))', '0px 0px 10px hsl(var(--accent))', '0px 0px 0px hsl(var(--accent))']);
+          
+          return (
           <div
             key={index}
             className={`relative mb-12 flex items-center ${
               index % 2 === 0 ? 'justify-start text-left' : 'justify-end text-right'
             }`}
           >
-            <div className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-800 text-white shadow-lg ring-4 ring-white/10">
+            <motion.div 
+              style={{ scale: iconScale, boxShadow: iconShadow }}
+              className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-800 text-white shadow-lg ring-4 ring-white/10"
+            >
               <GraduationCap className="h-5 w-5" />
-            </div>
+            </motion.div>
             <div
               className={`w-full md:w-5/12 rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20`}
             >
@@ -49,7 +59,7 @@ export default function Education() {
               <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{item.institution}</h3>
             </div>
           </div>
-        ))}
+        )})}
       </div>
     </div>
   );
