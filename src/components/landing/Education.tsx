@@ -38,20 +38,31 @@ export default function Education() {
           const stepSize = 1 / educationData.length;
           const stepStart = index * stepSize;
           const stepEnd = stepStart + stepSize;
-
-          // Animate icon based on scroll progress
-          const iconScale = useTransform(scrollYProgress, [0, stepStart, stepEnd, 1], [1, 1, 1.5, 1]);
-          const iconRotate = useTransform(scrollYProgress, [stepStart, stepEnd], [0, 360]);
-          const iconColor = useTransform(scrollYProgress, 
-            [stepStart, stepEnd], 
-            ["hsl(var(--foreground))", "hsl(var(--accent))"]
+          
+          const backgroundColor = useTransform(scrollYProgress,
+            [0, stepStart, stepEnd],
+            ["hsl(var(--accent))", "hsl(var(--accent))", "hsl(var(--card))"]
           );
-           const iconBackgroundColor = useTransform(scrollYProgress, 
-            [stepStart, stepEnd], 
-            ["hsl(var(--secondary))", "hsl(var(--accent) / 0.3)"]
+          const color = useTransform(scrollYProgress,
+            [0, stepStart, stepEnd],
+            ["hsl(var(--accent-foreground))", "hsl(var(--accent-foreground))", "hsl(var(--foreground))"]
           );
 
+          const isPassed = useTransform(scrollYProgress, value => value >= stepEnd);
 
+          const animateProps = {
+            scale: useTransform(scrollYProgress, [stepStart, (stepStart + stepEnd)/2, stepEnd], [1, 1.5, 1]),
+            x: useTransform(scrollYProgress, (value) => {
+              if (value >= stepStart && value < stepEnd) {
+                // Apply vibration only when in the active segment
+                const localProgress = (value - stepStart) / (stepEnd - stepStart);
+                const vibrationValue = Math.sin(localProgress * Math.PI * 8) * 5; // 4 full vibrations
+                return vibrationValue;
+              }
+              return 0;
+            }),
+          };
+          
           return (
           <div
             key={index}
@@ -61,11 +72,11 @@ export default function Education() {
           >
             <motion.div 
               style={{ 
-                scale: iconScale, 
-                rotate: iconRotate,
-                color: iconColor,
-                backgroundColor: iconBackgroundColor,
+                ...animateProps,
+                backgroundColor: isPassed.get() ? 'hsl(var(--card))' : 'hsl(var(--accent))',
+                color: isPassed.get() ? 'hsl(var(--foreground))' : 'hsl(var(--accent-foreground))'
               }}
+              transition={{ duration: 0.5, type: 'spring', stiffness: 500, damping: 5 }}
               className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-800 text-white shadow-lg ring-4 ring-white/10"
             >
               <GraduationCap className="h-5 w-5" />
