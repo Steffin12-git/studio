@@ -16,25 +16,25 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <AnimatedSection id="about" direction="right">
+        <AnimatedSection id="about">
           <About />
         </AnimatedSection>
-        <AnimatedSection id="skills" direction="left">
+        <AnimatedSection id="skills">
           <Skills />
         </AnimatedSection>
-        <AnimatedSection id="projects" direction="right">
+        <AnimatedSection id="projects">
           <Projects />
         </AnimatedSection>
-        <AnimatedSection id="education" direction="left">
+        <AnimatedSection id="education">
           <Education />
         </AnimatedSection>
-        <AnimatedSection id="certifications" direction="right">
+        <AnimatedSection id="certifications">
           <Certifications />
         </AnimatedSection>
-        <AnimatedSection id="experience" direction="left">
+        <AnimatedSection id="experience">
           <Experience />
         </AnimatedSection>
-        <AnimatedSection id="contact" direction="right">
+        <AnimatedSection id="contact">
           <Contact />
         </AnimatedSection>
       </main>

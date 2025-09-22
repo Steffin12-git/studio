@@ -33,9 +33,8 @@ export function ProjectCard({ title, description, tags, image, githubUrl, langua
     <div
       ref={ref}
       className={cn(
-        'group relative flex flex-col overflow-hidden rounded-lg bg-black/30 shadow-lg border border-white/10 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2',
-        'opacity-0 translate-y-10',
-        inView && 'opacity-100 translate-y-0'
+        'group relative flex flex-col overflow-hidden rounded-lg bg-black/30 shadow-lg border border-white/10 transition-all duration-500 ease-out hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2',
+        inView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
       )}
       style={{ transitionDelay: inView ? `${index * 150}ms` : '0ms' }}
     >
