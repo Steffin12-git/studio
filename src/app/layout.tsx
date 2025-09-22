@@ -3,7 +3,6 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { Poppins, Lexend } from 'next/font/google';
 import Image from 'next/image';
-import { BackgroundBlobs } from '@/components/common/BackgroundBlobs';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -40,7 +39,6 @@ export default function RootLayout({
           />
           <div className="absolute inset-0 bg-black/30 backdrop-blur-2xl backdrop-saturate-150" />
         </div>
-        <BackgroundBlobs />
         <div className="relative z-10">{children}</div>
         <Toaster />
       </body>
