@@ -22,11 +22,20 @@ export default function Certifications() {
                     <p className="text-sm font-semibold text-gray-300 lg:text-base">{cert.issuer} {cert.date && `• ${cert.date}`}</p>
                     <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{cert.title}</h3>
                     {cert.subCourses && cert.subCourses.length > 0 && (
-                        <div className="mt-3 space-y-2 text-sm">
+                        <div className="mt-3 space-y-3 text-sm">
                             {cert.subCourses.map(sub => (
-                                <div key={sub.title} className="flex items-center gap-2">
-                                    <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0" />
-                                    <span className="text-gray-300 lg:text-base">{sub.title}</span>
+                                <div key={sub.title}>
+                                    <div className="flex items-center gap-2">
+                                        <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0" />
+                                        <span className="text-gray-300 lg:text-base">{sub.title}</span>
+                                    </div>
+                                    {sub.credentialId && (
+                                        <Button asChild variant="link" size="sm" className="p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1 ml-6">
+                                            <Link href={`https://www.coursera.org/account/accomplishments/verify/${sub.credentialId}`} target="_blank" rel="noopener noreferrer">
+                                                View Credential <ExternalLink className="ml-1 h-3 w-3" />
+                                            </Link>
+                                        </Button>
+                                    )}
                                 </div>
                             ))}
                         </div>
