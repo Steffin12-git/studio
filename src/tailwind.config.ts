@@ -18,7 +18,7 @@ const config = {
     extend: {
       fontFamily: {
         body: ['var(--font-lexend)', 'sans-serif'],
-        headline: ['var(--font-playfair)', 'serif'],
+        headline: ['var(--font-poppins)', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",

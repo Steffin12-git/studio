@@ -37,7 +37,7 @@ export default function RootLayout({
             className="object-cover"
             data-ai-hint="abstract background"
           />
-          <div className="absolute inset-0 bg-black/30 backdrop-blur-2xl backdrop-saturate-150" />
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-xl backdrop-saturate-150" />
         </div>
         <div className="relative z-10">{children}</div>
         <Toaster />

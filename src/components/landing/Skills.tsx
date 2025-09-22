@@ -24,7 +24,7 @@ export default function Skills() {
                 key={category}
                 ref={ref}
                 className={cn(
-                  'rounded-lg bg-white/10 p-6 shadow-lg border border-white/10 transition-all duration-500 hover:shadow-xl hover:-translate-y-2',
+                  'rounded-lg bg-white/10 p-6 shadow-lg border border-white/10 transition-all duration-300 hover:shadow-xl hover:shadow-accent/20 hover:-translate-y-2',
                   'opacity-0 translate-y-10',
                   inView && 'opacity-100 translate-y-0'
                 )}
