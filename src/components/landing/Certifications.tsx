@@ -5,20 +5,32 @@ import { Award, ExternalLink, BadgeCheck } from 'lucide-react';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 import { useRef } from 'react';
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { motion, useInView, animate, stagger } from 'framer-motion';
 
 export default function Certifications() {
   const timelineRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: timelineRef,
-    offset: ['start center', 'end center'],
-  });
+  const isInView = useInView(timelineRef, { once: true, amount: 0.3 });
+  const controlsRef = useRef<HTMLDivElement[]>([]);
 
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
+  if (isInView) {
+    const progressLine = timelineRef.current?.querySelector('.progress-line') as HTMLElement;
+    if (progressLine) {
+      animate(progressLine, { scaleY: 1 }, { duration: 1, ease: 'easeOut' });
+    }
+    
+    animate(
+      '.cert-item',
+      { opacity: 1, x: 0 },
+      { delay: stagger(0.2, { startDelay: 0.5 }), duration: 0.5 }
+    );
+    
+    animate(
+      '.cert-icon',
+      { scale: [1, 1.25, 1], backgroundColor: ['hsl(var(--secondary))', 'hsl(var(--card))', 'hsl(var(--card))'] },
+      { delay: stagger(0.2, { startDelay: 0.7 }), duration: 0.8, type: 'spring' }
+    );
+  }
+
 
   return (
     <div className="container mx-auto bg-gray-900/40 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-xl">
@@ -30,35 +42,23 @@ export default function Certifications() {
       <div ref={timelineRef} className="relative mt-16 max-w-4xl mx-auto">
         <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-white/20" aria-hidden="true" />
         <motion.div
-          className="absolute top-0 left-1/2 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-lg shadow-accent"
-          style={{ scaleY, height: '100%' }}
+          className="progress-line absolute top-0 left-1/2 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-lg shadow-accent"
+          style={{ scaleY: 0, height: '100%' }}
         />
 
         {certificationsData.map((cert, index) => {
-          const stepSize = 1 / certificationsData.length;
-          const stepStart = index * stepSize;
-          const stepEnd = stepStart + stepSize;
-
-          const isPassed = useTransform(scrollYProgress, value => value >= stepEnd);
-          const scale = useTransform(isPassed, (passed) => passed ? 1.25 : 1);
-          const backgroundColor = useTransform(isPassed, (passed) => passed ? 'hsl(var(--card))' : 'hsl(var(--secondary))');
-          const color = useTransform(isPassed, (passed) => passed ? 'hsl(var(--card-foreground))' : 'hsl(var(--secondary-foreground))');
-
+          const isEven = index % 2 === 0;
           return (
-            <div
+            <motion.div
               key={index}
-              className={`relative mb-12 flex items-center ${
-                index % 2 === 0 ? 'justify-start text-left' : 'justify-end text-right'
+              initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+              className={`cert-item relative mb-12 flex items-center ${
+                isEven ? 'justify-start text-left' : 'justify-end text-right'
               }`}
             >
               <motion.div 
-                style={{ 
-                  scale,
-                  backgroundColor,
-                  color,
-                }}
-                transition={{ duration: 0.3, type: 'spring' }}
-                className="absolute left-1/2 top-8 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10"
+                initial={{ scale: 1, backgroundColor: 'hsl(var(--secondary))', color: 'hsl(var(--secondary-foreground))' }}
+                className="cert-icon absolute left-1/2 top-8 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10"
               >
                 <Award className="h-5 w-5" />
               </motion.div>
@@ -110,7 +110,7 @@ export default function Certifications() {
                   </Button>
                 )}
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
