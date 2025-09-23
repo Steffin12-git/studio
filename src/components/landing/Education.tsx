@@ -37,15 +37,10 @@ export default function Education() {
           const stepEnd = stepStart + stepSize;
           
           const isPassed = useTransform(scrollYProgress, value => value >= stepEnd);
+          const scale = useTransform(isPassed, (passed) => passed ? 1.25 : 1);
+          const backgroundColor = useTransform(isPassed, (passed) => passed ? 'hsl(var(--card))' : 'hsl(var(--secondary))');
+          const color = useTransform(isPassed, (passed) => passed ? 'hsl(var(--card-foreground))' : 'hsl(var(--secondary-foreground))');
 
-          const pulse = useTransform(scrollYProgress, (value) => {
-              if (value >= stepStart && value < stepEnd) {
-                const localProgress = (value - stepStart) / (stepEnd - stepStart);
-                return 1 + Math.sin(localProgress * Math.PI) * 0.5; // Pulse up and down
-              }
-              return 1;
-            });
-          
           return (
           <div
             key={index}
@@ -55,11 +50,11 @@ export default function Education() {
           >
             <motion.div 
               style={{ 
-                scale: pulse,
-                backgroundColor: isPassed.get() ? 'hsl(var(--card))' : 'hsl(var(--secondary))',
-                color: isPassed.get() ? 'hsl(var(--card-foreground))' : 'hsl(var(--secondary-foreground))'
+                scale,
+                backgroundColor,
+                color,
               }}
-              transition={{ duration: 0.5, type: 'spring' }}
+              transition={{ duration: 0.3, type: 'spring' }}
               className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10"
             >
               <GraduationCap className="h-5 w-5" />
