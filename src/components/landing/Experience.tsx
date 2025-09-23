@@ -11,17 +11,15 @@ export default function Experience() {
           {experienceData.map((job, index) => (
             <Card key={index} className="transform transition-transform duration-500 hover:scale-[1.02] bg-black/30 border-l-4 border-accent text-white shadow-lg overflow-hidden border-white/10">
               <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between">
                   <div>
-                    <CardTitle className="text-2xl font-bold lg:text-3xl">{job.role}</CardTitle>
-                    <CardDescription className="text-lg mt-1 font-semibold text-gray-300 lg:text-xl">{job.company}</CardDescription>
+                    <CardTitle className="text-2xl font-bold lg:text-3xl text-left">{job.role}</CardTitle>
+                    <div className="flex items-center gap-2 mt-1">
+                      <Briefcase className="h-5 w-5 text-gray-400" />
+                      <CardDescription className="text-lg font-semibold text-gray-300 lg:text-xl">{job.company}</CardDescription>
+                    </div>
                   </div>
-                  {job.duration && (
-                    <Badge variant="outline" className="mt-2 text-sm font-medium text-gray-300 sm:mt-0 border-gray-500 lg:text-base">{job.duration}</Badge>
-                  )}
-                </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="text-left">
                 <p className="text-gray-300 lg:text-base">{job.description}</p>
               </CardContent>
             </Card>
