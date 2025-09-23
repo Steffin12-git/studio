@@ -33,7 +33,7 @@ export default function Certifications() {
         <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-white/20" aria-hidden="true" />
         {/* Animated progress bar */}
         <motion.div
-          className="absolute top-0 left-1/2 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-[0_0_8px_theme(colors.accent)]"
+          className="absolute top-0 left-1/2 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-accent shadow-lg"
           style={{ scaleY, height: '100%' }}
         />
 
