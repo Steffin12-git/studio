@@ -14,7 +14,6 @@ export default function Certifications() {
     offset: ['start center', 'end center'],
   });
 
-  // Spring effect for the main progress line
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -29,11 +28,9 @@ export default function Certifications() {
         </h2>
       </div>
       <div ref={timelineRef} className="relative mt-16 max-w-4xl mx-auto">
-        {/* Static timeline bar */}
         <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-white/20" aria-hidden="true" />
-        {/* Animated progress bar */}
         <motion.div
-          className="absolute top-0 left-1/2 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-accent shadow-lg"
+          className="absolute top-0 left-1/2 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-lg shadow-accent"
           style={{ scaleY, height: '100%' }}
         />
 
@@ -43,18 +40,14 @@ export default function Certifications() {
           const stepEnd = stepStart + stepSize;
 
           const isPassed = useTransform(scrollYProgress, value => value >= stepEnd);
-
-          const animateProps = {
-            scale: useTransform(scrollYProgress, [stepStart, (stepStart + stepEnd)/2, stepEnd], [1, 1.5, 1]),
-            x: useTransform(scrollYProgress, (value) => {
+          
+          const pulse = useTransform(scrollYProgress, (value) => {
               if (value >= stepStart && value < stepEnd) {
                 const localProgress = (value - stepStart) / (stepEnd - stepStart);
-                const vibrationValue = Math.sin(localProgress * Math.PI * 8) * 5;
-                return vibrationValue;
+                return 1 + Math.sin(localProgress * Math.PI) * 0.5; // Pulse up and down
               }
-              return 0;
-            }),
-          };
+              return 1;
+            });
 
           return (
             <div
@@ -65,12 +58,12 @@ export default function Certifications() {
             >
               <motion.div 
                 style={{ 
-                  ...animateProps,
-                  backgroundColor: isPassed.get() ? 'hsl(var(--card))' : 'hsl(var(--accent))',
-                  color: isPassed.get() ? 'hsl(var(--foreground))' : 'hsl(var(--accent-foreground))'
+                  scale: pulse,
+                  backgroundColor: isPassed.get() ? 'hsl(var(--card))' : 'hsl(var(--secondary))',
+                  color: isPassed.get() ? 'hsl(var(--card-foreground))' : 'hsl(var(--secondary-foreground))'
                 }}
-                transition={{ duration: 0.5, type: 'spring', stiffness: 500, damping: 5 }}
-                className="absolute left-1/2 top-8 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-800 text-white shadow-lg ring-4 ring-white/10"
+                transition={{ duration: 0.5, type: 'spring' }}
+                className="absolute left-1/2 top-8 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10"
               >
                 <Award className="h-5 w-5" />
               </motion.div>
