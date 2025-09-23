@@ -24,7 +24,7 @@ export default function Education() {
     animate(
       '.edu-icon',
       { scale: [1, 1.25, 1], backgroundColor: ['hsl(var(--secondary))', 'hsl(var(--card))', 'hsl(var(--card))'] },
-      { delay: stagger(0.3, { startDelay: 0.8 }), duration: 0.8, type: 'spring' }
+      { delay: stagger(0.3, { startDelay: 0.8 }), duration: 0.8 }
     );
   }
 

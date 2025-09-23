@@ -27,7 +27,7 @@ export default function Certifications() {
     animate(
       '.cert-icon',
       { scale: [1, 1.25, 1], backgroundColor: ['hsl(var(--secondary))', 'hsl(var(--card))', 'hsl(var(--card))'] },
-      { delay: stagger(0.2, { startDelay: 0.7 }), duration: 0.8, type: 'spring' }
+      { delay: stagger(0.2, { startDelay: 0.7 }), duration: 0.8 }
     );
   }
 
