@@ -16,7 +16,9 @@ export default function Experience() {
                     <CardTitle className="text-2xl font-bold lg:text-3xl">{job.role}</CardTitle>
                     <CardDescription className="text-lg mt-1 font-semibold text-gray-300 lg:text-xl">{job.company}</CardDescription>
                   </div>
-                  <Badge variant="outline" className="mt-2 text-sm font-medium text-gray-300 sm:mt-0 border-gray-500 lg:text-base">{job.duration}</Badge>
+                  {job.duration && (
+                    <Badge variant="outline" className="mt-2 text-sm font-medium text-gray-300 sm:mt-0 border-gray-500 lg:text-base">{job.duration}</Badge>
+                  )}
                 </div>
               </CardHeader>
               <CardContent>

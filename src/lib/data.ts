@@ -124,7 +124,7 @@ export const experienceData = [
   {
     company: 'Webyfy IoT Pvt. Ltd.',
     role: 'Frontend Developer',
-    duration: 'Remote',
+    duration: '',
     description: 'Leveraging strong frontend expertise to build robust API integrations and scalable UI components. Proactively handled complex data structures and contributed to the development of intuitive interfaces, demonstrating a keen eye for data flow and visualization.',
   },
 ];
