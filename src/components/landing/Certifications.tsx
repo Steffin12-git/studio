@@ -4,32 +4,33 @@ import { certificationsData } from '@/lib/data';
 import { Award, ExternalLink, BadgeCheck } from 'lucide-react';
 import { Button } from '../ui/button';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion, useInView, animate, stagger } from 'framer-motion';
 
 export default function Certifications() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(timelineRef, { once: true, amount: 0.3 });
-  const controlsRef = useRef<HTMLDivElement[]>([]);
 
-  if (isInView) {
-    const progressLine = timelineRef.current?.querySelector('.progress-line') as HTMLElement;
-    if (progressLine) {
-      animate(progressLine, { scaleY: 1 }, { duration: 1, ease: 'easeOut' });
+  useEffect(() => {
+    if (isInView && timelineRef.current) {
+      const progressLine = timelineRef.current.querySelector('.progress-line') as HTMLElement;
+      if (progressLine) {
+        animate(progressLine, { scaleY: 1 }, { duration: 1.5, ease: 'easeOut' });
+      }
+      
+      animate(
+        '.cert-item-content',
+        { opacity: 1, y: 0 },
+        { delay: stagger(0.2, { startDelay: 0.5 }), duration: 0.5 }
+      );
+      
+      animate(
+        '.cert-icon',
+        { scale: [0, 1.25, 1] },
+        { delay: stagger(0.2, { startDelay: 0.7 }), duration: 0.8 }
+      );
     }
-    
-    animate(
-      '.cert-item',
-      { opacity: 1, x: 0 },
-      { delay: stagger(0.2, { startDelay: 0.5 }), duration: 0.5 }
-    );
-    
-    animate(
-      '.cert-icon',
-      { scale: [1, 1.25, 1], backgroundColor: ['hsl(var(--secondary))', 'hsl(var(--card))', 'hsl(var(--card))'] },
-      { delay: stagger(0.2, { startDelay: 0.7 }), duration: 0.8 }
-    );
-  }
+  }, [isInView]);
 
 
   return (
@@ -46,73 +47,141 @@ export default function Certifications() {
           style={{ scaleY: 0, height: '100%' }}
         />
 
-        {certificationsData.map((cert, index) => {
-          const isEven = index % 2 === 0;
-          return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-              className={`cert-item relative mb-12 flex items-center ${
-                isEven ? 'justify-start text-left' : 'justify-end text-right'
-              }`}
-            >
-              <motion.div 
-                initial={{ scale: 1, backgroundColor: 'hsl(var(--secondary))', color: 'hsl(var(--secondary-foreground))' }}
-                className="cert-icon absolute left-1/2 top-8 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10"
-              >
-                <Award className="h-5 w-5" />
-              </motion.div>
-              <div
-                className={`w-full md:w-5/12 rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20`}
-              >
-                <p className="text-sm font-semibold text-gray-300 lg:text-base">
-                  {cert.issuer} {cert.date && `• ${cert.date}`}
-                </p>
-                <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{cert.title}</h3>
-                {cert.subCourses && cert.subCourses.length > 0 && (
-                  <div className="mt-3 space-y-3 text-sm">
-                    {cert.subCourses.map((sub) => (
-                      <div key={sub.title}>
-                        <div className="flex items-center gap-2">
-                          <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0" />
-                          <span className="text-gray-300 lg:text-base">{sub.title}</span>
-                        </div>
-                        {sub.credentialId && (
-                          <Button
-                            asChild
-                            variant="link"
-                            size="sm"
-                            className="p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1 ml-6"
-                          >
-                            <Link
-                              href={`https://www.coursera.org/account/accomplishments/verify/${sub.credentialId}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
+        <div className="space-y-12">
+            {certificationsData.map((cert, index) => {
+            const isEven = index % 2 === 0;
+            return (
+                <div
+                key={index}
+                className="cert-item grid grid-cols-[1fr_auto_1fr] items-start gap-x-8"
+                >
+                {isEven ? (
+                    <>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            className="cert-item-content col-start-1 text-right rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20"
+                        >
+                            <p className="text-sm font-semibold text-gray-300 lg:text-base">
+                                {cert.issuer} {cert.date && `• ${cert.date}`}
+                            </p>
+                            <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{cert.title}</h3>
+                            {cert.subCourses && cert.subCourses.length > 0 && (
+                            <div className="mt-3 space-y-3 text-sm">
+                                {cert.subCourses.map((sub) => (
+                                <div key={sub.title}>
+                                    <div className="flex items-center gap-2 justify-end">
+                                    <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0" />
+                                    <span className="text-gray-300 lg:text-base">{sub.title}</span>
+                                    </div>
+                                    {sub.credentialId && (
+                                    <Button
+                                        asChild
+                                        variant="link"
+                                        size="sm"
+                                        className="p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1"
+                                    >
+                                        <Link
+                                        href={`https://www.coursera.org/account/accomplishments/verify/${sub.credentialId}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        >
+                                        View Credential <ExternalLink className="ml-1 h-3 w-3" />
+                                        </Link>
+                                    </Button>
+                                    )}
+                                </div>
+                                ))}
+                            </div>
+                            )}
+                            {cert.link && cert.link !== '#' && (
+                            <Button
+                                asChild
+                                variant="link"
+                                size="sm"
+                                className="p-0 h-auto mt-3 text-gray-300 hover:text-white lg:text-base"
                             >
-                              View Credential <ExternalLink className="ml-1 h-3 w-3" />
-                            </Link>
-                          </Button>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+                                <Link href={cert.link} target="_blank" rel="noopener noreferrer">
+                                View Credential <ExternalLink className="ml-2 h-4 w-4" />
+                                </Link>
+                            </Button>
+                            )}
+                        </motion.div>
+
+                        <motion.div 
+                            initial={{ scale: 0 }}
+                            className="cert-icon z-10 col-start-2 row-start-1 flex h-10 w-10 mt-8 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10 bg-card text-card-foreground"
+                        >
+                            <Award className="h-5 w-5" />
+                        </motion.div>
+                        
+                        <div className="col-start-3"></div>
+                    </>
+                ) : (
+                    <>
+                        <div className="col-start-1"></div>
+
+                        <motion.div 
+                            initial={{ scale: 0 }}
+                            className="cert-icon z-10 col-start-2 row-start-1 flex h-10 w-10 mt-8 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10 bg-card text-card-foreground"
+                        >
+                            <Award className="h-5 w-5" />
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            className="cert-item-content col-start-3 text-left rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20"
+                        >
+                             <p className="text-sm font-semibold text-gray-300 lg:text-base">
+                                {cert.issuer} {cert.date && `• ${cert.date}`}
+                            </p>
+                            <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{cert.title}</h3>
+                            {cert.subCourses && cert.subCourses.length > 0 && (
+                            <div className="mt-3 space-y-3 text-sm">
+                                {cert.subCourses.map((sub) => (
+                                <div key={sub.title}>
+                                    <div className="flex items-center gap-2">
+                                    <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0" />
+                                    <span className="text-gray-300 lg:text-base">{sub.title}</span>
+                                    </div>
+                                    {sub.credentialId && (
+                                    <Button
+                                        asChild
+                                        variant="link"
+                                        size="sm"
+                                        className="p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1 ml-6"
+                                    >
+                                        <Link
+                                        href={`https://www.coursera.org/account/accomplishments/verify/${sub.credentialId}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        >
+                                        View Credential <ExternalLink className="ml-1 h-3 w-3" />
+                                        </Link>
+                                    </Button>
+                                    )}
+                                </div>
+                                ))}
+                            </div>
+                            )}
+                            {cert.link && cert.link !== '#' && (
+                            <Button
+                                asChild
+                                variant="link"
+                                size="sm"
+                                className="p-0 h-auto mt-3 text-gray-300 hover:text-white lg:text-base"
+                            >
+                                <Link href={cert.link} target="_blank" rel="noopener noreferrer">
+                                View Credential <ExternalLink className="ml-2 h-4 w-4" />
+                                </Link>
+                            </Button>
+                            )}
+                        </motion.div>
+                    </>
                 )}
-                {cert.link && cert.link !== '#' && (
-                  <Button
-                    asChild
-                    variant="link"
-                    size="sm"
-                    className="p-0 h-auto mt-3 text-gray-300 hover:text-white lg:text-base"
-                  >
-                    <Link href={cert.link} target="_blank" rel="noopener noreferrer">
-                      View Credential <ExternalLink className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                )}
-              </div>
-            </motion.div>
-          );
-        })}
+                </div>
+            );
+            })}
+        </div>
       </div>
     </div>
   );
