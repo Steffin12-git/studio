@@ -44,7 +44,7 @@ export function ProjectCard({ title, description, tags, image, githubUrl, langua
             src={placeholderImage.imageUrl}
             alt={title}
             fill
-            className="object-contain transition-transform duration-500 group-hover:scale-105"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
             data-ai-hint={placeholderImage.imageHint}
           />
         )}
