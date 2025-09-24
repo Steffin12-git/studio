@@ -49,10 +49,10 @@ CONTEXT:
 HISTORY:
 {{#if history}}
 {{#each history}}
-{{#if (eq role 'user')}}
+{{#if isUser}}
 User: {{{content}}}
 {{/if}}
-{{#if (eq role 'model')}}
+{{#if isModel}}
 Portfolio Pal: {{{content}}}
 {{/if}}
 {{/each}}
@@ -69,8 +69,16 @@ const portfolioChatbotFlow = ai.defineFlow(
     outputSchema: PortfolioChatbotOutputSchema,
   },
   async (input) => {
+    // Augment history with boolean flags for Handlebars
+    const history = input.history?.map(message => ({
+        ...message,
+        isUser: message.role === 'user',
+        isModel: message.role === 'model',
+    }));
+
     const { output } = await prompt({
         ...input,
+        history,
         context: portfolioContext,
     });
     return output!;
