@@ -9,14 +9,14 @@ import { motion, useInView, animate, stagger } from 'framer-motion';
 
 export default function Certifications() {
   const timelineRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(timelineRef, { once: true, amount: 0.3 });
+  const isInView = useInView(timelineRef, { once: true, amount: 0.2 });
 
   useEffect(() => {
     if (isInView && timelineRef.current) {
-      const progressLine = timelineRef.current.querySelector('.progress-line') as HTMLElement;
-      if (progressLine) {
-        animate(progressLine, { scaleY: 1 }, { duration: 1.5, ease: 'easeOut' });
-      }
+      const progressLine = timelineRef.current.querySelectorAll('.progress-line');
+      progressLine.forEach(line => {
+        animate(line as HTMLElement, { scaleY: 1 }, { duration: 1.5, ease: 'easeOut' });
+      });
       
       animate(
         '.cert-item-content',
@@ -41,143 +41,111 @@ export default function Certifications() {
         </h2>
       </div>
       <div ref={timelineRef} className="relative mt-16 max-w-4xl mx-auto">
-        <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-white/20" aria-hidden="true" />
+        <div className="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 bg-white/20 md:block" aria-hidden="true" />
         <motion.div
-          className="progress-line absolute top-0 left-1/2 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-lg shadow-accent"
+          className="progress-line absolute top-0 left-1/2 hidden w-0.5 -translate-x-1/2 origin-top bg-accent shadow-lg shadow-accent md:block"
+          style={{ scaleY: 0, height: '100%' }}
+        />
+
+        <div className="absolute left-5 top-0 h-full w-0.5 -translate-x-1/2 bg-white/20 md:hidden" aria-hidden="true" />
+        <motion.div
+          className="progress-line absolute top-0 left-5 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-lg shadow-accent md:hidden"
           style={{ scaleY: 0, height: '100%' }}
         />
 
         <div className="space-y-12">
             {certificationsData.map((cert, index) => {
             const isEven = index % 2 === 0;
+
+            const content = (isMobile: boolean) => (
+                <div className={isMobile ? "" : (isEven ? "md:text-right" : "md:text-left")}>
+                    <p className="text-sm font-semibold text-gray-300 lg:text-base">
+                        {cert.issuer} {cert.date && `• ${cert.date}`}
+                    </p>
+                    <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{cert.title}</h3>
+                    {cert.subCourses && cert.subCourses.length > 0 && (
+                    <div className="mt-3 space-y-3 text-sm">
+                        {cert.subCourses.map((sub) => (
+                        <div key={sub.title}>
+                            <div className={`flex items-center gap-2 ${!isMobile && isEven ? 'justify-end' : 'justify-start'}`}>
+                            <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0" />
+                            <span className="text-gray-300 lg:text-base">{sub.title}</span>
+                            </div>
+                            {sub.credentialId && (
+                            <Button
+                                asChild
+                                variant="link"
+                                size="sm"
+                                className={`p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1 ${isMobile ? 'ml-6' : ''}`}
+                            >
+                                <Link
+                                href={`https://www.coursera.org/account/accomplishments/verify/${sub.credentialId}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >
+                                View Credential <ExternalLink className="ml-1 h-3 w-3" />
+                                </Link>
+                            </Button>
+                            )}
+                        </div>
+                        ))}
+                    </div>
+                    )}
+                    {cert.link && cert.link !== '#' && (
+                    <Button
+                        asChild
+                        variant="link"
+                        size="sm"
+                        className="p-0 h-auto mt-3 text-gray-300 hover:text-white lg:text-base"
+                    >
+                        <Link href={cert.link} target="_blank" rel="noopener noreferrer">
+                        View Credential <ExternalLink className="ml-2 h-4 w-4" />
+                        </Link>
+                    </Button>
+                    )}
+                </div>
+            );
+
             return (
                 <div
-                key={index}
-                className="cert-item grid grid-cols-[1fr_auto_1fr] items-start gap-x-8"
+                    key={index}
+                    className="cert-item grid grid-cols-[auto_1fr] items-start gap-x-6 md:grid-cols-[1fr_auto_1fr] md:gap-x-8"
                 >
-                {isEven ? (
-                    <>
+                    {/* Desktop Left / Mobile empty */}
+                    <div className="hidden md:block col-start-1 text-right">
+                       {isEven && (
+                         <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            className="cert-item-content rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20"
+                        >
+                            {content(false)}
+                        </motion.div>
+                       )}
+                    </div>
+
+
+                    {/* Central Icon */}
+                    <motion.div 
+                        initial={{ scale: 0 }}
+                        className="cert-icon z-10 col-start-1 row-start-1 flex h-10 w-10 mt-8 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10 bg-card text-card-foreground md:col-start-2 md:mx-auto"
+                    >
+                        <Award className="h-5 w-5" />
+                    </motion.div>
+                    
+                    {/* Right side for both mobile and desktop */}
+                     <div className="col-start-2 md:col-start-3 text-left">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
-                            className="cert-item-content col-start-1 text-right rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20"
+                            className="cert-item-content rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20"
                         >
-                            <p className="text-sm font-semibold text-gray-300 lg:text-base">
-                                {cert.issuer} {cert.date && `• ${cert.date}`}
-                            </p>
-                            <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{cert.title}</h3>
-                            {cert.subCourses && cert.subCourses.length > 0 && (
-                            <div className="mt-3 space-y-3 text-sm">
-                                {cert.subCourses.map((sub) => (
-                                <div key={sub.title}>
-                                    <div className="flex items-center gap-2 justify-end">
-                                    <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0" />
-                                    <span className="text-gray-300 lg:text-base">{sub.title}</span>
-                                    </div>
-                                    {sub.credentialId && (
-                                    <Button
-                                        asChild
-                                        variant="link"
-                                        size="sm"
-                                        className="p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1"
-                                    >
-                                        <Link
-                                        href={`https://www.coursera.org/account/accomplishments/verify/${sub.credentialId}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        >
-                                        View Credential <ExternalLink className="ml-1 h-3 w-3" />
-                                        </Link>
-                                    </Button>
-                                    )}
-                                </div>
-                                ))}
-                            </div>
-                            )}
-                            {cert.link && cert.link !== '#' && (
-                            <Button
-                                asChild
-                                variant="link"
-                                size="sm"
-                                className="p-0 h-auto mt-3 text-gray-300 hover:text-white lg:text-base"
-                            >
-                                <Link href={cert.link} target="_blank" rel="noopener noreferrer">
-                                View Credential <ExternalLink className="ml-2 h-4 w-4" />
-                                </Link>
-                            </Button>
-                            )}
-                        </motion.div>
-
-                        <motion.div 
-                            initial={{ scale: 0 }}
-                            className="cert-icon z-10 col-start-2 row-start-1 flex h-10 w-10 mt-8 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10 bg-card text-card-foreground"
-                        >
-                            <Award className="h-5 w-5" />
-                        </motion.div>
-                        
-                        <div className="col-start-3"></div>
-                    </>
-                ) : (
-                    <>
-                        <div className="col-start-1"></div>
-
-                        <motion.div 
-                            initial={{ scale: 0 }}
-                            className="cert-icon z-10 col-start-2 row-start-1 flex h-10 w-10 mt-8 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10 bg-card text-card-foreground"
-                        >
-                            <Award className="h-5 w-5" />
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            className="cert-item-content col-start-3 text-left rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20"
-                        >
-                             <p className="text-sm font-semibold text-gray-300 lg:text-base">
-                                {cert.issuer} {cert.date && `• ${cert.date}`}
-                            </p>
-                            <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{cert.title}</h3>
-                            {cert.subCourses && cert.subCourses.length > 0 && (
-                            <div className="mt-3 space-y-3 text-sm">
-                                {cert.subCourses.map((sub) => (
-                                <div key={sub.title}>
-                                    <div className="flex items-center gap-2">
-                                    <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0" />
-                                    <span className="text-gray-300 lg:text-base">{sub.title}</span>
-                                    </div>
-                                    {sub.credentialId && (
-                                    <Button
-                                        asChild
-                                        variant="link"
-                                        size="sm"
-                                        className="p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1 ml-6"
-                                    >
-                                        <Link
-                                        href={`https://www.coursera.org/account/accomplishments/verify/${sub.credentialId}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        >
-                                        View Credential <ExternalLink className="ml-1 h-3 w-3" />
-                                        </Link>
-                                    </Button>
-                                    )}
-                                </div>
-                                ))}
-                            </div>
-                            )}
-                            {cert.link && cert.link !== '#' && (
-                            <Button
-                                asChild
-                                variant="link"
-                                size="sm"
-                                className="p-0 h-auto mt-3 text-gray-300 hover:text-white lg:text-base"
-                            >
-                                <Link href={cert.link} target="_blank" rel="noopener noreferrer">
-                                View Credential <ExternalLink className="ml-2 h-4 w-4" />
-                                </Link>
-                            </Button>
-                            )}
-                        </motion.div>
-                    </>
-                )}
+                             <div className="md:hidden">
+                                {content(true)}
+                             </div>
+                             <div className="hidden md:block">
+                                {!isEven && content(false)}
+                             </div>
+                         </motion.div>
+                     </div>
                 </div>
             );
             })}
