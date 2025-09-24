@@ -3,42 +3,29 @@
 import { educationData } from '@/lib/data';
 import { GraduationCap } from 'lucide-react';
 import { useRef, useEffect } from 'react';
-import { motion, useInView, animate } from 'framer-motion';
+import { motion, useInView, animate, stagger } from 'framer-motion';
 
 export default function Education() {
   const timelineRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(timelineRef, { once: true, amount: 0.4 });
-  const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const isInView = useInView(timelineRef, { once: true, amount: 0.3 });
 
   useEffect(() => {
     if (isInView && timelineRef.current) {
       const progressLine = timelineRef.current.querySelector('.progress-line') as HTMLElement;
-      
       if (progressLine) {
-        // Animate the progress line first
-        const lineAnimation = animate(progressLine, { scaleY: 1 }, { duration: 1, ease: 'easeOut' });
-
-        // When the line animation completes, trigger icon animations
-        lineAnimation.then(() => {
-          iconRefs.current.forEach((icon, i) => {
-            if (icon) {
-              // Stagger the icon "pop" animation
-              setTimeout(() => {
-                animate(icon, 
-                  { scale: [1, 1.35, 1], backgroundColor: ['hsl(var(--secondary))', 'hsl(var(--card))', 'hsl(var(--card))'] }, 
-                  { duration: 0.5, ease: 'easeOut' }
-                );
-              }, i * 300); // Stagger delay for each icon
-            }
-          });
-        });
+        animate(progressLine, { scaleY: 1 }, { duration: 1, ease: 'easeOut' });
       }
-
-      // Animate the text items fading in
+      
       animate(
         '.edu-item-content',
         { opacity: 1, x: 0 },
-        { delay: 0.5, duration: 0.5, ease: 'easeOut' }
+        { delay: stagger(0.2, { startDelay: 0.5 }), duration: 0.5 }
+      );
+      
+      animate(
+        '.edu-icon',
+        { scale: [1, 1.25, 1], backgroundColor: ['hsl(var(--secondary))', 'hsl(var(--card))', 'hsl(var(--card))'] },
+        { delay: stagger(0.2, { startDelay: 0.7 }), duration: 0.8 }
       );
     }
   }, [isInView]);
@@ -66,9 +53,8 @@ export default function Education() {
             }`}
           >
             <motion.div 
-              ref={el => iconRefs.current[index] = el}
               initial={{ scale: 1, backgroundColor: 'hsl(var(--secondary))', color: 'hsl(var(--secondary-foreground))' }}
-              className="edu-icon absolute left-1/2 top-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10"
+              className="edu-icon absolute left-1/2 top-8 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10"
             >
               <GraduationCap className="h-5 w-5" />
             </motion.div>
