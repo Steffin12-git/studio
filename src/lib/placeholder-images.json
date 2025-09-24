@@ -3,25 +3,25 @@
     {
       "id": "1",
       "description": "Dashboard showing hospitality revenue analysis.",
-      "imageUrl": "https://picsum.photos/seed/hospitality/600/400",
-      "imageHint": "hospitality revenue"
+      "imageUrl": "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bHV4dXJ5JTIwaG90ZWx8ZW58MHx8fHwxNzU4NjA1MDg5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "luxury hotel"
     },
     {
       "id": "2",
       "description": "HR analytics dashboard predicting employee churn.",
-      "imageUrl": "https://picsum.photos/seed/hr-analytics/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1734139890055-d3353670b744?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaHVybiUyMHByZWRpY3Rpb258ZW58MHx8fHwxNzU4NzEzMDkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "churn prediction"
     },
     {
       "id": "3",
       "description": "Dashboard showing EV market entry strategy.",
-      "imageUrl": "https://picsum.photos/seed/ev-market/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1753898560011-43cd3af8effa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxldiUyMG1hcmtldHxlbnwwfHx8fDE3NTg3MTMwOTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "ev market"
     },
     {
       "id": "4",
       "description": "COVID-19 data pipeline and dashboard.",
-      "imageUrl": "https://picsum.photos/seed/covid-dash/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1584301952952-8544e5ae7a26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb3ZpZCUyMGRhc2hib2FyZHxlbnwwfHx8fDE3NTg3MTMwOTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "covid dashboard"
     }
   ]
