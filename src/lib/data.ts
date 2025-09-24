@@ -72,11 +72,13 @@ export const projectsData = [
 
 export const educationData = [
     {
-    institution: 'MCA, MACFAST, Mahatma Gandhi University',
+    degree: 'MCA',
+    institution: 'MACFAST, Mahatma Gandhi University',
     duration: 'Sep 2024',
   },
   {
-    institution: 'BCA, Catholicate College, Pathanamthitta',
+    degree: 'BCA',
+    institution: 'Catholicate College, Pathanamthitta',
     duration: 'June 2022',
   },
 ];

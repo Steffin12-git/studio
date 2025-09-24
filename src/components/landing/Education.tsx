@@ -77,7 +77,8 @@ export default function Education() {
               className={`edu-item-content w-full md:w-5/12 rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20 ${isEven ? 'text-left' : 'text-right'}`}
             >
               <p className="text-sm font-semibold text-gray-300 lg:text-base">{item.duration}</p>
-              <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{item.institution}</h3>
+              <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{item.degree}</h3>
+              <p className="text-base text-gray-400">{item.institution}</p>
             </motion.div>
           </div>
         )})}
