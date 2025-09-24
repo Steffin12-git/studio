@@ -40,7 +40,7 @@ export const projectsData = [
     title: 'Hospitality Revenue Analysis – AtliQ Grands',
     description: 'Automated ETL pipelines with optimized SQL queries, reducing reporting cycle by 40%. Built KPI dashboards (ADR, RevPAR, occupancy) to optimize pricing and revenue decisions.',
     tags: ['Power BI', 'SQL', 'Excel'],
-    image: { id: "1", hint: "hotel chain" },
+    image: { id: "1", hint: "luxury indian hotel" },
     githubUrl: 'https://github.com/Steffin12-git/hospitality-revenue-analysis',
     language: 'Power BI',
   },
