@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Bot, User, Loader2 } from 'lucide-react';
+import { Bot, X, Send, User, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -83,7 +83,7 @@ export default function Chatbot() {
           aria-label="Toggle Chatbot"
         >
           <AnimatePresence>
-            {isOpen ? <X className="h-8 w-8" /> : <MessageCircle className="h-8 w-8" />}
+            {isOpen ? <X className="h-8 w-8" /> : <Bot className="h-8 w-8" />}
           </AnimatePresence>
         </Button>
       </div>
