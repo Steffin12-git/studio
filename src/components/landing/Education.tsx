@@ -43,31 +43,39 @@ export default function Education() {
           className="progress-line absolute top-0 left-1/2 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-lg shadow-accent"
           style={{ scaleY: 0, height: '100%' }}
         />
-        {educationData.map((item, index) => {
-          const isEven = index % 2 === 0;
-          return (
-          <div
-            key={index}
-            className={`edu-item relative mb-12 flex items-center ${
-              isEven ? 'justify-start' : 'justify-end'
-            }`}
-          >
-            <motion.div 
-              initial={{ scale: 1, backgroundColor: 'hsl(var(--secondary))', color: 'hsl(var(--secondary-foreground))' }}
-              className="edu-icon absolute left-1/2 top-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10"
+        <div className="space-y-12">
+            {educationData.map((item, index) => {
+            const isEven = index % 2 === 0;
+            return (
+            <div
+                key={index}
+                className={`edu-item relative flex items-center ${
+                isEven ? 'justify-start' : 'justify-end'
+                }`}
             >
-              <GraduationCap className="h-5 w-5" />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-              className={`edu-item-content w-full md:w-5/12 rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20 ${isEven ? 'text-left' : 'text-right'}`}
-            >
-              <p className="text-sm font-semibold text-gray-300 lg:text-base">{item.duration}</p>
-              <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{item.degree}</h3>
-              <p className="text-base text-gray-400">{item.institution}</p>
-            </motion.div>
-          </div>
-        )})}
+                <motion.div
+                initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+                className={`edu-item-content w-full md:w-5/12 rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20 ${isEven ? 'text-left' : 'text-right'}`}
+                >
+                <p className="text-sm font-semibold text-gray-300 lg:text-base">{item.duration}</p>
+                <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{item.degree}</h3>
+                <p className="text-base text-gray-400">{item.institution}</p>
+                </motion.div>
+            </div>
+            )})}
+        </div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-full">
+            {educationData.map((item, index) => (
+                 <div key={`icon-${index}`} className="relative h-32">
+                    <motion.div 
+                        initial={{ scale: 1, backgroundColor: 'hsl(var(--secondary))', color: 'hsl(var(--secondary-foreground))' }}
+                        className="edu-icon absolute left-1/2 top-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10"
+                        >
+                        <GraduationCap className="h-5 w-5" />
+                    </motion.div>
+                 </div>
+            ))}
+        </div>
       </div>
     </div>
   );
