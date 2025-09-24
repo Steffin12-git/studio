@@ -1,4 +1,6 @@
 import { Github, Linkedin } from "lucide-react";
+import { LeetCodeIcon, HackerRankIcon } from "@/components/common/CustomIcons";
+
 
 export const navLinks = [
   { name: 'Home', href: '#home' },
@@ -20,6 +22,16 @@ export const socialLinks = [
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/steffin-thomas-b85549260/',
     icon: Linkedin,
+  },
+    {
+    name: 'LeetCode',
+    url: 'https://leetcode.com/u/steffinthomas12/',
+    icon: LeetCodeIcon,
+  },
+  {
+    name: 'HackerRank',
+    url: 'https://www.hackerrank.com/profile/steffinthomas12',
+    icon: HackerRankIcon,
   },
 ];
 
