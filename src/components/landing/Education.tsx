@@ -48,7 +48,7 @@ export default function Education() {
           return (
           <div
             key={index}
-            className={`edu-item relative mb-12 flex ${
+            className={`edu-item relative mb-12 flex items-center ${
               isEven ? 'justify-start' : 'justify-end'
             }`}
           >
@@ -60,7 +60,7 @@ export default function Education() {
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-              className={`edu-item-content w-full md:w-5/12 rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20 min-h-[120px] flex flex-col justify-center ${isEven ? 'text-left' : 'text-right'}`}
+              className={`edu-item-content w-full md:w-5/12 rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20 ${isEven ? 'text-left' : 'text-right'}`}
             >
               <p className="text-sm font-semibold text-gray-300 lg:text-base">{item.duration}</p>
               <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{item.degree}</h3>
