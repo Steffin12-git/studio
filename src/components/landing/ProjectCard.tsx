@@ -33,11 +33,9 @@ function SimpleMarkdown({ content }: { content: string }) {
         if (line.startsWith('### ')) {
           return `<h3>${line.substring(4)}</h3>`;
         }
-        if (line.startsWith('- **')) {
-          const boldPart = line.match(/\*\*(.*?)\*\*/);
-          const rest = line.substring(line.indexOf('**', 2) + 2);
-          return `<li><strong>${boldPart ? boldPart[1] : ''}</strong>${rest}</li>`;
-        }
+        // General bolding, including within list items
+        line = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
         if (line.startsWith('- ')) {
           return `<li>${line.substring(2)}</li>`;
         }
