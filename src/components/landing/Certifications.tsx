@@ -13,10 +13,10 @@ export default function Certifications() {
 
   useEffect(() => {
     if (isInView && timelineRef.current) {
-      const progressLine = timelineRef.current.querySelectorAll('.progress-line');
-      progressLine.forEach(line => {
-        animate(line as HTMLElement, { scaleY: 1 }, { duration: 1.5, ease: 'easeOut' });
-      });
+      const progressLine = timelineRef.current.querySelector('.progress-line');
+      if(progressLine) {
+        animate(progressLine as HTMLElement, { scaleY: 1 }, { duration: 1.5, ease: 'easeOut' });
+      }
       
       animate(
         '.cert-item-content',
@@ -108,7 +108,7 @@ export default function Certifications() {
                     {/* Central Icon */}
                     <motion.div 
                         initial={{ scale: 0 }}
-                        className="cert-icon absolute top-8 left-5 z-10 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-card text-card-foreground shadow-lg ring-4 ring-white/10 md:left-1/2"
+                        className="cert-icon absolute top-8 left-5 md:left-1/2 -translate-x-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-card text-card-foreground shadow-lg ring-4 ring-white/10"
                     >
                         <Award className="h-5 w-5" />
                     </motion.div>
