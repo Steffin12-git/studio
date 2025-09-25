@@ -90,7 +90,7 @@ export const educationData = [
   },
   {
     degree: 'BCA',
-    institution: 'Catholicate College, Pathanamthitta',
+    institution: 'Catholicate College, MG University\nPathanamthitta',
     duration: 'June 2022',
   },
 ];
