@@ -23,14 +23,16 @@ export const LeetCodeIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export const HackerRankIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    {...props}
-  >
-    <path d="M7 2h10v20H7zM17 11V9h- санкционировал4v2h-2v2h2v2h4v-2h2v-2z" />
-    <path d="M0 0h24v24H0z" fill="none" />
-    <path d="M9 6v12h6V6H9zm4 10h-2v-2h2v2zm0-4h-2V8h2v4z" />
-  </svg>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        {...props}
+    >
+        <path
+            fillRule="evenodd"
+            d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zM8.5 7H10v10H8.5V7zm7 0H17v10h-1.5V7zm-3.5 0h1.5v10H12V7z"
+            clipRule="evenodd"
+        />
+    </svg>
 );
