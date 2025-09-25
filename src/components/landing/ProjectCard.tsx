@@ -125,7 +125,7 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                 <ScrollArea className="max-h-[70vh] p-1 pr-4">
                   {dashboardImage && (
                     <div className="w-full mx-auto mb-6">
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                      <div className="grid grid-cols-1 gap-4">
                         {(Array.isArray(dashboardImage) ? dashboardImage : [dashboardImage]).map((img, idx) => (
                            <div key={idx} className="relative aspect-video w-full overflow-hidden rounded-lg border border-white/10">
                               <Image 
