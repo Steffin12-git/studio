@@ -87,9 +87,30 @@ As the data analyst, I was tasked to:
     image: { id: "2", hint: "churn prediction" },
     githubUrl: 'https://github.com/Steffin12-git/Employee-Churn-Analysis',
     language: 'BigQuery',
+    dashboardImage: 'https://raw.githubusercontent.com/Steffin12-git/Employee-Churn-Analysis/main/Dashboard%20picture/Employee_Churn_Report-1.png',
     detailedDescription: `
-### Project Details
-Detailed description for this project has not been provided yet.
+### Problem Statement
+High employee turnover leads to significant business challenges, including increased hiring costs, productivity loss, and lowered morale. This project's goal was to build a predictive model that proactively identifies employees at risk of leaving and provides actionable insights for retention strategies.
+
+### Tech Stack & Workflow
+- **Data Storage & Querying:** Google BigQuery
+- **Modeling & Processing:** Python on Google Colab with PyCaret for AutoML.
+- **Visualization:** Google Looker Studio for the final dashboard.
+The workflow involved collecting and cleaning HR data in BigQuery, training multiple models using PyCaret's AutoML, selecting the best-performing model, and visualizing the predictions in a Looker Studio dashboard for HR teams.
+
+### Model Performance & Selection
+A **Random Forest Classifier** was chosen as the final model due to its superior performance.
+- **Accuracy:** 98%
+- **Precision:** 0.99
+- **Recall:** 0.95
+- **F1-Score:** 0.97
+It achieved the best balance between precision and recall, ensuring that the model could reliably identify at-risk employees without generating excessive false positives. The model demonstrated near-perfect separation on the ROC metric (AUC ≈ 0.99).
+
+### Key Insights & Recommendations
+- **Key Churn Drivers:** Job satisfaction, tenure, number of projects, and average monthly hours were the most predictive features for employee churn.
+- **Proactive Retention:** The model identified 7 high-risk employees in the pilot program, allowing HR to conduct targeted "stay interviews."
+- **Department Focus:** The dashboard highlighted that the **technical, support, and sales** departments had the highest concentration of at-risk employees.
+- **Strategic Actions:** Recommendations included implementing employee recognition programs, creating clear career development paths, and offering retention incentives to at-risk employees.
 `
   },
   {
