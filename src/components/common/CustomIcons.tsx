@@ -3,6 +3,9 @@
 
 import React from 'react';
 
+// This file is no longer needed for LeetCode or HackerRank as we are using image URLs.
+// You can remove the unused icons or the entire file if no other custom icons are needed.
+
 export const LeetCodeIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -25,14 +28,18 @@ export const LeetCodeIcon = (props: React.SVGProps<SVGSVGElement>) => (
 export const HackerRankIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
+        viewBox="0 0 256 256"
         fill="currentColor"
         {...props}
     >
+        <circle cx="128" cy="128" r="120" fill="#2D3748" />
         <path
-            fillRule="evenodd"
-            d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zM8.5 7H10v10H8.5V7zm7 0H17v10h-1.5V7zm-3.5 0h1.5v10H12V7z"
-            clipRule="evenodd"
+            d="M89 71h16v114H89V71zm39 0h16v114h-16V71zm38 0h16v114h-16V71z"
+            fill="#FFFFFF"
+        />
+        <path
+            d="M128 28c-55.2 0-100 44.8-100 100s44.8 100 100 100 100-44.8 100-100S183.2 28 128 28zm0 184c-46.4 0-84-37.6-84-84s37.6-84 84-84 84 37.6 84 84-37.6 84-84 84z"
+            fill="#4A5568"
         />
     </svg>
 );

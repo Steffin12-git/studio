@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Typewriter } from './Typewriter';
 import { socialLinks } from '@/lib/data';
 import { AnimatedSection } from '../common/AnimatedSection';
+import Image from 'next/image';
 
 export default function Hero() {
   const texts = [
@@ -34,7 +35,11 @@ export default function Hero() {
                 className="w-full sm:w-auto rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg lg:text-lg lg:px-10 lg:py-7"
               >
                 <Link href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-                  <link.icon className="mr-2 h-5 w-5" />
+                   {typeof link.icon !== 'function' && link.icon.type === 'img' ? (
+                    <Image src={link.icon.src} alt={`${link.name} icon`} width={20} height={20} className="mr-2 h-5 w-5" />
+                  ) : (
+                    <link.icon className="mr-2 h-5 w-5" />
+                  )}
                   {link.name}
                 </Link>
               </Button>
