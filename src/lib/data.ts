@@ -55,15 +55,16 @@ export const projectsData = [
     image: { id: "1", hint: "Indian palace hotel" },
     githubUrl: 'https://github.com/Steffin12-git/hospitality-revenue-analysis',
     language: 'Power BI',
+    dashboardImage: 'https://raw.githubusercontent.com/Steffin12-git/hospitality-revenue-analysis/main/Dashboard_screenshot.png',
     detailedDescription: `
 ### Problem Statement
 AtliQ Grands, a prestigious hotel chain, faced declining revenue and market share due to increased competition and inefficient decision-making. They needed a business intelligence solution to guide their strategy.
 
 ### My Role & Tasks
 As the data analyst, I was tasked to:
-1.  **Develop Key Metrics:** Established critical KPIs like ADR, RevPAR, Occupancy %, and Realisation %.
-2.  **Build a Power BI Dashboard:** Created an insightful dashboard based on stakeholder requirements to track performance.
-3.  **Derive Actionable Insights:** Analyzed the data to find opportunities for revenue growth and operational improvement.
+- **Develop Key Metrics:** Established critical KPIs like ADR, RevPAR, Occupancy %, and Realisation %.
+- **Build a Power BI Dashboard:** Created an insightful dashboard based on stakeholder requirements to track performance.
+- **Derive Actionable Insights:** Analyzed the data to find opportunities for revenue growth and operational improvement.
 
 ### Key Insights & Recommendations
 - **Insight 1: Static Pricing:** Noticed that pricing was the same for weekdays and weekends.
@@ -77,11 +78,6 @@ As the data analyst, I was tasked to:
 
 - **Insight 4: Revenue Driven by Luxury Segment:** The luxury hotel category generated 62% of the revenue despite having fewer properties.
   - **Action:** Proposed creating **upselling strategies** and package deals to encourage guests to upgrade from Business to Luxury rooms.
-
-### Tools Used
-- Power BI Desktop
-- DAX
-- Star Schema Data Modeling
 `
   },
   {
@@ -123,9 +119,9 @@ Detailed description for this project has not been provided yet.
 ];
 
 export const educationData = [
-    {
+  {
     degree: 'MCA',
-    institution: 'MACFAST, MG University, Pathanamthitta',
+    institution: 'MACFAST, MG University,Pathanamthitta',
     duration: 'Sep 2024',
   },
   {

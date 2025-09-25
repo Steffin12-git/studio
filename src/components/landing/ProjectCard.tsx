@@ -21,6 +21,7 @@ type ProjectCardProps = {
   language: string;
   index: number;
   detailedDescription: string;
+  dashboardImage?: string;
 };
 
 // A simple markdown-to-HTML converter
@@ -59,7 +60,7 @@ function SimpleMarkdown({ content }: { content: string }) {
     );
 }
 
-export function ProjectCard({ title, description, tags, image, githubUrl, detailedDescription, index }: ProjectCardProps) {
+export function ProjectCard({ title, description, tags, image, githubUrl, detailedDescription, index, dashboardImage }: ProjectCardProps) {
   const placeholderImage = PlaceHolderImages.find((img) => img.id === image.id);
   const { ref, inView } = useInView({
     threshold: 0.1,
@@ -113,6 +114,16 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                   <DialogTitle className="font-headline text-2xl text-white lg:text-3xl">{title}</DialogTitle>
                 </DialogHeader>
                 <ScrollArea className="max-h-[70vh] p-1 pr-4">
+                  {dashboardImage && (
+                    <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-white/10 mb-4">
+                      <Image 
+                        src={dashboardImage}
+                        alt={`${title} dashboard screenshot`}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  )}
                   <div className="prose prose-sm prose-invert max-w-none space-y-4 text-gray-300 [&_h3]:text-white [&_h3]:font-headline [&_h3]:mb-2 [&_h3]:mt-4 [&_p]:my-1 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-1">
                       <SimpleMarkdown content={detailedDescription} />
                   </div>
