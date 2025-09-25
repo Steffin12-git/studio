@@ -30,23 +30,26 @@ function SimpleMarkdown({ content }: { content: string }) {
       .trim()
       .split('\n')
       .map(line => {
-         // Process headings first
+        // Process headings first
         if (line.startsWith('### ')) {
             return `<h3>${line.substring(4)}</h3>`;
         }
-        // Then process list items, which might contain bold text
-        if (line.startsWith('- ')) {
-            // Process bold within list item
-            const listItemContent = line.substring(2).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-            return `<li>${listItemContent}</li>`;
-        }
-        // General bolding for other lines
-        line = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        
+        let processedLine = line;
 
-        if (line.trim() === '') {
+        // Process bold inside list items or paragraphs
+        processedLine = processedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+        // Process list items
+        if (processedLine.trim().startsWith('- ')) {
+            return `<li>${processedLine.substring(2)}</li>`;
+        }
+        
+        if (processedLine.trim() === '') {
           return '<br />';
         }
-        return `<p>${line}</p>`;
+
+        return `<p>${processedLine}</p>`;
       })
       .join('')
       .replace(/<li>/g, '<ul><li>')
@@ -111,9 +114,9 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                   View Details
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[60vw] bg-card border-border text-foreground">
+              <DialogContent className="sm:max-w-[60vw] bg-gradient-to-br from-gray-900 via-gray-950 to-blue-950/40 border-white/20 text-foreground">
                 <DialogHeader>
-                  <DialogTitle className="font-headline text-2xl text-accent-foreground lg:text-3xl">{title}</DialogTitle>
+                  <DialogTitle className="font-headline text-2xl text-white lg:text-3xl">{title}</DialogTitle>
                 </DialogHeader>
                 <ScrollArea className="max-h-[70vh] p-1 pr-4">
                   {dashboardImage && (
@@ -129,11 +132,11 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                     </div>
                   )}
                   <div className="prose prose-base prose-invert max-w-none text-muted-foreground 
-                    [&_h3]:text-accent-foreground [&_h3]:font-headline [&_h3]:text-xl [&_h3]:border-b [&_h3]:border-accent/50 [&_h3]:pb-2 [&_h3]:mb-3 [&_h3]:mt-6 
-                    [&_p]:my-2 [&_p]:leading-relaxed
+                    [&_h3]:text-white [&_h3]:font-headline [&_h3]:text-xl [&_h3]:border-b [&_h3]:border-accent/50 [&_h3]:pb-2 [&_h3]:mb-3 [&_h3]:mt-6 
+                    [&_p]:my-2 [&_p]:leading-relaxed [&_p]:text-gray-300
                     [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2
-                    [&_li]:my-1
-                    [&_strong]:text-foreground">
+                    [&_li]:my-1 [&_li]:text-gray-300
+                    [&_strong]:text-white">
                       <SimpleMarkdown content={detailedDescription} />
                   </div>
                 </ScrollArea>
