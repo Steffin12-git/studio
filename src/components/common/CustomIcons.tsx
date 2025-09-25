@@ -65,3 +65,16 @@ export const BigQueryIcon = (props: React.SVGProps<SVGSVGElement>) => (
       <path d="M4 2h16c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm2 14h8v-2H6v2zm0-4h12V6H6v6z" />
     </svg>
   );
+
+  export const PowerBiIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 24 24" 
+      fill="currentColor" 
+      {...props}
+    >
+        <path d="M5 3h14v2H5zM5 7h14v2H5zM5 11h14v2H5zM5 15h8v2H5zM5 19h8v2H5z" />
+        <path d="M15 15h4v6h-4z" />
+    </svg>
+  );
+

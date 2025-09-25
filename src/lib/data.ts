@@ -1,9 +1,11 @@
 
 import { Github, Linkedin, Briefcase, GraduationCap, Mail, Award, Database, BarChart, Settings, TestTube, Search, Users, GitBranch, Terminal, MessageSquare, Presentation } from "lucide-react";
-import { BigQueryIcon, SSMSIcon } from "@/components/common/CustomIcons";
+import { BigQueryIcon, SSMSIcon, PowerBiIcon } from "@/components/common/CustomIcons";
 import { FaPython, FaTable, FaFileExcel, FaGitAlt } from 'react-icons/fa';
-import { SiLooker, SiPowerbi, SiTableau } from 'react-icons/si';
-
+import { SiLooker, SiTableau, SiPandas, SiNumpy } from 'react-icons/si';
+import { VscJson } from "react-icons/vsc";
+import { AiOutlineApi } from "react-icons/ai";
+import { BsDatabaseFill } from "react-icons/bs";
 
 export type IconType = React.ComponentType<{ className?: string }> | { type: 'img', src: string };
 
@@ -109,6 +111,22 @@ export const skillsData = [
       "Business Insights"
     ]
   }
+];
+
+
+export const techStackSkills = [
+  { name: 'Python', icon: FaPython },
+  { name: 'SQL', icon: BsDatabaseFill },
+  { name: 'Power BI', icon: PowerBiIcon },
+  { name: 'BigQuery', icon: BigQueryIcon },
+  { name: 'Tableau', icon: SiTableau },
+  { name: 'Pandas', icon: SiPandas },
+  { name: 'NumPy', icon: SiNumpy },
+  { name: 'Excel', icon: FaFileExcel },
+  { name: 'Looker', icon: SiLooker },
+  { name: 'Git', icon: FaGitAlt },
+  { name: 'API', icon: AiOutlineApi },
+  { name: 'SSMS', icon: SSMSIcon },
 ];
 
 

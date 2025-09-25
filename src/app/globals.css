@@ -62,3 +62,14 @@
     @apply bg-transparent text-foreground;
   }
 }
+
+@layer utilities {
+  @keyframes scroll-x {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
