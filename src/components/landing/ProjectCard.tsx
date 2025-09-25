@@ -30,15 +30,19 @@ function SimpleMarkdown({ content }: { content: string }) {
       .trim()
       .split('\n')
       .map(line => {
+         // Process headings first
         if (line.startsWith('### ')) {
-          return `<h3>${line.substring(4)}</h3>`;
+            return `<h3>${line.substring(4)}</h3>`;
         }
-        // General bolding, including within list items
+        // Then process list items, which might contain bold text
+        if (line.startsWith('- ')) {
+            // Process bold within list item
+            const listItemContent = line.substring(2).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            return `<li>${listItemContent}</li>`;
+        }
+        // General bolding for other lines
         line = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
-        if (line.startsWith('- ')) {
-          return `<li>${line.substring(2)}</li>`;
-        }
         if (line.trim() === '') {
           return '<br />';
         }
@@ -107,9 +111,9 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                   View Details
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[60vw] bg-gray-900 border-gray-700 text-white">
+              <DialogContent className="sm:max-w-[60vw] bg-card border-border text-foreground">
                 <DialogHeader>
-                  <DialogTitle className="font-headline text-2xl text-white lg:text-3xl">{title}</DialogTitle>
+                  <DialogTitle className="font-headline text-2xl text-accent-foreground lg:text-3xl">{title}</DialogTitle>
                 </DialogHeader>
                 <ScrollArea className="max-h-[70vh] p-1 pr-4">
                   {dashboardImage && (
@@ -124,7 +128,12 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                         </div>
                     </div>
                   )}
-                  <div className="prose prose-sm prose-invert max-w-none space-y-4 text-gray-300 [&_h3]:text-white [&_h3]:font-headline [&_h3]:mb-2 [&_h3]:mt-4 [&_p]:my-1 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-1">
+                  <div className="prose prose-base prose-invert max-w-none text-muted-foreground 
+                    [&_h3]:text-accent-foreground [&_h3]:font-headline [&_h3]:text-xl [&_h3]:border-b [&_h3]:border-accent/50 [&_h3]:pb-2 [&_h3]:mb-3 [&_h3]:mt-6 
+                    [&_p]:my-2 [&_p]:leading-relaxed
+                    [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2
+                    [&_li]:my-1
+                    [&_strong]:text-foreground">
                       <SimpleMarkdown content={detailedDescription} />
                   </div>
                 </ScrollArea>
