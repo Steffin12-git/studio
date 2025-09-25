@@ -162,9 +162,29 @@ AtliQ Motors, an automotive giant from the USA, is planning to launch its best-s
     image: { id: "4", hint: "covid dashboard" },
     githubUrl: 'https://github.com/Steffin12-git/Live-Covid19-Project',
     language: 'Python',
+    dashboardImage: 'https://raw.githubusercontent.com/Steffin12-git/Live-Covid19-Project/main/Dashboard.png',
     detailedDescription: `
-### Project Details
-Detailed description for this project has not been provided yet.
+### Project Overview
+This project provides a real-time automated COVID-19 tracking system. It leverages public health data APIs and automates the full ETL workflow—from extraction to visualization—offering an interactive Power BI dashboard for global monitoring.
+
+### Tech Stack & Automation
+- **ETL:** Python, Pandas, SQLite
+- **Visualization:** Microsoft Power BI
+- **Automation:** Windows Task Scheduler with a .bat script to run the Python ETL job daily.
+
+### Key Features
+- **Automated Data Pipeline:** Fetches the latest global COVID-19 data from the disease.sh API every day.
+- **Data Logging:** Stores historical data in an SQLite database to track trends over time.
+- **Interactive Dashboard:** Visualizes key metrics such as cases, deaths, recoveries, and active cases by country.
+- **Global Monitoring:** A world map provides a clear geographical overview of the pandemic's impact.
+
+### Conclusion
+This project is a strong showcase of end-to-end data skills, including:
+- API Integration & ETL
+- Real-time data pipelines
+- Database management with SQLite
+- Power BI dashboarding for stakeholder reporting
+- Full automation of the data workflow to ensure freshness with zero manual effort.
 `
   },
 ];
