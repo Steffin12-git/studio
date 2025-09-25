@@ -41,15 +41,9 @@ export default function Certifications() {
         </h2>
       </div>
       <div ref={timelineRef} className="relative mt-16 max-w-4xl mx-auto">
-        <div className="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 bg-white/20 md:block" aria-hidden="true" />
+        <div className="absolute left-5 top-0 h-full w-0.5 -translate-x-1/2 bg-white/20 md:left-1/2" aria-hidden="true" />
         <motion.div
-          className="progress-line absolute top-0 left-1/2 hidden w-0.5 -translate-x-1/2 origin-top bg-accent shadow-lg shadow-accent md:block"
-          style={{ scaleY: 0, height: '100%' }}
-        />
-
-        <div className="absolute left-5 top-0 h-full w-0.5 -translate-x-1/2 bg-white/20 md:hidden" aria-hidden="true" />
-        <motion.div
-          className="progress-line absolute top-0 left-5 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-lg shadow-accent md:hidden"
+          className="progress-line absolute top-0 left-5 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-lg shadow-accent md:left-1/2"
           style={{ scaleY: 0, height: '100%' }}
         />
 
@@ -57,8 +51,8 @@ export default function Certifications() {
             {certificationsData.map((cert, index) => {
             const isEven = index % 2 === 0;
 
-            const content = (isMobile: boolean) => (
-                <div className={isMobile ? "" : (isEven ? "md:text-right" : "md:text-left")}>
+            const content = (
+                <div className={!isEven ? "md:text-left" : "md:text-right"}>
                     <p className="text-sm font-semibold text-gray-300 lg:text-base">
                         {cert.issuer} {cert.date && `• ${cert.date}`}
                     </p>
@@ -67,7 +61,7 @@ export default function Certifications() {
                     <div className="mt-3 space-y-3 text-sm">
                         {cert.subCourses.map((sub) => (
                         <div key={sub.title}>
-                            <div className={`flex items-center gap-2 ${!isMobile && isEven ? 'justify-end' : 'justify-start'}`}>
+                            <div className={`flex items-center gap-2 justify-start ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>
                             <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0" />
                             <span className="text-gray-300 lg:text-base">{sub.title}</span>
                             </div>
@@ -76,7 +70,7 @@ export default function Certifications() {
                                 asChild
                                 variant="link"
                                 size="sm"
-                                className={`p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1 ${isMobile ? 'ml-6' : ''}`}
+                                className={`p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1 ml-6 md:ml-0`}
                             >
                                 <Link
                                 href={`https://www.coursera.org/account/accomplishments/verify/${sub.credentialId}`}
@@ -109,41 +103,22 @@ export default function Certifications() {
             return (
                 <div
                     key={index}
-                    className="cert-item grid grid-cols-[auto_1fr] items-start gap-x-6 md:grid-cols-[1fr_auto_1fr] md:gap-x-8"
+                    className="cert-item relative"
                 >
-                    {/* Desktop Left / Mobile empty */}
-                    <div className="hidden md:block col-start-1 text-right">
-                       {isEven && (
-                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            className="cert-item-content rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20"
-                        >
-                            {content(false)}
-                        </motion.div>
-                       )}
-                    </div>
-
-
                     {/* Central Icon */}
                     <motion.div 
                         initial={{ scale: 0 }}
-                        className="cert-icon z-10 col-start-1 row-start-1 flex h-10 w-10 mt-8 items-center justify-center rounded-full shadow-lg ring-4 ring-white/10 bg-card text-card-foreground md:col-start-2 md:mx-auto"
+                        className="cert-icon absolute top-8 left-5 z-10 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-card text-card-foreground shadow-lg ring-4 ring-white/10 md:left-1/2"
                     >
                         <Award className="h-5 w-5" />
                     </motion.div>
                     
-                    {/* Right side for both mobile and desktop */}
-                     <div className="col-start-2 md:col-start-3 text-left">
+                    <div className={`ml-16 md:ml-0 ${isEven ? 'md:mr-[calc(50%+2rem)] md:text-right' : 'md:ml-[calc(50%+2rem)] md:text-left'}`}>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             className="cert-item-content rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20"
                         >
-                             <div className="md:hidden">
-                                {content(true)}
-                             </div>
-                             <div className="hidden md:block">
-                                {!isEven && content(false)}
-                             </div>
+                            {content}
                          </motion.div>
                      </div>
                 </div>
