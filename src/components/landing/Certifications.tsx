@@ -41,9 +41,9 @@ export default function Certifications() {
         </h2>
       </div>
       <div ref={timelineRef} className="relative mt-16 max-w-4xl mx-auto">
-        <div className="absolute left-5 top-0 h-full w-0.5 -translate-x-1/2 bg-white/20 md:left-1/2" aria-hidden="true" />
+        <div className="absolute left-5 top-0 h-full w-0.5 bg-white/20 md:left-1/2 md:-translate-x-1/2" aria-hidden="true" />
         <motion.div
-          className="progress-line absolute top-0 left-5 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-lg shadow-accent md:left-1/2"
+          className="progress-line absolute top-0 left-5 w-0.5 origin-top bg-accent shadow-lg shadow-accent md:left-1/2 md:-translate-x-1/2"
           style={{ scaleY: 0, height: '100%' }}
         />
 
@@ -70,7 +70,7 @@ export default function Certifications() {
                                 asChild
                                 variant="link"
                                 size="sm"
-                                className={`p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1 ml-6 md:ml-0`}
+                                className={`p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1 ml-6 ${isEven ? 'md:ml-0 md:mr-6' : 'md:ml-6'}`}
                             >
                                 <Link
                                 href={`https://www.coursera.org/account/accomplishments/verify/${sub.credentialId}`}

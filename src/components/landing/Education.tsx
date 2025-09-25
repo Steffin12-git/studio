@@ -38,9 +38,9 @@ export default function Education() {
         </h2>
       </div>
       <div ref={timelineRef} className="relative mt-16 max-w-4xl mx-auto">
-        <div className="absolute left-5 top-0 h-full w-0.5 -translate-x-1/2 bg-white/20 md:left-1/2" aria-hidden="true" />
+        <div className="absolute left-5 top-0 h-full w-0.5 bg-white/20 md:left-1/2 md:-translate-x-1/2" aria-hidden="true" />
         <motion.div
-          className="progress-line absolute top-0 left-5 w-0.5 -translate-x-1/2 origin-top bg-accent shadow-lg shadow-accent md:left-1/2"
+          className="progress-line absolute top-0 left-5 w-0.5 origin-top bg-accent shadow-lg shadow-accent md:left-1/2 md:-translate-x-1/2"
           style={{ scaleY: 0, height: '100%' }}
         />
 
@@ -61,7 +61,6 @@ export default function Education() {
                         key={index}
                         className="edu-item relative"
                     >
-                        {/* Central Icon */}
                         <motion.div 
                             initial={{ scale: 0 }}
                             className="edu-icon absolute top-8 left-5 z-10 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-card text-card-foreground shadow-lg ring-4 ring-white/10 md:left-1/2"
