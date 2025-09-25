@@ -17,15 +17,15 @@ const TechStackCarousel = () => {
       >
         {extendedTechStack.map((skill, index) => (
           <div key={index} className="flex-shrink-0 mx-4">
-              <div className="flex items-center justify-center gap-3 bg-black/20 border border-white/10 rounded-lg px-6 py-3 transition-all duration-300 hover:bg-black/40 hover:border-white/20">
-                <skill.icon className="h-7 w-7 text-gray-300" />
-                <span className="font-semibold text-white text-lg">{skill.name}</span>
+              <div className="flex flex-col items-center justify-center gap-2 bg-gray-900/80 border border-white/10 rounded-xl w-32 h-32 transition-all duration-300 hover:bg-black/60 hover:border-white/20 hover:-translate-y-1 shadow-lg">
+                <skill.icon className="h-12 w-12 text-gray-300" />
+                <span className="font-semibold text-white text-base">{skill.name}</span>
               </div>
           </div>
         ))}
       </div>
-       <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-900/40 via-gray-900/20 to-transparent"></div>
-      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-900/40 via-gray-900/20 to-transparent"></div>
+       <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-900/40 via-gray-900/40 to-transparent"></div>
+      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-900/40 via-gray-900/40 to-transparent"></div>
     </div>
   );
 };
