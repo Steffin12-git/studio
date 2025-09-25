@@ -85,7 +85,7 @@ export const projectsData = [
 export const educationData = [
     {
     degree: 'MCA',
-    institution: 'MACFAST, Mahatma Gandhi University',
+    institution: 'MACFAST, MG University',
     duration: 'Sep 2024',
   },
   {
