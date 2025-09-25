@@ -2,14 +2,14 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Github, BrainCircuit } from 'lucide-react';
+import { Github, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { ProjectAnalysis } from './ProjectAnalysis';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '@/components/ui/badge';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '@/lib/utils';
+import { ScrollArea } from '../ui/scroll-area';
 
 
 type ProjectCardProps = {
@@ -20,9 +20,46 @@ type ProjectCardProps = {
   githubUrl: string;
   language: string;
   index: number;
+  detailedDescription: string;
 };
 
-export function ProjectCard({ title, description, tags, image, githubUrl, language, index }: ProjectCardProps) {
+// A simple markdown-to-HTML converter
+function SimpleMarkdown({ content }: { content: string }) {
+    const htmlContent = content
+      .trim()
+      .split('\n')
+      .map(line => {
+        if (line.startsWith('### ')) {
+          return `<h3>${line.substring(4)}</h3>`;
+        }
+        if (line.startsWith('- **')) {
+          const boldPart = line.match(/\*\*(.*?)\*\*/);
+          const rest = line.substring(line.indexOf('**', 2) + 2);
+          return `<li><strong>${boldPart ? boldPart[1] : ''}</strong>${rest}</li>`;
+        }
+        if (line.startsWith('- ')) {
+          return `<li>${line.substring(2)}</li>`;
+        }
+        if (line.trim() === '') {
+          return '<br />';
+        }
+        return `<p>${line}</p>`;
+      })
+      .join('')
+      .replace(/<li>/g, '<ul><li>')
+      .replace(/<\/li>(?!<li>)/g, '</li></ul>')
+      .replace(/<\/ul><ul>/g, '');
+
+
+    return (
+      <div
+        className="prose prose-sm prose-invert"
+        dangerouslySetInnerHTML={{ __html: htmlContent }}
+      />
+    );
+}
+
+export function ProjectCard({ title, description, tags, image, githubUrl, detailedDescription, index }: ProjectCardProps) {
   const placeholderImage = PlaceHolderImages.find((img) => img.id === image.id);
   const { ref, inView } = useInView({
     threshold: 0.1,
@@ -67,17 +104,19 @@ export function ProjectCard({ title, description, tags, image, githubUrl, langua
             <Dialog>
               <DialogTrigger asChild>
                 <Button size="sm" variant="secondary" className="rounded-full bg-gray-800 text-white hover:bg-gray-700 lg:text-base lg:px-4 lg:py-2">
-                  <BrainCircuit className="mr-1 h-4 w-4" />
-                  AI Analysis
+                  <FileText className="mr-1 h-4 w-4" />
+                  View Details
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[60vw] bg-gray-900 border-gray-700 text-white">
                 <DialogHeader>
-                  <DialogTitle className="font-headline text-2xl text-white lg:text-3xl">AI Project Analysis: {title}</DialogTitle>
+                  <DialogTitle className="font-headline text-2xl text-white lg:text-3xl">{title}</DialogTitle>
                 </DialogHeader>
-                <div className="max-h-[70vh] overflow-y-auto p-1 pr-4">
-                  <ProjectAnalysis repoUrl={githubUrl} language={language} />
-                </div>
+                <ScrollArea className="max-h-[70vh] p-1 pr-4">
+                  <div className="prose prose-sm prose-invert max-w-none space-y-4 text-gray-300 [&_h3]:text-white [&_h3]:font-headline [&_h3]:mb-2 [&_h3]:mt-4 [&_p]:my-1 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-1">
+                      <SimpleMarkdown content={detailedDescription} />
+                  </div>
+                </ScrollArea>
               </DialogContent>
             </Dialog>
           </div>

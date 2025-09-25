@@ -55,6 +55,34 @@ export const projectsData = [
     image: { id: "1", hint: "Indian palace hotel" },
     githubUrl: 'https://github.com/Steffin12-git/hospitality-revenue-analysis',
     language: 'Power BI',
+    detailedDescription: `
+### Problem Statement
+AtliQ Grands, a prestigious hotel chain, faced declining revenue and market share due to increased competition and inefficient decision-making. They needed a business intelligence solution to guide their strategy.
+
+### My Role & Tasks
+As the data analyst, I was tasked to:
+1.  **Develop Key Metrics:** Established critical KPIs like ADR, RevPAR, Occupancy %, and Realisation %.
+2.  **Build a Power BI Dashboard:** Created an insightful dashboard based on stakeholder requirements to track performance.
+3.  **Derive Actionable Insights:** Analyzed the data to find opportunities for revenue growth and operational improvement.
+
+### Key Insights & Recommendations
+- **Insight 1: Static Pricing:** Noticed that pricing was the same for weekdays and weekends.
+  - **Action:** Recommended implementing a **dynamic pricing** strategy to increase revenue during high-demand weekend periods.
+
+- **Insight 2: High Cancellations on Certain Platforms:** Some booking platforms had significantly higher cancellation rates.
+  - **Action:** Suggested optimizing OTA (Online Travel Agency) partnerships or enforcing stricter cancellation policies for underperforming platforms.
+
+- **Insight 3: Top Performing Cities:** Mumbai and Hyderabad properties consistently outperformed others.
+  - **Action:** Advised using these properties as **benchmarks** to replicate their successful strategies across other locations.
+
+- **Insight 4: Revenue Driven by Luxury Segment:** The luxury hotel category generated 62% of the revenue despite having fewer properties.
+  - **Action:** Proposed creating **upselling strategies** and package deals to encourage guests to upgrade from Business to Luxury rooms.
+
+### Tools Used
+- Power BI Desktop
+- DAX
+- Star Schema Data Modeling
+`
   },
   {
     title: 'Employee Churn Prediction – HR Analytics',
@@ -63,6 +91,10 @@ export const projectsData = [
     image: { id: "2", hint: "churn prediction" },
     githubUrl: 'https://github.com/Steffin12-git/Employee-Churn-Analysis',
     language: 'BigQuery',
+    detailedDescription: `
+### Project Details
+Detailed description for this project has not been provided yet.
+`
   },
   {
     title: 'EV Market Entry Strategy – Automotive Sector',
@@ -71,6 +103,10 @@ export const projectsData = [
     image: { id: "3", hint: "ev market" },
     githubUrl: 'https://github.com/Steffin12-git/Automotive_project',
     language: 'Power BI',
+    detailedDescription: `
+### Project Details
+Detailed description for this project has not been provided yet.
+`
   },
     {
     title: 'Epidemiological Data Pipeline & Dashboard – COVID-19 Project',
@@ -79,18 +115,22 @@ export const projectsData = [
     image: { id: "4", hint: "covid dashboard" },
     githubUrl: 'https://github.com/Steffin12-git/Live-Covid19-Project',
     language: 'Python',
+    detailedDescription: `
+### Project Details
+Detailed description for this project has not been provided yet.
+`
   },
 ];
 
 export const educationData = [
     {
     degree: 'MCA',
-    institution: 'MACFAST, MG University\nPathanamthitta',
+    institution: 'MACFAST, MG University, Pathanamthitta',
     duration: 'Sep 2024',
   },
   {
     degree: 'BCA',
-    institution: 'Catholicate College, MG University\nPathanamthitta',
+    institution: 'Catholicate College, MG University, Pathanamthitta',
     duration: 'June 2022',
   },
 ];
