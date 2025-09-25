@@ -120,9 +120,39 @@ It achieved the best balance between precision and recall, ensuring that the mod
     image: { id: "3", hint: "ev market" },
     githubUrl: 'https://github.com/Steffin12-git/Automotive_project',
     language: 'Power BI',
+    dashboardImage: [
+        'https://i.postimg.cc/BvfNwcvC/Main-dashboard-1.png',
+        'https://i.postimg.cc/Y2DRww90/Main-dashboard-2.png',
+        'https://i.postimg.cc/Z5px3BLv/Main-dashboard-3.png'
+    ],
     detailedDescription: `
-### Project Details
-Detailed description for this project has not been provided yet.
+### Problem Statement
+AtliQ Motors, an automotive giant from the USA, is planning to launch its best-selling electric and hybrid vehicles in India. The task is to analyze the existing EV/Hybrid market in India, answer key research questions, and present the findings in a dashboard to support the company's expansion.
+
+### Key Metrics & DAX Measures
+- **Penetration Rate:** Calculated the proportion of electric vehicles sold relative to total vehicle sales.
+- **CAGR (Compound Annual Growth Rate):** Computed the yearly growth rate in EV and total vehicle sales.
+- **Top N/Bottom N Ranking:** Used RANKX and dynamic slicers to filter states or makers based on performance.
+- **Forecasting:** Projected future sales for 2030 using CAGR assumptions.
+
+### Primary Research Findings
+- Identified top/bottom manufacturers and states by EV penetration using dynamic filters.
+- Analyzed quarterly sales trends for the top 5 makers.
+- Compared Delhi vs. Karnataka EV sales and penetration rates.
+- Calculated CAGR for top manufacturers and states to identify high-growth areas.
+- Uncovered seasonal sales trends for strategic planning.
+
+### Secondary Research Insights & Recommendations
+- **Customer Preferences:** Key drivers are cost savings, environmental impact, and smart features.
+- **Government Incentives:** Higher incentives for 4-wheelers (FAME-II) than for 2-wheelers.
+- **Infrastructure Correlation:** States with better charging infrastructure (Delhi, Karnataka) show higher EV penetration.
+- **Brand Ambassador:** Recommended **Ranveer Singh** for his mass appeal and tech-savvy image.
+- **Ideal Manufacturing State:** Recommended **Tamil Nadu** due to its favorable policies, infrastructure, and skilled labor.
+
+### Top 3 Strategic Recommendations
+1. **Launch Strategy:** Use a dual EV/Hybrid launch model and a brand ambassador to maximize market reach.
+2. **Manufacturing & Infrastructure:** Establish a manufacturing unit in Tamil Nadu and build out charging infrastructure in target markets.
+3. **Product & Support:** Deliver high-quality vehicles with robust after-sales service and customer support.
 `
   },
     {

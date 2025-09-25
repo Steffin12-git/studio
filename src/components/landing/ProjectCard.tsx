@@ -21,7 +21,7 @@ type ProjectCardProps = {
   language: string;
   index: number;
   detailedDescription: string;
-  dashboardImage?: string;
+  dashboardImage?: string | string[];
 };
 
 // A simple markdown-to-HTML converter
@@ -30,22 +30,26 @@ function SimpleMarkdown({ content }: { content: string }) {
       .trim()
       .split('\n')
       .map(line => {
+        let processedLine = line.trim();
+
         // Process headings first
-        if (line.startsWith('### ')) {
-            return `<h3>${line.substring(4)}</h3>`;
+        if (processedLine.startsWith('### ')) {
+            return `<h3>${processedLine.substring(4)}</h3>`;
         }
         
-        let processedLine = line;
-
-        // Process bold inside list items or paragraphs
+        // Handle bold text, even at the start of a line
         processedLine = processedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
         // Process list items
-        if (processedLine.trim().startsWith('- ')) {
+        if (processedLine.startsWith('- ')) {
+            // Check if the content of the list item is just a bolded text
+            if(processedLine.substring(2).startsWith('<strong>') && processedLine.endsWith('</strong>')){
+                 return `<li>${processedLine.substring(2)}</li>`;
+            }
             return `<li>${processedLine.substring(2)}</li>`;
         }
         
-        if (processedLine.trim() === '') {
+        if (processedLine === '') {
           return '<br />';
         }
 
@@ -54,7 +58,7 @@ function SimpleMarkdown({ content }: { content: string }) {
       .join('')
       .replace(/<li>/g, '<ul><li>')
       .replace(/<\/li>(?!<li>)/g, '</li></ul>')
-      .replace(/<\/ul><ul>/g, '');
+       .replace(/<\/ul><ul>/g, '');
 
 
     return (
@@ -114,21 +118,25 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                   View Details
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[60vw] bg-gradient-to-br from-gray-900 via-gray-950 to-blue-950/40 border-white/20 text-foreground">
+              <DialogContent className="sm:max-w-[60vw] bg-gradient-to-br from-slate-900 to-blue-950/20 border-white/20 text-foreground">
                 <DialogHeader>
                   <DialogTitle className="font-headline text-2xl text-white lg:text-3xl">{title}</DialogTitle>
                 </DialogHeader>
                 <ScrollArea className="max-h-[70vh] p-1 pr-4">
                   {dashboardImage && (
-                    <div className="w-4/5 mx-auto">
-                        <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-white/10 mb-4">
-                        <Image 
-                            src={dashboardImage}
-                            alt={`${title} dashboard screenshot`}
-                            fill
-                            className="object-contain"
-                        />
-                        </div>
+                    <div className="w-full mx-auto mb-6">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                        {(Array.isArray(dashboardImage) ? dashboardImage : [dashboardImage]).map((img, idx) => (
+                           <div key={idx} className="relative aspect-video w-full overflow-hidden rounded-lg border border-white/10">
+                              <Image 
+                                  src={img}
+                                  alt={`${title} dashboard screenshot ${idx + 1}`}
+                                  fill
+                                  className="object-contain"
+                              />
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
                   <div className="prose prose-base prose-invert max-w-none text-muted-foreground 
