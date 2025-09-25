@@ -59,16 +59,18 @@ export default function Education() {
                 return (
                     <div
                         key={index}
-                        className="edu-item relative"
+                        className="edu-item relative md:grid md:grid-cols-[1fr_auto_1fr] md:gap-x-8 items-start"
                     >
+                        {/* Central Icon */}
                         <motion.div 
                             initial={{ scale: 0 }}
-                            className="edu-icon absolute top-8 left-5 md:left-1/2 -translate-x-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-card text-card-foreground shadow-lg ring-4 ring-white/10"
+                            className="edu-icon absolute top-8 left-5 -translate-x-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-card text-card-foreground shadow-lg ring-4 ring-white/10 md:static md:col-start-2 md:row-start-1 md:translate-x-0"
                         >
                             <GraduationCap className="h-5 w-5" />
                         </motion.div>
                         
-                        <div className={`ml-16 md:ml-0 ${isEven ? 'md:mr-[calc(50%+2rem)] md:text-right' : 'md:ml-[calc(50%+2rem)] md:text-left'}`}>
+                        {/* Content */}
+                        <div className={`ml-16 md:ml-0 ${isEven ? 'md:col-start-1 md:row-start-1 md:text-right' : 'md:col-start-3 md:text-left'}`}>
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 className="edu-item-content rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20"

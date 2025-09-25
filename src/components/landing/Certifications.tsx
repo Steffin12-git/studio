@@ -103,17 +103,17 @@ export default function Certifications() {
             return (
                 <div
                     key={index}
-                    className="cert-item relative"
+                    className="cert-item relative md:grid md:grid-cols-[1fr_auto_1fr] md:gap-x-8 items-start"
                 >
                     {/* Central Icon */}
                     <motion.div 
                         initial={{ scale: 0 }}
-                        className="cert-icon absolute top-8 left-5 md:left-1/2 -translate-x-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-card text-card-foreground shadow-lg ring-4 ring-white/10"
+                        className="cert-icon absolute top-8 left-5 -translate-x-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-card text-card-foreground shadow-lg ring-4 ring-white/10 md:static md:col-start-2 md:row-start-1 md:translate-x-0"
                     >
                         <Award className="h-5 w-5" />
                     </motion.div>
                     
-                    <div className={`ml-16 md:ml-0 ${isEven ? 'md:mr-[calc(50%+2rem)] md:text-right' : 'md:ml-[calc(50%+2rem)] md:text-left'}`}>
+                    <div className={`ml-16 md:ml-0 ${isEven ? 'md:col-start-1 md:row-start-1 md:text-right' : 'md:col-start-3 md:text-left'}`}>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             className="cert-item-content rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20"
