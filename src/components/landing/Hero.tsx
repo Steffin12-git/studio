@@ -36,7 +36,7 @@ export default function Hero() {
               >
                 <Link href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
                    {typeof link.icon !== 'function' && link.icon.type === 'img' ? (
-                    <Image src={link.icon.src} alt={`${link.name} icon`} width={20} height={20} className="mr-2 h-5 w-5" />
+                    <Image src={link.icon.src} alt={`${link.name} icon`} width={20} height={20} className="mr-2 h-5 w-5 invert" />
                   ) : (
                     <link.icon className="mr-2 h-5 w-5" />
                   )}
