@@ -1,4 +1,9 @@
-import { Github, Linkedin } from "lucide-react";
+
+import { Github, Linkedin, Briefcase, GraduationCap, Mail, Award, Database, BarChart, Settings, TestTube, Search, Users, GitBranch, Terminal, MessageSquare, Presentation } from "lucide-react";
+import { BigQueryIcon, SSMSIcon } from "@/components/common/CustomIcons";
+import { FaPython, FaTable, FaFileExcel, FaGitAlt } from 'react-icons/fa';
+import { SiLooker, SiPowerbi, SiTableau } from 'react-icons/si';
+
 
 export type IconType = React.ComponentType<{ className?: string }> | { type: 'img', src: string };
 
@@ -39,12 +44,72 @@ export const about = {
   bio: 'Results-driven Data Analyst with expertise in SQL, Python, Power BI, and BigQuery. Skilled in building ETL pipelines, predictive models, and interactive dashboards that turn raw data into actionable business insights. Transitioning from frontend development, bringing a strong foundation in automation, data storytelling, and visualization.',
 };
 
-export const skillsData = {
-  'Data Analysis': ['SQL (CTEs, Window Functions)', 'Python (Pandas, NumPy, scikit-learn)', 'Excel', 'Statistical Analysis', 'A/B Testing'],
-  'Data Engineering': ['ETL Automation', 'Pipelines', 'Anomaly Detection', 'API Data Ingestion'],
-  'Visualization & BI': ['Power BI (DAX, modeling)', 'Tableau', 'Looker Studio', 'Excel Dashboards'],
-  'Tools': ['BigQuery', 'GitHub', 'REST APIs', 'PyCaret', 'SQLite', 'SSMS'],
-};
+export const skillsData = [
+  {
+    category: "Programming & Databases",
+    icon: Database,
+    skills: [
+      "SQL (Joins, CTEs, Window Functions)",
+      "Python (Pandas, NumPy, scikit-learn, PyCaret)",
+      "BigQuery",
+      "SQLite",
+      "SQL Server"
+    ]
+  },
+  {
+    category: "Data Analysis",
+    icon: Search,
+    skills: [
+      "Data Cleaning",
+      "Anomaly Detection",
+      "Statistical Analysis",
+      "Forecasting & Projections",
+      "A/B Testing"
+    ]
+  },
+  {
+    category: "Data Engineering",
+    icon: Settings,
+    skills: [
+      "Automated ETL Pipelines",
+      "Data Lifecycle Management",
+      "API Integrations",
+      "Data Validation & Monitoring"
+    ]
+  },
+  {
+    category: "Visualization & BI",
+    icon: BarChart,
+    skills: [
+      "Power BI (DAX, Modeling)",
+      "Tableau",
+      "Looker Studio",
+      "Excel / Google Sheets"
+    ]
+  },
+  {
+    category: "Collaboration & Tools",
+    icon: Terminal,
+    skills: [
+      "Git / GitHub / GitLab",
+      "REST API",
+      "Google Workspace",
+      "Documentation",
+      "SSMS"
+    ]
+  },
+  {
+    category: "Soft & Business Skills",
+    icon: Presentation,
+    skills: [
+      "Stakeholder Communication",
+      "Requirements Gathering",
+      "Agile Collaboration",
+      "Data Storytelling",
+      "Business Insights"
+    ]
+  }
+];
 
 
 export const projectsData = [

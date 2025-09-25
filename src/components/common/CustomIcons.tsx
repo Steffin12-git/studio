@@ -43,3 +43,25 @@ export const HackerRankIcon = (props: React.SVGProps<SVGSVGElement>) => (
         />
     </svg>
 );
+
+export const BigQueryIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.55 12.18h-2.1l-1.95-2.6v2.6h-1.5V9.82h1.5v2.6l1.95-2.6h2.1l-2.6 3.48 2.6 2.88zM8.5 14v-4.18h2.1v4.18H8.5z" />
+    </svg>
+  );
+  
+  export const SSMSIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M4 2h16c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm2 14h8v-2H6v2zm0-4h12V6H6v6z" />
+    </svg>
+  );
