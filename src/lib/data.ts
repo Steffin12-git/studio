@@ -85,7 +85,7 @@ export const projectsData = [
 export const educationData = [
     {
     degree: 'MCA',
-    institution: 'MACFAST, MG University',
+    institution: 'MACFAST, MG University\nThiruvalla, Pathanamthitta',
     duration: 'Sep 2024',
   },
   {

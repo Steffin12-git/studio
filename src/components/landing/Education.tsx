@@ -52,7 +52,11 @@ export default function Education() {
                   <>
                     <p className="text-sm font-semibold text-gray-300 lg:text-base">{item.duration}</p>
                     <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{item.degree}</h3>
-                    <p className="text-base text-gray-400">{item.institution}</p>
+                    <div className="text-base text-gray-400">
+                      {item.institution.split('\n').map((line, i) => (
+                        <p key={i}>{line}</p>
+                      ))}
+                    </div>
                   </>
                 );
 
