@@ -13,7 +13,7 @@ const TechStackCarousel = () => {
   return (
     <div className="w-full overflow-hidden relative mt-12 mb-16">
       <div
-        className="flex animate-[scroll-x_30s_linear_infinite]"
+        className="flex animate-scroll-x"
       >
         {extendedTechStack.map((skill, index) => (
           <div key={index} className="flex-shrink-0 mx-4">
