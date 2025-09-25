@@ -115,13 +115,15 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                 </DialogHeader>
                 <ScrollArea className="max-h-[70vh] p-1 pr-4">
                   {dashboardImage && (
-                    <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-white/10 mb-4">
-                      <Image 
-                        src={dashboardImage}
-                        alt={`${title} dashboard screenshot`}
-                        fill
-                        className="object-contain"
-                      />
+                    <div className="w-4/5 mx-auto">
+                        <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-white/10 mb-4">
+                        <Image 
+                            src={dashboardImage}
+                            alt={`${title} dashboard screenshot`}
+                            fill
+                            className="object-contain"
+                        />
+                        </div>
                     </div>
                   )}
                   <div className="prose prose-sm prose-invert max-w-none space-y-4 text-gray-300 [&_h3]:text-white [&_h3]:font-headline [&_h3]:mb-2 [&_h3]:mt-4 [&_p]:my-1 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-1">
