@@ -26,6 +26,10 @@ export default function RootLayout({
           <div className="stars"></div>
           <div className="stars2"></div>
           <div className="stars3"></div>
+          <div className="shooting-star-container">
+            <div className="shooting-star"></div>
+            <div className="shooting-star"></div>
+          </div>
         </div>
         <div className="relative z-10">{children}</div>
         <Chatbot />
