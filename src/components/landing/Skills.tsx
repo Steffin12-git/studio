@@ -1,4 +1,3 @@
-
 import { skillsData, techStackSkills } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
 import React from 'react';
@@ -10,7 +9,7 @@ const TechStackCarousel = () => {
   
     return (
       <div className="w-full overflow-hidden relative">
-        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-900/0 via-gray-900/40 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-900/40 via-gray-900/40 to-transparent z-10 pointer-events-none" />
          <div className="flex animation-scroll-x">
           {extendedTechStack.map((skill, index) => (
             <div key={index} className="flex-shrink-0 w-36 h-36 mx-4 flex items-center justify-center">
@@ -21,7 +20,7 @@ const TechStackCarousel = () => {
             </div>
           ))}
         </div>
-        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-900/0 via-gray-900/40 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-900/40 via-gray-900/40 to-transparent z-10 pointer-events-none" />
       </div>
     );
 };

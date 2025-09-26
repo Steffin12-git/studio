@@ -64,6 +64,10 @@
 }
 
 @layer utilities {
+  .animation-scroll-x {
+    animation: scroll-x 40s linear infinite;
+  }
+
   @keyframes scroll-x {
     from {
       transform: translateX(0);
