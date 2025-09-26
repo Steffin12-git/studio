@@ -6,10 +6,10 @@
   --color-bg1: hsl(var(--primary));
   --color-bg2: hsl(var(--secondary));
   --color1: 181, 70%, 55%;
-  --color2: 210, 17%, 25%;
-  --color3: 0, 72%, 51%;
-  --color4: 210, 20%, 92%;
-  --color5: 210, 17%, 15%;
+  --color2: 260, 100%, 65%; /* Vibrant Violet */
+  --color3: 310, 90%, 60%;  /* Bright Fuschia */
+  --color4: 190, 100%, 50%; /* Electric Cyan */
+  --color5: 140, 90%, 55%;  /* Vivid Green */
   --blur: 120px;
 }
 
