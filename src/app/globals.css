@@ -62,18 +62,3 @@
     @apply bg-transparent text-foreground;
   }
 }
-
-@layer utilities {
-  .animation-scroll-x {
-    animation: scroll-x 25s linear infinite;
-  }
-
-  @keyframes scroll-x {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-}

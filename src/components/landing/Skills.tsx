@@ -3,15 +3,34 @@ import { skillsData, techStackSkills } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
 import React from 'react';
 import { Card, CardContent } from '../ui/card';
+import { motion } from 'framer-motion';
 
 const TechStackCarousel = () => {
     // Duplicate the array for a seamless loop
     const extendedTechStack = [...techStackSkills, ...techStackSkills];
+
+    const marqueeVariants = {
+        animate: {
+          x: [0, -1 * (extendedTechStack.length / 2) * 9 * 16 / 4], // width of one set of items
+          transition: {
+            x: {
+              repeat: Infinity,
+              repeatType: 'loop',
+              duration: 30, // Adjust duration for speed
+              ease: 'linear',
+            },
+          },
+        },
+      };
   
     return (
       <div className="w-full overflow-hidden relative">
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-900/40 via-gray-900/40 to-transparent z-10 pointer-events-none" />
-         <div className="flex animation-scroll-x">
+         <motion.div 
+            className="flex"
+            variants={marqueeVariants}
+            animate="animate"
+        >
           {extendedTechStack.map((skill, index) => (
             <div key={index} className="flex-shrink-0 w-36 h-36 mx-4 flex items-center justify-center">
                <div className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-black/30 border border-white/10 shadow-lg w-full h-full text-center">
@@ -20,7 +39,7 @@ const TechStackCarousel = () => {
                 </div>
             </div>
           ))}
-        </div>
+        </motion.div>
         <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-900/40 via-gray-900/40 to-transparent z-10 pointer-events-none" />
       </div>
     );
