@@ -1,21 +1,23 @@
 
 /**
- * A subtle, animated gradient background that uses the theme's colors.
+ * A vibrant, animated gradient background.
  */
 
 :root {
-  --color-bg1: hsl(var(--primary));
-  --color-bg2: hsl(var(--secondary));
-  --blur: 180px; /* Increased blur for a softer effect */
+  --color-bg1: #8A2BE2; /* Blue-Violet */
+  --color-bg2: #FF00FF; /* Magenta / Fuschia */
+  --color-bg3: #00FFFF; /* Cyan */
+  --color-bg4: #00FF00; /* Lime Green */
+  --blur: 150px;
 }
 
 .gradient-bg {
   width: 100vw;
   height: 100vh;
-  position: fixed; /* Use fixed to ensure it covers the viewport */
+  position: fixed;
   overflow: hidden;
   background: transparent;
-  z-index: -10; /* Keep it behind all content */
+  z-index: -10;
   top: 0;
   left: 0;
 }
@@ -26,10 +28,10 @@
   height: 100%;
 }
 
-.g1, .g2 {
+.g1, .g2, .g3, .g4 {
   position: absolute;
   mix-blend-mode: hard-light;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .g1 {
@@ -50,15 +52,35 @@
   animation: moveAndSway 35s infinite alternate-reverse ease-in-out;
 }
 
+.g3 {
+  background: radial-gradient(circle at center, var(--color-bg3) 0, hsla(0, 0%, 0%, 0) 50%) no-repeat;
+  width: 70%;
+  height: 70%;
+  bottom: 5%;
+  right: 5%;
+  animation: moveAndSway 30s infinite alternate ease-in-out;
+}
+
+.g4 {
+  background: radial-gradient(circle at center, var(--color-bg4) 0, hsla(0, 0%, 0%, 0) 50%) no-repeat;
+  width: 60%;
+  height: 60%;
+  bottom: 20%;
+  left: 20%;
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  animation: moveAndSway 40s infinite alternate-reverse ease-in-out;
+}
+
 
 @keyframes moveAndSway {
   0% {
     transform: translate(0, 0) rotate(0deg) scale(1);
   }
   50% {
-    transform: translate(10vw, -10vh) rotate(180deg) scale(1.2);
+    transform: translate(15vw, -15vh) rotate(180deg) scale(1.3);
   }
   100% {
-    transform: translate(-10vw, 10vh) rotate(360deg) scale(1);
+    transform: translate(-15vw, 15vh) rotate(360deg) scale(1);
   }
 }
