@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import React from 'react';
 import { Card, CardContent } from '../ui/card';
 import { motion } from 'framer-motion';
-import { BadgeCheck } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 const TechStackCarousel = () => {
     // Duplicate the array for a seamless loop
@@ -82,7 +82,7 @@ export default function Skills() {
                 <ul className="space-y-2">
                   {category.skills.map((skill) => (
                     <li key={skill} className="flex items-start gap-2">
-                      <BadgeCheck className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
+                      <CheckCircle2 className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                       <span className="text-gray-300 lg:text-base">{skill}</span>
                     </li>
                   ))}
