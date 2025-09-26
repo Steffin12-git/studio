@@ -31,8 +31,9 @@ export default function Hero() {
               <Button
                 key={link.name}
                 size="lg"
+                variant="secondary"
                 asChild
-                className="w-full sm:w-auto rounded-full bg-black/30 text-white border border-primary hover:bg-primary/20 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg lg:text-lg lg:px-10 lg:py-7"
+                className="w-full sm:w-auto rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg lg:text-lg lg:px-10 lg:py-7"
               >
                 <Link href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
                    {typeof link.icon !== 'function' && link.icon.type === 'img' ? (
