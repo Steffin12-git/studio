@@ -1,8 +1,8 @@
 
 import { Github, Linkedin, Briefcase, GraduationCap, Mail, Award, Database, BarChart, Settings, TestTube, Search, Users, GitBranch, Terminal, MessageSquare, Presentation } from "lucide-react";
 import { BigQueryIcon, SSMSIcon, PowerBiIcon } from "@/components/common/CustomIcons";
-import { FaPython, FaTable, FaFileExcel, FaGitAlt } from 'react-icons/fa';
-import { SiLooker, SiTableau, SiPandas, SiNumpy } from 'react-icons/si';
+import { FaPython, FaTable, FaFileExcel, FaGitAlt, FaJava, FaFigma, FaNodeJs, FaReact } from 'react-icons/fa';
+import { SiLooker, SiTableau, SiPandas, SiNumpy, SiJavascript, SiTypescript, SiExpress, SiPostman, SiHugo, SiMui, SiPenpot, SiMongodb } from 'react-icons/si';
 import { VscJson } from "react-icons/vsc";
 import { AiOutlineApi } from "react-icons/ai";
 import { BsDatabaseFill } from "react-icons/bs";
@@ -127,6 +127,18 @@ export const techStackSkills = [
   { name: 'Git', icon: FaGitAlt },
   { name: 'API', icon: AiOutlineApi },
   { name: 'SSMS', icon: SSMSIcon },
+  { name: 'JavaScript', icon: SiJavascript },
+  { name: 'TypeScript', icon: SiTypescript },
+  { name: 'Postman', icon: SiPostman },
+  { name: 'Figma', icon: FaFigma },
+  { name: 'Penpot', icon: SiPenpot },
+  { name: 'MongoDB', icon: SiMongodb },
+  { name: 'Java', icon: FaJava },
+  { name: 'React', icon: FaReact },
+  { name: 'Node.js', icon: FaNodeJs },
+  { name: 'Express.js', icon: SiExpress },
+  { name: 'Hugo', icon: SiHugo },
+  { name: 'MUI', icon: SiMui },
 ];
 
 
