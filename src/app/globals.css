@@ -65,7 +65,7 @@
 
 @layer utilities {
   .animation-scroll-x {
-    animation: scroll-x 40s linear infinite;
+    animation: scroll-x 25s linear infinite;
   }
 
   @keyframes scroll-x {
