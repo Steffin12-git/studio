@@ -4,50 +4,42 @@
 
 @layer base {
   :root {
-    --background: 240 100% 99%;
-    --foreground: 222 84% 5%;
-    --card: 240 100% 99%;
-    --card-foreground: 222 84% 5%;
-    --popover: 240 100% 99%;
-    --popover-foreground: 222 84% 5%;
-    --primary: 222 84% 5%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 215 28% 90%;
-    --secondary-foreground: 222 84% 5%;
-    --muted: 215 28% 90%;
-    --muted-foreground: 215 28% 40%;
-    --accent: 215 28% 95%;
-    --accent-foreground: 222 84% 5%;
-    --destructive: 0 84% 60%;
+    /* Light Mode (based on proposal) - currently unused, but defined for future theming */
+    --background-light: 220 20% 97%; /* #F0F4F8 */
+    --foreground-light: 210 17% 21%; /* #2C3E50 */
+    --primary-light: 210 17% 21%; /* #2C3E50 */
+    --primary-foreground-light: 210 20% 98%;
+    --accent-light: 181 70% 45%; /* #20C4C8 */
+    --accent-foreground-light: 210 17% 21%;
+    --card-light: 220 20% 100%;
+    --card-foreground-light: 210 17% 21%;
+    --border-light: 220 20% 90%;
+    --input-light: 220 20% 90%;
+    --ring-light: 181 70% 45%;
+
+    /* Dark Mode (current theme, refined) */
+    --background: 210 17% 12%; /* Darker midnight blue */
+    --foreground: 210 20% 92%;
+    --card: 210 17% 15%;
+    --card-foreground: 210 20% 92%;
+    --popover: 210 17% 10%;
+    --popover-foreground: 210 20% 92%;
+    --primary: 181 70% 55%; /* Bright Teal */
+    --primary-foreground: 210 17% 10%;
+    --secondary: 210 17% 25%;
+    --secondary-foreground: 210 20% 92%;
+    --muted: 210 17% 25%;
+    --muted-foreground: 210 20% 65%;
+    --accent: 181 70% 55%; /* Bright Teal */
+    --accent-foreground: 210 17% 10%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 210 20% 98%;
-    --border: 215 28% 85%;
-    --input: 215 28% 85%;
-    --ring: 222 84% 5%;
-    --button-primary: 330 85% 55%;
+    --border: 210 17% 22%;
+    --input: 210 17% 22%;
+    --ring: 181 70% 55%;
   }
 
-  .dark {
-    --background: 222 84% 5%;
-    --foreground: 210 20% 98%;
-    --card: 222 84% 7%;
-    --card-foreground: 210 20% 98%;
-    --popover: 222 84% 5%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 330 85% 55%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-    --accent: 260 100% 60%;
-    --accent-foreground: 210 20% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 330 85% 55%;
-    --button-primary: 330 85% 55%;
-  }
+  /* This is where a .dark class would go if we were supporting both light and dark modes */
 }
 
 @layer base {
@@ -59,6 +51,6 @@
     @apply scroll-pt-20;
   }
   body {
-    @apply bg-transparent text-foreground;
+    @apply bg-background text-foreground;
   }
 }

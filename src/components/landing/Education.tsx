@@ -4,6 +4,7 @@ import { educationData } from '@/lib/data';
 import { GraduationCap } from 'lucide-react';
 import { useRef, useEffect } from 'react';
 import { motion, useInView, animate, stagger } from 'framer-motion';
+import { AnimatedTitle } from '../common/AnimatedTitle';
 
 export default function Education() {
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -31,16 +32,12 @@ export default function Education() {
   }, [isInView]);
 
   return (
-    <div className="container mx-auto bg-gray-900/40 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-xl">
-      <div className="text-center">
-        <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl font-headline">
-          Education
-        </h2>
-      </div>
+    <div className="container mx-auto bg-card/50 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-xl">
+      <AnimatedTitle text="Education" />
       <div ref={timelineRef} className="relative mt-16 max-w-4xl mx-auto">
-        <div className="absolute left-5 top-0 h-full w-0.5 bg-white/20 md:left-1/2 md:-translate-x-1/2" aria-hidden="true" />
+        <div className="absolute left-5 top-0 h-full w-0.5 bg-border md:left-1/2 md:-translate-x-1/2" aria-hidden="true" />
         <motion.div
-          className="progress-line absolute top-0 left-5 w-0.5 origin-top bg-accent shadow-lg shadow-accent md:left-1/2 md:-translate-x-1/2"
+          className="progress-line absolute top-0 left-5 w-0.5 origin-top bg-primary shadow-lg shadow-primary/30 md:left-1/2 md:-translate-x-1/2"
           style={{ scaleY: 0, height: '100%' }}
         />
 
@@ -50,9 +47,9 @@ export default function Education() {
 
                 const content = (
                   <>
-                    <p className="text-sm font-semibold text-gray-300 lg:text-base">{item.duration}</p>
+                    <p className="text-sm font-semibold text-muted-foreground lg:text-base">{item.duration}</p>
                     <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{item.degree}</h3>
-                    <div className="text-base text-gray-400">
+                    <div className="text-base text-muted-foreground">
                       {item.institution.split('\n').map((line, i) => (
                         <p key={i}>{line}</p>
                       ))}
@@ -68,7 +65,7 @@ export default function Education() {
                         {/* Central Icon */}
                         <motion.div 
                             initial={{ scale: 0 }}
-                            className="edu-icon absolute top-8 left-5 -translate-x-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-card text-card-foreground shadow-lg ring-4 ring-white/10 md:static md:col-start-2 md:row-start-1 md:translate-x-0"
+                            className="edu-icon absolute top-8 left-5 -translate-x-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-card text-card-foreground shadow-lg ring-4 ring-background md:static md:col-start-2 md:row-start-1 md:translate-x-0"
                         >
                             <GraduationCap className="h-5 w-5" />
                         </motion.div>
@@ -77,7 +74,7 @@ export default function Education() {
                         <div className={`ml-16 md:ml-0 ${isEven ? 'md:col-start-1 md:row-start-1 md:text-right' : 'md:col-start-3 md:text-left'}`}>
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
-                                className="edu-item-content rounded-lg bg-black/30 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-white/20"
+                                className="edu-item-content rounded-lg bg-card/70 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-primary/50"
                             >
                                 {content}
                              </motion.div>
