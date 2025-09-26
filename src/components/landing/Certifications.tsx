@@ -61,9 +61,9 @@ export default function Certifications() {
                     <div className="mt-3 space-y-3 text-sm">
                         {cert.subCourses.map((sub) => (
                         <div key={sub.title}>
-                            <div className={`flex items-center gap-2 ${isEven ? 'md:justify-end' : 'justify-start'}`}>
-                            <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0" />
-                            <span className="text-gray-300 lg:text-base">{sub.title}</span>
+                            <div className={`flex items-center gap-2 justify-start ${isEven ? 'md:ml-auto md:w-fit' : ''}`}>
+                                <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0" />
+                                <span className="text-gray-300 lg:text-base">{sub.title}</span>
                             </div>
                             {sub.credentialId && (
                             <Button
