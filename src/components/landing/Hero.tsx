@@ -32,7 +32,7 @@ export default function Hero() {
                 key={link.name}
                 size="lg"
                 asChild
-                className="w-full sm:w-auto rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg lg:text-lg lg:px-10 lg:py-7"
+                className="w-full sm:w-auto rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg lg:text-lg lg:px-10 lg:py-7"
               >
                 <Link href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
                    {typeof link.icon !== 'function' && link.icon.type === 'img' ? (
