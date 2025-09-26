@@ -1,3 +1,4 @@
+'use client';
 import { skillsData, techStackSkills } from '@/lib/data';
 import { Badge } from '@/components/ui/badge';
 import React from 'react';
