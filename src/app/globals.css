@@ -4,20 +4,7 @@
 
 @layer base {
   :root {
-    /* Light Mode (based on proposal) - currently unused, but defined for future theming */
-    --background-light: 220 20% 97%; /* #F0F4F8 */
-    --foreground-light: 210 17% 21%; /* #2C3E50 */
-    --primary-light: 210 17% 21%; /* #2C3E50 */
-    --primary-foreground-light: 210 20% 98%;
-    --accent-light: 181 70% 45%; /* #20C4C8 */
-    --accent-foreground-light: 210 17% 21%;
-    --card-light: 220 20% 100%;
-    --card-foreground-light: 210 17% 21%;
-    --border-light: 220 20% 90%;
-    --input-light: 220 20% 90%;
-    --ring-light: 181 70% 45%;
-
-    /* Dark Mode (current theme, refined) */
+    /* Dark Mode ("Midnight Orbit" theme) */
     --background: 210 17% 12%; /* Darker midnight blue */
     --foreground: 210 20% 92%;
     --card: 210 17% 15%;
