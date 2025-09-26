@@ -13,8 +13,8 @@ const TechStackCarousel = () => {
     const itemWidthRem = 11;
     const totalWidth = techStackSkills.length * itemWidthRem;
     
-    // Adjust speed based on number of items. ~1.5s per item.
-    const duration = techStackSkills.length * 1.5;
+    // Adjust speed based on number of items. ~2.5s per item.
+    const duration = techStackSkills.length * 2.5;
 
     const marqueeVariants = {
         animate: {
