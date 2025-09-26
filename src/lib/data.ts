@@ -306,6 +306,7 @@ export const certificationsData = [
     subCourses: [
       { title: 'Foundations of Data Science by Google', credentialId: '74A181Q36TFM' },
       { title: 'Get Started with Python by Google', credentialId: 'RXQKAZHPG167' },
+      { title: 'Go Beyond the Numbers: Translate Data into Insights', credentialId: 'D7D6E2PK7YJF' },
     ]
   },
   {
