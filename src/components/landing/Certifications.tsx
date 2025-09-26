@@ -105,7 +105,7 @@ export default function Certifications() {
                     {/* Central Icon */}
                     <motion.div 
                         initial={{ scale: 0 }}
-                        className="cert-icon absolute top-8 left-5 -translate-x-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-card text-card-foreground shadow-lg ring-4 ring-white md:static md:col-start-2 md:row-start-1 md:translate-x-0"
+                        className="cert-icon absolute top-8 left-5 -translate-x-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-card text-card-foreground shadow-lg ring-2 ring-white md:static md:col-start-2 md:row-start-1 md:translate-x-0"
                     >
                         <Award className="h-5 w-5" />
                     </motion.div>
