@@ -9,14 +9,21 @@ const TechStackCarousel = () => {
     // Duplicate the array for a seamless loop
     const extendedTechStack = [...techStackSkills, ...techStackSkills];
 
+    // Each item is w-36 (9rem) with mx-4 (1rem on each side), so 11rem total per item.
+    const itemWidthRem = 11;
+    const totalWidth = techStackSkills.length * itemWidthRem;
+    
+    // Adjust speed based on number of items. ~1.5s per item.
+    const duration = techStackSkills.length * 1.5;
+
     const marqueeVariants = {
         animate: {
-          x: [0, -1 * (extendedTechStack.length / 2) * 9 * 16 / 4], // width of one set of items
+          x: [0, `-${totalWidth}rem`],
           transition: {
             x: {
               repeat: Infinity,
               repeatType: 'loop',
-              duration: 30, // Adjust duration for speed
+              duration: duration,
               ease: 'linear',
             },
           },
