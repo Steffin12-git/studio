@@ -15,21 +15,30 @@ export default function Certifications() {
   useEffect(() => {
     if (isInView && timelineRef.current) {
       const progressLine = timelineRef.current.querySelector('.progress-line');
-      if(progressLine) {
+      if (progressLine) {
         animate(progressLine as HTMLElement, { scaleY: 1 }, { duration: 1.5, ease: 'easeOut' });
       }
       
-      animate(
-        '.cert-item-content',
-        { opacity: 1, y: 0 },
-        { delay: stagger(0.2, { startDelay: 0.5 }), duration: 0.5 }
-      );
-      
-      animate(
-        '.cert-icon',
-        { scale: [0, 1.25, 1] },
-        { delay: stagger(0.2, { startDelay: 0.7 }), duration: 0.8 }
-      );
+      timelineRef.current.querySelectorAll('.cert-item').forEach((item, index) => {
+        const isEven = index % 2 === 0;
+        const content = item.querySelector('.cert-item-content');
+        const icon = item.querySelector('.cert-icon');
+
+        if (content) {
+            animate(
+                content as HTMLElement,
+                { opacity: 1, x: 0 },
+                { delay: 0.5 + index * 0.2, duration: 0.5 }
+            );
+        }
+        if (icon) {
+             animate(
+                icon as HTMLElement,
+                { scale: [0, 1.25, 1] },
+                { delay: 0.7 + index * 0.2, duration: 0.8 }
+            );
+        }
+      });
     }
   }, [isInView]);
 
@@ -112,7 +121,7 @@ export default function Certifications() {
                     
                     <div className={`ml-16 md:ml-0 ${isEven ? 'md:col-start-1 md:row-start-1 md:text-right' : 'md:col-start-3 md:text-left'}`}>
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, x: isEven ? -50 : 50 }}
                             className="cert-item-content rounded-lg bg-card/70 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-primary/50"
                         >
                             {content}

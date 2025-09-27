@@ -6,6 +6,12 @@ import { Card, CardContent } from '../ui/card';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 import { AnimatedTitle } from '../common/AnimatedTitle';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 const TechStackCarousel = () => {
     // Duplicate the array for a seamless loop
@@ -40,7 +46,9 @@ const TechStackCarousel = () => {
           {extendedTechStack.map((skill, index) => (
             <div key={index} className="flex-shrink-0 w-36 h-36 mx-4 flex items-center justify-center">
                <div className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-card/70 border border-white/10 shadow-lg w-full h-full text-center">
-                    <skill.icon className="h-10 w-10 text-white" />
+                    <div style={{ color: skill.color }} className='h-10 w-10'>
+                      <skill.icon className="h-full w-full" />
+                    </div>
                     <p className="text-sm font-semibold text-white">{skill.name}</p>
                 </div>
             </div>
@@ -61,7 +69,9 @@ export default function Skills() {
         </div>
         
         <div className="mt-16 mb-12">
-            <TechStackCarousel />
+            <TooltipProvider>
+                <TechStackCarousel />
+            </TooltipProvider>
         </div>
   
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -74,14 +84,23 @@ export default function Skills() {
                   </div>
                   <h3 className="text-xl font-bold text-white">{category.category}</h3>
                 </div>
-                <ul className="space-y-2">
-                  {category.skills.map((skill) => (
-                    <li key={skill} className="flex items-start gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground lg:text-base">{skill}</span>
-                    </li>
-                  ))}
-                </ul>
+                <TooltipProvider>
+                  <ul className="space-y-2">
+                    {category.skills.map((skill) => (
+                      <li key={skill.name} className="flex items-start gap-2">
+                        <CheckCircle2 className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <span className="text-muted-foreground lg:text-base border-b border-dashed border-muted-foreground/50 cursor-help">{skill.name}</span>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>{skill.tooltip}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </li>
+                    ))}
+                  </ul>
+                </TooltipProvider>
               </CardContent>
             </Card>
           ))}

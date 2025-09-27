@@ -50,94 +50,94 @@ export const skillsData = [
     category: "Programming & Databases",
     icon: Database,
     skills: [
-      "SQL (Joins, CTEs, Window Functions)",
-      "Python (Pandas, NumPy, scikit-learn, PyCaret)",
-      "BigQuery",
-      "SQLite",
-      "SQL Server"
+      { name: "SQL", tooltip: "Used for complex joins, CTEs, and window functions to aggregate hospitality data." },
+      { name: "Python", tooltip: "Used Pandas/NumPy for data wrangling and Scikit-learn for building prediction models." },
+      { name: "BigQuery", tooltip: "Managed and processed 15,000+ HR records for employee churn analysis." },
+      { name: "SQLite", tooltip: "Stored real-time data from a Python ETL pipeline for the COVID-19 tracking project." },
+      { name: "SQL Server", tooltip: "Queried and managed relational databases for enterprise applications." }
     ]
   },
   {
     category: "Data Analysis",
     icon: Search,
     skills: [
-      "Data Cleaning",
-      "Anomaly Detection",
-      "Statistical Analysis",
-      "Forecasting & Projections",
-      "A/B Testing"
+        { name: "Data Cleaning", tooltip: "Processed raw API data, handled missing values, and ensured data integrity for dashboards." },
+        { name: "Anomaly Detection", tooltip: "Identified unusual spikes in COVID-19 data to flag potential outbreaks." },
+        { name: "Statistical Analysis", tooltip: "Applied statistical methods to validate hypotheses and derive business insights." },
+        { name: "Forecasting & Projections", tooltip: "Projected 2030 EV market sales using CAGR assumptions in Power BI." },
+        { name: "A/B Testing", tooltip: "Experience in designing and analyzing A/B tests to drive product decisions." }
     ]
   },
   {
     category: "Data Engineering",
     icon: Settings,
     skills: [
-      "Automated ETL Pipelines",
-      "Data Lifecycle Management",
-      "API Integrations",
-      "Data Validation & Monitoring"
+        { name: "Automated ETL Pipelines", tooltip: "Built a daily ETL job with Python and Task Scheduler to ingest live COVID-19 data." },
+        { name: "Data Lifecycle Management", tooltip: "Managed data from ingestion and storage to archival in various projects." },
+        { name: "API Integrations", tooltip: "Fetched data from public APIs like disease.sh for real-time analytics." },
+        { name: "Data Validation & Monitoring", tooltip: "Implemented checks to ensure data quality and consistency in ETL workflows." }
     ]
   },
   {
     category: "Visualization & BI",
     icon: BarChart,
     skills: [
-      "Power BI (DAX, Modeling)",
-      "Tableau",
-      "Looker Studio",
-      "Excel / Google Sheets"
+        { name: "Power BI", tooltip: "Created interactive dashboards with DAX measures for hospitality and EV market analysis." },
+        { name: "Tableau", tooltip: "Developed visualizations to explore and present complex datasets." },
+        { name: "Looker Studio", tooltip: "Built a dashboard to visualize employee churn predictions from a BigQuery ML model." },
+        { name: "Excel / Google Sheets", tooltip: "Used for initial data exploration, cleaning, and ad-hoc analysis." }
     ]
   },
-  {
+    {
     category: "Collaboration & Tools",
     icon: Terminal,
     skills: [
-      "Git / GitHub / GitLab",
-      "REST API",
-      "Google Workspace",
-      "Documentation",
-      "SSMS"
+      { name: "Git / GitHub / GitLab", tooltip: "Used for version control and collaboration on all personal and professional projects." },
+      { name: "REST API", tooltip: "Experience in consuming REST APIs for data extraction and integration." },
+      { name: "Google Workspace", tooltip: "Collaborated on documents, sheets, and presentations for project delivery." },
+      { name: "Documentation", tooltip: "Wrote clear documentation for code, models, and project findings." },
+      { name: "SSMS", tooltip: "Used SQL Server Management Studio for database administration and querying." }
     ]
   },
   {
     category: "Soft & Business Skills",
     icon: Presentation,
     skills: [
-      "Stakeholder Communication",
-      "Requirements Gathering",
-      "Agile Collaboration",
-      "Data Storytelling",
-      "Business Insights"
+      { name: "Stakeholder Communication", tooltip: "Presented findings and recommendations to both technical and non-technical audiences." },
+      { name: "Requirements Gathering", tooltip: "Worked with stakeholders to define project scope and key metrics for dashboards." },
+      { name: "Agile Collaboration", tooltip: "Participated in agile ceremonies and collaborated with cross-functional teams." },
+      { name: "Data Storytelling", tooltip: "Transformed complex data insights into clear, compelling narratives." },
+      { name: "Business Insights", tooltip: "Translated data analysis into actionable recommendations to drive business strategy." }
     ]
   }
 ];
 
 
 export const techStackSkills = [
-  { name: 'Python', icon: FaPython },
-  { name: 'SQL', icon: BsDatabaseFill },
-  { name: 'Power BI', icon: PowerBiIcon },
-  { name: 'BigQuery', icon: BigQueryIcon },
-  { name: 'Tableau', icon: SiTableau },
-  { name: 'Pandas', icon: SiPandas },
-  { name: 'NumPy', icon: SiNumpy },
-  { name: 'Excel', icon: FaFileExcel },
-  { name: 'Looker', icon: SiLooker },
-  { name: 'Git', icon: FaGitAlt },
-  { name: 'API', icon: AiOutlineApi },
-  { name: 'SSMS', icon: SSMSIcon },
-  { name: 'JavaScript', icon: SiJavascript },
-  { name: 'TypeScript', icon: SiTypescript },
-  { name: 'Java', icon: FaJava },
-  { name: 'MongoDB', icon: SiMongodb },
-  { name: 'Postman', icon: SiPostman },
-  { name: 'Figma', icon: FaFigma },
-  { name: 'Penpot', icon: SiPenpot },
-  { name: 'React', icon: FaReact },
-  { name: 'Node.js', icon: FaNodeJs },
-  { name: 'Express.js', icon: SiExpress },
-  { name: 'Hugo', icon: SiHugo },
-  { name: 'MUI', icon: SiMui },
+  { name: 'Python', icon: FaPython, color: 'text-blue-400' },
+  { name: 'SQL', icon: BsDatabaseFill, color: 'text-cyan-400' },
+  { name: 'Power BI', icon: PowerBiIcon, color: 'text-yellow-400' },
+  { name: 'BigQuery', icon: BigQueryIcon, color: 'text-blue-500' },
+  { name: 'Tableau', icon: SiTableau, color: 'text-blue-500' },
+  { name: 'Pandas', icon: SiPandas, color: 'text-purple-400' },
+  { name: 'NumPy', icon: SiNumpy, color: 'text-blue-400' },
+  { name: 'Excel', icon: FaFileExcel, color: 'text-green-500' },
+  { name: 'Looker', icon: SiLooker, color: 'text-blue-400' },
+  { name: 'Git', icon: FaGitAlt, color: 'text-red-500' },
+  { name: 'API', icon: AiOutlineApi, color: 'text-purple-500' },
+  { name: 'SSMS', icon: SSMSIcon, color: 'text-red-600' },
+  { name: 'JavaScript', icon: SiJavascript, color: 'text-yellow-400' },
+  { name: 'TypeScript', icon: SiTypescript, color: 'text-blue-500' },
+  { name: 'Java', icon: FaJava, color: 'text-red-500' },
+  { name: 'MongoDB', icon: SiMongodb, color: 'text-green-500' },
+  { name: 'Postman', icon: SiPostman, color: 'text-orange-500' },
+  { name: 'Figma', icon: FaFigma, color: 'text-purple-500' },
+  { name: 'Penpot', icon: SiPenpot, color: 'text-green-500' },
+  { name: 'React', icon: FaReact, color: 'text-blue-400' },
+  { name: 'Node.js', icon: FaNodeJs, color: 'text-green-500' },
+  { name: 'Express.js', icon: SiExpress, color: 'text-gray-400' },
+  { name: 'Hugo', icon: SiHugo, color: 'text-purple-500' },
+  { name: 'MUI', icon: SiMui, color: 'text-blue-500' },
 ];
 
 
