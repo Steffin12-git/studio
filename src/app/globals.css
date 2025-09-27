@@ -40,4 +40,61 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Hide the default cursor for our custom one */
+  body, a, button {
+    cursor: none;
+  }
+}
+
+/* Custom Cursor Styles */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease-out, width 0.15s ease-out, height 0.15s ease-out, background-color 0.15s ease-out;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: hsl(var(--primary));
+  transition: transform 0.1s ease-out;
+}
+
+.cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 2px solid hsla(var(--primary), 0.5);
+  transition: transform 0.2s ease-out, width 0.2s ease-out, height 0.2s ease-out, border-color 0.2s ease-out;
+}
+
+.cursor-hidden {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* Cursor interaction states */
+.cursor-dot.cursor-clicked {
+  transform: translate(-50%, -50%) scale(0.75);
+}
+
+.cursor-ring.cursor-clicked {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.cursor-dot.cursor-hover {
+  opacity: 0;
+}
+
+.cursor-ring.cursor-hover {
+  width: 60px;
+  height: 60px;
+  border-color: hsl(var(--primary));
+  background-color: hsla(var(--primary), 0.2);
 }
