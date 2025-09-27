@@ -11,7 +11,7 @@ import Image from 'next/image';
 export default function Hero() {
   const texts = [
     'Result-Driven Data Analyst',
-    'Python | SQL | Power BI | Excel / Google Sheets',
+    'Python | SQL | Power BI | Tableau | Excel',
     'Transforming Data into Actionable Business Insights',
     'Advanced Analytics | Predictive Modeling | Automation | Interactive Dashboard'
   ];
