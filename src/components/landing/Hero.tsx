@@ -35,7 +35,7 @@ export default function Hero() {
                 size="lg"
                 variant="outline"
                 asChild
-                className="w-full sm:w-auto rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg lg:text-lg lg:px-10 lg:py-7 bg-black/20 border-white/20 text-white hover:bg-white/10 hover:border-primary/50"
+                className="w-full sm:w-auto rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg lg:text-lg lg:px-10 lg:py-7 bg-black/20 border-white/20 text-white hover:bg-white/10 hover:text-white hover:border-primary/50"
               >
                 <Link href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
                    {typeof link.icon !== 'function' && link.icon.type === 'img' ? (
