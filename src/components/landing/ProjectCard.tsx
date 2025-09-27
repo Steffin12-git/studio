@@ -118,36 +118,34 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                   View Details
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[60vw] bg-gradient-to-br from-slate-900 to-blue-950/20 border-white/20 text-foreground">
-                <DialogHeader>
+              <DialogContent className="max-w-4xl h-[90vh] bg-gradient-to-br from-slate-900 to-blue-950/20 border-white/20 text-foreground flex flex-col p-0">
+                <DialogHeader className="p-6 pb-0">
                   <DialogTitle className="font-headline text-2xl text-white lg:text-3xl">{title}</DialogTitle>
                 </DialogHeader>
-                <ScrollArea className="max-h-[70vh] p-1 pr-4">
-                  {dashboardImage && (
-                    <div className="w-11/12 mx-auto mb-6">
-                      <div className="grid grid-cols-1 gap-4">
-                        {(Array.isArray(dashboardImage) ? dashboardImage : [dashboardImage]).map((img, idx) => (
-                           <div key={idx} className="relative aspect-video w-full overflow-hidden rounded-lg border border-white/10">
-                              <Image 
-                                  src={img}
-                                  alt={`${title} dashboard screenshot ${idx + 1}`}
-                                  fill
-                                  className="object-contain"
-                              />
-                          </div>
+                <div className="grid md:grid-cols-2 gap-6 flex-1 overflow-y-auto p-6">
+                    <div className="flex flex-col gap-4">
+                        {dashboardImage && (Array.isArray(dashboardImage) ? dashboardImage : [dashboardImage]).map((img, idx) => (
+                             <div key={idx} className="relative aspect-video w-full overflow-hidden rounded-lg border border-white/10">
+                                <Image 
+                                    src={img}
+                                    alt={`${title} dashboard screenshot ${idx + 1}`}
+                                    fill
+                                    className="object-contain"
+                                />
+                            </div>
                         ))}
-                      </div>
                     </div>
-                  )}
-                  <div className="prose prose-base prose-invert max-w-none text-muted-foreground 
-                    [&_h3]:text-white [&_h3]:font-headline [&_h3]:text-xl [&_h3]:border-b [&_h3]:border-accent/50 [&_h3]:pb-2 [&_h3]:mb-3 [&_h3]:mt-6 
-                    [&_p]:my-2 [&_p]:leading-relaxed [&_p]:text-gray-300
-                    [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2
-                    [&_li]:my-1 [&_li]:text-gray-300
-                    [&_strong]:text-white">
-                      <SimpleMarkdown content={detailedDescription} />
-                  </div>
-                </ScrollArea>
+                    <ScrollArea className="h-full pr-4">
+                        <div className="prose prose-base prose-invert max-w-none text-muted-foreground 
+                        [&_h3]:text-white [&_h3]:font-headline [&_h3]:text-xl [&_h3]:border-b [&_h3]:border-accent/50 [&_h3]:pb-2 [&_h3]:mb-3 [&_h3]:mt-6 
+                        [&_p]:my-2 [&_p]:leading-relaxed [&_p]:text-gray-300
+                        [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2
+                        [&_li]:my-1 [&_li]:text-gray-300
+                        [&_strong]:text-white">
+                            <SimpleMarkdown content={detailedDescription} />
+                        </div>
+                    </ScrollArea>
+                </div>
               </DialogContent>
             </Dialog>
           </div>
