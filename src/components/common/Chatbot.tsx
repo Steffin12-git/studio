@@ -29,7 +29,7 @@ export default function Chatbot() {
         setMessages([
           {
             role: 'model',
-            content: "Hi there! I'm Portfolio Pal, Steffin's AI assistant. Ask me anything about his skills, projects, or experience!",
+            content: "Hi there! I'm Data Droid, Steffin's AI assistant. Ask me anything about his skills, projects, or experience!",
           },
         ]);
         setLoading(false);
@@ -99,7 +99,7 @@ export default function Chatbot() {
           >
             <header className="p-4 border-b border-white/20 flex items-center gap-3">
                 <Bot className="h-7 w-7 text-white"/>
-                <h3 className="text-lg font-bold text-white font-headline">Portfolio Pal</h3>
+                <h3 className="text-lg font-bold text-white font-headline">Data Droid</h3>
             </header>
 
             <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
