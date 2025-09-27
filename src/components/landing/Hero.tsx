@@ -10,8 +10,10 @@ import Image from 'next/image';
 
 export default function Hero() {
   const texts = [
-    'Result Driven Data Analyst',
-    'SQL • Python • Power BI • Machine Learning'
+    'Result-Driven Data Analyst',
+    'Python | SQL | Power BI | Excel / Google Sheets',
+    'Transforming Data into Actionable Business Insights',
+    'Advanced Analytics | Predictive Modeling | Automation | Interactive Dashboard'
   ];
 
   return (
