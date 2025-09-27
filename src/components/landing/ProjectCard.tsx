@@ -42,10 +42,6 @@ function SimpleMarkdown({ content }: { content: string }) {
 
         // Process list items
         if (processedLine.startsWith('- ')) {
-            // Check if the content of the list item is just a bolded text
-            if(processedLine.substring(2).startsWith('<strong>') && processedLine.endsWith('</strong>')){
-                 return `<li>${processedLine.substring(2)}</li>`;
-            }
             return `<li>${processedLine.substring(2)}</li>`;
         }
         
@@ -56,9 +52,11 @@ function SimpleMarkdown({ content }: { content: string }) {
         return `<p>${processedLine}</p>`;
       })
       .join('')
+      .replace(/<p><li>/g, '<li>') // Fix for list items inside paragraphs
+      .replace(/<\/li><\/p>/g, '</li>') // Fix for list items inside paragraphs
       .replace(/<li>/g, '<ul><li>')
       .replace(/<\/li>(?!<li>)/g, '</li></ul>')
-       .replace(/<\/ul><ul>/g, '');
+      .replace(/<\/ul><ul>/g, '');
 
 
     return (
