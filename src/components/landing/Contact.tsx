@@ -3,7 +3,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-import { Send, Mail, Linkedin, Github } from 'lucide-react';
+import { Send, Mail, Linkedin, Github, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -40,6 +42,7 @@ const contactLinks = [
 
 export default function Contact() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -50,13 +53,39 @@ export default function Contact() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    // Here you would typically send the form data to a server
-    toast({
-      title: 'Message Sent!',
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
-    form.reset();
+    setIsSubmitting(true);
+    
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+
+    const templateParams = {
+        from_name: values.name,
+        from_email: values.email,
+        to_name: 'Steffin Thomas',
+        message: values.message,
+    };
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        toast({
+          title: 'Message Sent!',
+          description: "Thanks for reaching out. I'll get back to you soon.",
+        });
+        form.reset();
+      })
+      .catch((err) => {
+        console.error('FAILED...', err);
+        toast({
+            title: 'Uh oh! Something went wrong.',
+            description: 'There was a problem sending your message. Please try again later.',
+            variant: 'destructive',
+          });
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   }
 
   return (
@@ -115,8 +144,16 @@ export default function Contact() {
                         )}
                         />
                         <div className="text-center pt-2">
-                        <Button type="submit" size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-10 py-3 text-lg lg:text-xl lg:py-4">
-                            Send Message <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                        <Button type="submit" size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-10 py-3 text-lg lg:text-xl lg:py-4" disabled={isSubmitting}>
+                            {isSubmitting ? (
+                                <>
+                                <Loader2 className="mr-2 h-5 w-5 animate-spin" /> Sending...
+                                </>
+                            ) : (
+                                <>
+                                Send Message <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                                </>
+                            )}
                         </Button>
                         </div>
                     </form>

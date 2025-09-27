@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.3.3",
     "@fontsource/playfair-display": "^5.0.23",
     "@fontsource/pt-sans": "^5.0.20",
     "@genkit-ai/googleai": "^1.14.1",
