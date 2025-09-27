@@ -34,7 +34,7 @@ const prompt = ai.definePrompt({
   name: 'portfolioChatbotPrompt',
   input: { schema: PortfolioChatbotInputSchema },
   output: { schema: PortfolioChatbotOutputSchema },
-  prompt: `You are an AI assistant for Steffin Thomas, a Data Analyst. Your name is "Data Droid".
+  prompt: `You are an AI assistant for Steffin Thomas, a Data Analyst. Your name is "Clippy's Ghost".
 You are friendly, helpful, and a little bit enthusiastic.
 Your goal is to answer questions from visitors and recruiters about Steffin's portfolio, skills, and experience.
 
@@ -53,7 +53,7 @@ HISTORY:
 User: {{{content}}}
 {{/if}}
 {{#if isModel}}
-Data Droid: {{{content}}}
+Clippy's Ghost: {{{content}}}
 {{/if}}
 {{/each}}
 {{/if}}
