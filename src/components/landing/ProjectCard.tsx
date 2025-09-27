@@ -26,39 +26,49 @@ type ProjectCardProps = {
 
 // A simple markdown-to-HTML converter
 function SimpleMarkdown({ content }: { content: string }) {
-    const htmlContent = content
-      .trim()
-      .split('\n')
-      .map(line => {
-        let processedLine = line.trim();
-
-        // Process headings first
-        if (processedLine.startsWith('### ')) {
-            return `<h3>${processedLine.substring(4)}</h3>`;
+    const lines = content.trim().split('\n');
+    let inList = false;
+    const htmlLines = lines.map(line => {
+      let processedLine = line.trim();
+  
+      // Handle headings
+      if (processedLine.startsWith('### ')) {
+        if (inList) {
+          inList = false;
+          return `</ul><h3>${processedLine.substring(4)}</h3>`;
         }
-        
-        // Handle bold text, even at the start of a line
-        processedLine = processedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-        // Process list items
-        if (processedLine.startsWith('- ')) {
-            return `<li>${processedLine.substring(2)}</li>`;
+        return `<h3>${processedLine.substring(4)}</h3>`;
+      }
+      
+      // Handle bold text
+      processedLine = processedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  
+      // Handle list items
+      if (processedLine.startsWith('- ')) {
+        const listItem = `<li>${processedLine.substring(2)}</li>`;
+        if (!inList) {
+          inList = true;
+          return `<ul>${listItem}`;
         }
-        
-        if (processedLine === '') {
-          return '<br />';
-        }
-
-        return `<p>${processedLine}</p>`;
-      })
-      .join('')
-      .replace(/<p><li>/g, '<li>') // Fix for list items inside paragraphs
-      .replace(/<\/li><\/p>/g, '</li>')
-      .replace(/(<\/li>)(?!<li)/g, '</li></ul>')
-      .replace(/<li>/g, '<ul><li>')
-      .replace(/<\/ul><ul>/g, '');
-
-
+        return listItem;
+      }
+  
+      // Handle paragraphs and line breaks
+      if (inList) {
+        inList = false;
+        if (processedLine === '') return '</ul><br />';
+        return `</ul><p>${processedLine}</p>`;
+      }
+      if (processedLine === '') return '<br />';
+      return `<p>${processedLine}</p>`;
+    });
+  
+    if (inList) {
+      htmlLines.push('</ul>');
+    }
+  
+    const htmlContent = htmlLines.join('');
+  
     return (
       <div
         className="prose prose-sm prose-invert"
@@ -132,7 +142,7 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                                 />
                             </div>
                         ))}
-                        <div className="prose prose-base prose-invert max-w-none text-muted-foreground 
+                        <div className="text-left prose prose-base prose-invert max-w-none text-muted-foreground 
                         [&_h3]:text-white [&_h3]:font-headline [&_h3]:text-xl [&_h3]:border-b [&_h3]:border-accent/50 [&_h3]:pb-2 [&_h3]:mb-3 [&_h3]:mt-6 
                         [&_p]:my-2 [&_p]:leading-relaxed [&_p]:text-gray-300
                         [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2
