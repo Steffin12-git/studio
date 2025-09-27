@@ -286,7 +286,7 @@ This project is a strong showcase of end-to-end data skills, including:
 export const educationData = [
   {
     degree: 'MCA',
-    institution: 'MACFAST\nMG University',
+    institution: 'MACFAST College\nMG University',
     duration: 'Sep 2024',
   },
   {
