@@ -54,9 +54,9 @@ export default function Skills() {
     return (
       <div className="container mx-auto bg-card/50 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-xl">
         <div className="text-center">
-          <AnimatedTitle text="Technical Skills" />
+          <AnimatedTitle text="Technologies & Expertise" />
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto lg:text-xl">
-            A collection of my technical and professional abilities, honed through project work and continuous learning.
+            My comprehensive toolkit for turning data into insights, showcasing my proficiency across various technologies.
           </p>
         </div>
         
