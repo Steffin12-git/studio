@@ -286,12 +286,12 @@ This project is a strong showcase of end-to-end data skills, including:
 export const educationData = [
   {
     degree: 'MCA',
-    institution: 'MACFAST, MG University,Pathanamthitta',
+    institution: 'MACFAST\nMG University',
     duration: 'Sep 2024',
   },
   {
     degree: 'BCA',
-    institution: 'Catholicate College, MG University, Pathanamthitta',
+    institution: 'Catholicate College\nMG University',
     duration: 'June 2022',
   },
 ];
