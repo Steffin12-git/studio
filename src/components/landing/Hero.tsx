@@ -25,7 +25,7 @@ export default function Hero() {
           </h1>
 
           <div className="mt-6 text-lg tracking-tight text-gray-200 min-h-[3em] lg:text-xl">
-            <Typewriter texts={texts} typingSpeed={80} deletingSpeed={40} />
+            <Typewriter texts={texts} typingSpeed={50} deletingSpeed={30} />
           </div>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-x-6">
@@ -33,9 +33,9 @@ export default function Hero() {
               <Button
                 key={link.name}
                 size="lg"
-                variant="outline"
+                variant="secondary"
                 asChild
-                className="w-full sm:w-auto rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg lg:text-lg lg:px-10 lg:py-7 bg-black/20 border-white/20 text-white hover:bg-white/10 hover:text-white hover:border-primary/50"
+                className="w-full sm:w-auto rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg lg:text-lg lg:px-10 lg:py-7 border-2 border-primary/30 hover:bg-primary hover:border-primary hover:text-primary-foreground"
               >
                 <Link href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
                    {typeof link.icon !== 'function' && link.icon.type === 'img' ? (
