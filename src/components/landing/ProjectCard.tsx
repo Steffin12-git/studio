@@ -53,9 +53,9 @@ function SimpleMarkdown({ content }: { content: string }) {
       })
       .join('')
       .replace(/<p><li>/g, '<li>') // Fix for list items inside paragraphs
-      .replace(/<\/li><\/p>/g, '</li>') // Fix for list items inside paragraphs
+      .replace(/<\/li><\/p>/g, '</li>')
+      .replace(/(<\/li>)(?!<li)/g, '</li></ul>')
       .replace(/<li>/g, '<ul><li>')
-      .replace(/<\/li>(?!<li>)/g, '</li></ul>')
       .replace(/<\/ul><ul>/g, '');
 
 
@@ -116,14 +116,14 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                   View Details
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl h-[90vh] bg-gradient-to-br from-slate-900 to-blue-950/20 border-white/20 text-foreground flex flex-col p-0">
-                <DialogHeader className="p-6 pb-0">
+              <DialogContent className="max-w-4xl h-[90vh] bg-gray-900/50 backdrop-blur-xl border border-white/20 text-foreground flex flex-col p-0">
+                <DialogHeader className="p-6 pb-0 flex-shrink-0">
                   <DialogTitle className="font-headline text-2xl text-white lg:text-3xl">{title}</DialogTitle>
                 </DialogHeader>
-                <div className="grid md:grid-cols-2 gap-6 flex-1 overflow-y-auto p-6">
-                    <div className="flex flex-col gap-4">
+                <ScrollArea className="flex-1 overflow-y-auto">
+                    <div className="p-6 space-y-6">
                         {dashboardImage && (Array.isArray(dashboardImage) ? dashboardImage : [dashboardImage]).map((img, idx) => (
-                             <div key={idx} className="relative aspect-video w-full overflow-hidden rounded-lg border border-white/10">
+                            <div key={idx} className="relative aspect-video w-full overflow-hidden rounded-lg border border-white/10 shadow-lg">
                                 <Image 
                                     src={img}
                                     alt={`${title} dashboard screenshot ${idx + 1}`}
@@ -132,8 +132,6 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                                 />
                             </div>
                         ))}
-                    </div>
-                    <ScrollArea className="h-full pr-4">
                         <div className="prose prose-base prose-invert max-w-none text-muted-foreground 
                         [&_h3]:text-white [&_h3]:font-headline [&_h3]:text-xl [&_h3]:border-b [&_h3]:border-accent/50 [&_h3]:pb-2 [&_h3]:mb-3 [&_h3]:mt-6 
                         [&_p]:my-2 [&_p]:leading-relaxed [&_p]:text-gray-300
@@ -142,8 +140,8 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                         [&_strong]:text-white">
                             <SimpleMarkdown content={detailedDescription} />
                         </div>
-                    </ScrollArea>
-                </div>
+                    </div>
+                </ScrollArea>
               </DialogContent>
             </Dialog>
           </div>
