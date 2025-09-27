@@ -25,7 +25,7 @@ export default function Hero() {
           </h1>
 
           <div className="mt-6 text-lg tracking-tight text-gray-200 min-h-[3em] lg:text-xl">
-            <Typewriter texts={texts} />
+            <Typewriter texts={texts} typingSpeed={80} deletingSpeed={40} />
           </div>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-x-6">
