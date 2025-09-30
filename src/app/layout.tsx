@@ -6,6 +6,7 @@ import '@fontsource/playfair-display'; // Supports weights 400-900
 import '@fontsource/pt-sans'; // Supports weights 400, 700
 import Image from 'next/image';
 import Chatbot from '@/components/common/Chatbot';
+import GoogleAnalytics from '@/components/common/GoogleAnalytics';
 
 export const metadata: Metadata = {
   title: 'Steffin Thomas | Data Analyst Portfolio',
@@ -19,9 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
+       <body
         className={`font-body antialiased relative`}
       >
+        <GoogleAnalytics />
         <div className="fixed inset-0 -z-20 h-full w-full bg-background">
         </div>
 
