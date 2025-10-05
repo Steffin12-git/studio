@@ -59,7 +59,7 @@ export default function Certifications() {
             const isEven = index % 2 === 0;
 
             const content = (
-                <div className={!isEven ? "md:text-left" : "md:text-right"}>
+                <div className="text-left">
                     <p className="text-sm font-semibold text-muted-foreground lg:text-base">
                         {cert.issuer} {cert.date && `• ${cert.date}`}
                     </p>
@@ -67,17 +67,17 @@ export default function Certifications() {
                     {cert.subCourses && cert.subCourses.length > 0 && (
                     <div className="mt-3 space-y-3 text-sm">
                         {cert.subCourses.map((sub) => (
-                        <div key={sub.title} className={`flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'}`}>
+                        <div key={sub.title} className="flex flex-col items-start">
                             <div className="flex items-start gap-1.5">
                                 <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
-                                <span className="text-muted-foreground lg:text-base text-left">{sub.title}</span>
+                                <span className="text-muted-foreground lg:text-base">{sub.title}</span>
                             </div>
                             {sub.link && (
                             <Button
                                 asChild
                                 variant="link"
                                 size="sm"
-                                className="p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1 ml-6 md:ml-0"
+                                className="p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1 ml-6"
                             >
                                 <Link
                                 href={sub.link}
