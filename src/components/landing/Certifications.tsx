@@ -71,7 +71,7 @@ export default function Certifications() {
                                 <BadgeCheck className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
                                 <span className="text-muted-foreground lg:text-base">{sub.title}</span>
                             </div>
-                            {sub.credentialId && (
+                            {sub.link && (
                             <Button
                                 asChild
                                 variant="link"
@@ -79,7 +79,7 @@ export default function Certifications() {
                                 className={`p-0 h-auto text-gray-400 hover:text-white lg:text-base -mt-1 ml-6 ${isEven ? 'md:ml-0 md:mr-6' : 'md:ml-6'}`}
                             >
                                 <Link
-                                href={`https://www.coursera.org/account/accomplishments/verify/${sub.credentialId}`}
+                                href={sub.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 >
