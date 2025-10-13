@@ -308,6 +308,7 @@ export const certificationsData = [
       { title: 'Get Started with Python by Google', credentialId: 'RXQKAZHPG167', link: 'https://www.coursera.org/account/accomplishments/verify/RXQKAZHPG167' },
       { title: 'Go Beyond the Numbers: Translate Data into Insights', credentialId: 'D7D6E2PK7YJF', link: 'https://www.coursera.org/account/accomplishments/verify/D7D6E2PK7YJF' },
       { title: 'The Power of Statistics', credentialId: '', link: 'https://coursera.org/share/2714b2563d7ab4d1059e66e3a4623ef0' },
+      { title: 'Regression Analysis: Simplify Complex Data Relationships', credentialId: '', link: 'https://coursera.org/share/0a78c617f413c83d4f3d8f380bdea313' },
     ]
   },
   {
