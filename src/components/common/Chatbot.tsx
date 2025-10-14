@@ -21,6 +21,7 @@ export default function Chatbot() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [showHint, setShowHint] = useState(false);
+  const [hasBeenOpened, setHasBeenOpened] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   // Show hint on initial load
@@ -28,35 +29,42 @@ export default function Chatbot() {
     const hintTimer = setTimeout(() => setShowHint(true), 1500); // show after 1.5s
     const hideTimer = setTimeout(() => setShowHint(false), 8000); // hide after 8s
     return () => {
-        clearTimeout(hintTimer);
-        clearTimeout(hideTimer);
+      clearTimeout(hintTimer);
+      clearTimeout(hideTimer);
     };
   }, []);
 
   useEffect(() => {
     if (isOpen) {
-        setShowHint(false); // Hide hint if user opens chat
-        if (messages.length === 0) {
-            setLoading(true);
-            setTimeout(() => {
-                setMessages([
-                {
-                    role: 'model',
-                    content: "Hi there! I'm Clippy's Ghost, Steffin's AI assistant. Ask me anything about his skills, projects, or experience!",
-                },
-                ]);
-                setLoading(false);
-            }, 1000);
-        }
+      if (!hasBeenOpened) {
+        setHasBeenOpened(true);
+      }
+      setShowHint(false); // Hide hint if user opens chat
+      if (messages.length === 0) {
+        setLoading(true);
+        setTimeout(() => {
+          setMessages([
+            {
+              role: 'model',
+              content:
+                "Hi there! I'm Clippy's Ghost, Steffin's AI assistant. Ask me anything about his skills, projects, or experience!",
+            },
+          ]);
+          setLoading(false);
+        }, 1000);
+      }
     }
-  }, [isOpen, messages.length]);
+  }, [isOpen, messages.length, hasBeenOpened]);
 
   useEffect(() => {
     if (scrollAreaRef.current) {
-        const viewport = scrollAreaRef.current.querySelector('[data-radix-scroll-area-viewport]');
-        if(viewport) {
-            viewport.scrollTop = viewport.scrollHeight;
-        }
+      const viewport =
+        scrollAreaRef.current.querySelector(
+          '[data-radix-scroll-area-viewport]'
+        );
+      if (viewport) {
+        viewport.scrollTop = viewport.scrollHeight;
+      }
     }
   }, [messages, loading]);
 
@@ -69,16 +77,17 @@ export default function Chatbot() {
     setLoading(true);
 
     try {
-      const result = await portfolioChatbot({ 
-          query: input,
-          history: messages 
-        });
+      const result = await portfolioChatbot({
+        query: input,
+        history: messages,
+      });
       const modelMessage: Message = { role: 'model', content: result.answer };
       setMessages((prev) => [...prev, modelMessage]);
     } catch (error) {
       const errorMessage: Message = {
         role: 'model',
-        content: "Sorry, I'm having a little trouble connecting to my brain right now. Please try again in a moment.",
+        content:
+          "Sorry, I'm having a little trouble connecting to my brain right now. Please try again in a moment.",
       };
       setMessages((prev) => [...prev, errorMessage]);
       console.error('Chatbot error:', error);
@@ -89,39 +98,68 @@ export default function Chatbot() {
 
   return (
     <>
-      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-4">
+      <div className="fixed bottom-6 right-6 z-50 flex items-end gap-3">
         <AnimatePresence>
-            {showHint && !isOpen && (
-                <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.3 }}
-                    className="bg-card/90 backdrop-blur-md text-card-foreground p-3 rounded-lg shadow-lg border border-white/10 flex items-center gap-2"
-                >
-                    <MessageSquare className="h-5 w-5 text-primary" />
-                    <span className="text-sm font-medium">Chat with my AI assistant!</span>
-                </motion.div>
-            )}
+          {showHint && !isOpen && (
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.3 }}
+              className="bg-card/90 backdrop-blur-md text-card-foreground p-3 rounded-lg shadow-lg border border-white/10 flex items-center gap-2 cursor-pointer hover:scale-105 transition-transform"
+              onClick={() => setIsOpen(true)}
+            >
+              <MessageSquare className="h-5 w-5 text-primary" />
+              <span className="text-sm font-medium">
+                Chat with my AI assistant!
+              </span>
+            </motion.div>
+          )}
         </AnimatePresence>
-        <Button
-          onClick={() => setIsOpen(!isOpen)}
-          size="icon"
-          className="rounded-full w-16 h-16 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg transform-gpu transition-all duration-300 hover:scale-110"
-          aria-label="Toggle Chatbot"
+        <motion.div
+          animate={!hasBeenOpened ? {
+            scale: [1, 1.1, 1, 1.1, 1, 1],
+            rotate: [0, -5, 5, -5, 5, 0],
+          } : {}}
+          transition={!hasBeenOpened ? {
+            duration: 1.5,
+            ease: 'easeInOut',
+            delay: 1.5,
+            repeat: 2,
+            repeatDelay: 4,
+          } : {}}
         >
-          <AnimatePresence mode="wait">
-            {isOpen ? (
-                 <motion.div key="x" initial={{scale:0.5, rotate: -90}} animate={{scale:1, rotate:0}} exit={{scale:0.5, rotate: 90}} transition={{duration: 0.2}}>
-                    <X className="h-8 w-8" />
-                 </motion.div>
-            ) : (
-                <motion.div key="bot" initial={{scale:0.5, rotate: 90}} animate={{scale:1, rotate:0}} exit={{scale:0.5, rotate: -90}} transition={{duration: 0.2}}>
-                    <Bot className="h-8 w-8" />
+          <Button
+            onClick={() => setIsOpen(!isOpen)}
+            size="icon"
+            className="rounded-full w-16 h-16 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg transform-gpu transition-all duration-300 hover:scale-110"
+            aria-label="Toggle Chatbot"
+          >
+            <AnimatePresence mode="wait">
+              {isOpen ? (
+                <motion.div
+                  key="x"
+                  initial={{ scale: 0.5, rotate: -90 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  exit={{ scale: 0.5, rotate: 90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X className="h-8 w-8" />
                 </motion.div>
-            )}
-          </AnimatePresence>
-        </Button>
+              ) : (
+                <motion.div
+                  key="bot"
+                  initial={{ scale: 0.5, rotate: 90 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  exit={{ scale: 0.5, rotate: -90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Bot className="h-8 w-8" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </Button>
+        </motion.div>
       </div>
 
       <AnimatePresence>
@@ -134,8 +172,10 @@ export default function Chatbot() {
             className="fixed bottom-24 right-6 z-50 w-[90vw] max-w-sm h-[70vh] max-h-[600px] bg-gray-900/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 flex flex-col"
           >
             <header className="p-4 border-b border-white/20 flex items-center gap-3">
-                <Bot className="h-7 w-7 text-white"/>
-                <h3 className="text-lg font-bold text-white font-headline">Clippy's Ghost</h3>
+              <Bot className="h-7 w-7 text-white" />
+              <h3 className="text-lg font-bold text-white font-headline">
+                Clippy's Ghost
+              </h3>
             </header>
 
             <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
@@ -149,11 +189,13 @@ export default function Chatbot() {
                     )}
                   >
                     {message.role === 'model' && (
-                        <Avatar className="w-8 h-8 border-2 border-primary">
-                            <AvatarFallback><Bot size={20}/></AvatarFallback>
-                        </Avatar>
+                      <Avatar className="w-8 h-8 border-2 border-primary">
+                        <AvatarFallback>
+                          <Bot size={20} />
+                        </AvatarFallback>
+                      </Avatar>
                     )}
-                     <div
+                    <div
                       className={cn(
                         'rounded-xl px-4 py-2 max-w-[80%]',
                         message.role === 'user'
@@ -163,26 +205,30 @@ export default function Chatbot() {
                     >
                       <p className="text-sm lg:text-base">{message.content}</p>
                     </div>
-                     {message.role === 'user' && (
-                        <Avatar className="w-8 h-8 border-2 border-gray-500">
-                             <AvatarFallback><User size={20}/></AvatarFallback>
-                        </Avatar>
+                    {message.role === 'user' && (
+                      <Avatar className="w-8 h-8 border-2 border-gray-500">
+                        <AvatarFallback>
+                          <User size={20} />
+                        </AvatarFallback>
+                      </Avatar>
                     )}
                   </div>
                 ))}
-                 {loading && (
-                    <div className="flex items-start gap-3 justify-start">
-                         <Avatar className="w-8 h-8 border-2 border-primary">
-                            <AvatarFallback><Bot size={20}/></AvatarFallback>
-                        </Avatar>
-                        <div className="rounded-xl px-4 py-2 bg-gray-800/80 text-white">
-                            <Loader2 className="h-5 w-5 animate-spin" />
-                        </div>
+                {loading && (
+                  <div className="flex items-start gap-3 justify-start">
+                    <Avatar className="w-8 h-8 border-2 border-primary">
+                      <AvatarFallback>
+                        <Bot size={20} />
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="rounded-xl px-4 py-2 bg-gray-800/80 text-white">
+                      <Loader2 className="h-5 w-5 animate-spin" />
                     </div>
+                  </div>
                 )}
               </div>
             </ScrollArea>
-            
+
             <footer className="p-4 border-t border-white/20">
               <form
                 onSubmit={(e) => {
@@ -198,7 +244,12 @@ export default function Chatbot() {
                   className="bg-gray-800/80 border-gray-600 text-white focus:ring-accent"
                   autoFocus
                 />
-                <Button type="submit" size="icon" className="rounded-full flex-shrink-0" disabled={loading}>
+                <Button
+                  type="submit"
+                  size="icon"
+                  className="rounded-full flex-shrink-0"
+                  disabled={loading}
+                >
                   <Send className="h-5 w-5" />
                 </Button>
               </form>
