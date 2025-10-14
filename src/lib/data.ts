@@ -322,7 +322,7 @@ export const certificationsData = [
   {
     title: 'Data Visualization: Storytelling',
     issuer: 'LinkedIn Learning',
-    date: 'Aug 2025',
+    date: '',
     credentialId: '4d359ab5c27883832a425b809216472c29e5b4be6074fa93db9b6388907612cc',
     link: 'https://www.linkedin.com/learning/certificates/4d359ab5c27883832a425b809216472c29e5b4be6074fa93db9b6388907612cc?trk=share_certificate',
     subCourses: []
