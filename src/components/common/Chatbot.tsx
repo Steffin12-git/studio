@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, X, Send, User, Loader2 } from 'lucide-react';
+import { Bot, X, Send, User, Loader2, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -20,20 +20,34 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showHint, setShowHint] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
+  // Show hint on initial load
   useEffect(() => {
-    if (isOpen && messages.length === 0) {
-      setLoading(true);
-      setTimeout(() => {
-        setMessages([
-          {
-            role: 'model',
-            content: "Hi there! I'm Clippy's Ghost, Steffin's AI assistant. Ask me anything about his skills, projects, or experience!",
-          },
-        ]);
-        setLoading(false);
-      }, 1000);
+    const hintTimer = setTimeout(() => setShowHint(true), 1500); // show after 1.5s
+    const hideTimer = setTimeout(() => setShowHint(false), 8000); // hide after 8s
+    return () => {
+        clearTimeout(hintTimer);
+        clearTimeout(hideTimer);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+        setShowHint(false); // Hide hint if user opens chat
+        if (messages.length === 0) {
+            setLoading(true);
+            setTimeout(() => {
+                setMessages([
+                {
+                    role: 'model',
+                    content: "Hi there! I'm Clippy's Ghost, Steffin's AI assistant. Ask me anything about his skills, projects, or experience!",
+                },
+                ]);
+                setLoading(false);
+            }, 1000);
+        }
     }
   }, [isOpen, messages.length]);
 
@@ -75,15 +89,37 @@ export default function Chatbot() {
 
   return (
     <>
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-4">
+        <AnimatePresence>
+            {showHint && !isOpen && (
+                <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-card/90 backdrop-blur-md text-card-foreground p-3 rounded-lg shadow-lg border border-white/10 flex items-center gap-2"
+                >
+                    <MessageSquare className="h-5 w-5 text-primary" />
+                    <span className="text-sm font-medium">Chat with my AI assistant!</span>
+                </motion.div>
+            )}
+        </AnimatePresence>
         <Button
           onClick={() => setIsOpen(!isOpen)}
           size="icon"
-          className="rounded-full w-16 h-16 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg"
+          className="rounded-full w-16 h-16 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg transform-gpu transition-all duration-300 hover:scale-110"
           aria-label="Toggle Chatbot"
         >
-          <AnimatePresence>
-            {isOpen ? <X className="h-8 w-8" /> : <Bot className="h-8 w-8" />}
+          <AnimatePresence mode="wait">
+            {isOpen ? (
+                 <motion.div key="x" initial={{scale:0.5, rotate: -90}} animate={{scale:1, rotate:0}} exit={{scale:0.5, rotate: 90}} transition={{duration: 0.2}}>
+                    <X className="h-8 w-8" />
+                 </motion.div>
+            ) : (
+                <motion.div key="bot" initial={{scale:0.5, rotate: 90}} animate={{scale:1, rotate:0}} exit={{scale:0.5, rotate: -90}} transition={{duration: 0.2}}>
+                    <Bot className="h-8 w-8" />
+                </motion.div>
+            )}
           </AnimatePresence>
         </Button>
       </div>
