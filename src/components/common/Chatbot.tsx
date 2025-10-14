@@ -26,8 +26,8 @@ export default function Chatbot() {
 
   // Show hint on initial load
   useEffect(() => {
-    const hintTimer = setTimeout(() => setShowHint(true), 1500); // show after 1.5s
-    const hideTimer = setTimeout(() => setShowHint(false), 8000); // hide after 8s
+    const hintTimer = setTimeout(() => setShowHint(true), 2500); // show after 2.5s
+    const hideTimer = setTimeout(() => setShowHint(false), 10000); // hide after 10s
     return () => {
       clearTimeout(hintTimer);
       clearTimeout(hideTimer);
@@ -106,13 +106,25 @@ export default function Chatbot() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.3 }}
-              className="bg-card/90 backdrop-blur-md text-card-foreground p-3 rounded-lg shadow-lg border border-white/10 flex items-center gap-2 cursor-pointer hover:scale-105 transition-transform"
+              className="relative bg-card/90 backdrop-blur-md text-card-foreground p-4 rounded-xl shadow-lg border border-white/10 cursor-pointer hover:scale-105 transition-transform max-w-xs"
               onClick={() => setIsOpen(true)}
             >
-              <MessageSquare className="h-5 w-5 text-primary" />
-              <span className="text-sm font-medium">
-                Chat with my AI assistant!
-              </span>
+              {/* Speech bubble arrow */}
+              <div className="absolute top-1/2 -right-2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 border-l-card/90"></div>
+              
+              <div className="flex items-start gap-3">
+                  <Avatar className="w-8 h-8 border-2 border-primary flex-shrink-0">
+                      <AvatarFallback>
+                          <Bot size={20} />
+                      </AvatarFallback>
+                  </Avatar>
+                  <div>
+                      <p className="text-sm font-semibold text-white">Clippy's Ghost</p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                          Hello! I'm Steffin's AI assistant. How can I help you?
+                      </p>
+                  </div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -124,7 +136,7 @@ export default function Chatbot() {
           transition={!hasBeenOpened ? {
             duration: 1.5,
             ease: 'easeInOut',
-            delay: 1.5,
+            delay: 2.5,
             repeat: 2,
             repeatDelay: 4,
           } : {}}
