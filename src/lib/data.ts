@@ -314,7 +314,7 @@ export const certificationsData = [
   {
     title: 'Tata – GenAI Powered Data Analytics Job Simulation',
     issuer: 'Forage',
-    date: 'Jul 2024',
+    date: '',
     credentialId: 'NuHRWm9P9qb79BuPH',
     link: 'https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_Gh9rGJRanLRb9Tir8_1752503272153_completion_certificate.pdf',
     subCourses: []
