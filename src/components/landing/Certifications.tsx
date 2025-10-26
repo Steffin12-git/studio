@@ -120,7 +120,7 @@ export default function Certifications() {
                         <Award className="h-5 w-5" />
                     </motion.div>
                     
-                    <div className={`ml-16 md:ml-0 ${isEven ? 'md:col-start-1 md:row-start-1 md:text-right' : 'md:col-start-3 md:text-left'}`}>
+                    <div className={`ml-16 md:ml-0 ${isEven ? 'md:col-start-1 md:row-start-1 text-left' : 'md:col-start-3 md:text-left'}`}>
                         <motion.div
                             initial={{ opacity: 0, x: isEven ? -50 : 50 }}
                             className="cert-item-content rounded-lg bg-card/70 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white/10 hover:border-primary/50"

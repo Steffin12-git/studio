@@ -92,7 +92,7 @@ export default function Contact() {
         <div className="container mx-auto bg-card/50 backdrop-blur-md p-8 md-p-12 rounded-2xl border border-white/10 shadow-xl">
             <div className="text-center">
                 <AnimatedTitle text="Get In Touch" />
-                <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto lg:text-xl">
+                <p className="mt-4 text-base text-muted-foreground max-w-2xl mx-auto lg:text-lg">
                 Have a question or want to work together? Drop me a message!
                 </p>
             </div>
@@ -105,9 +105,9 @@ export default function Contact() {
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                            <FormLabel className="text-muted-foreground lg:text-base">Name</FormLabel>
+                            <FormLabel className="text-muted-foreground lg:text-sm">Name</FormLabel>
                             <FormControl>
-                                <Input placeholder="Your Name" {...field} className="bg-background/80 border-border text-foreground focus:ring-accent lg:text-base" />
+                                <Input placeholder="Your Name" {...field} className="bg-background/80 border-border text-foreground focus:ring-accent lg:text-sm" />
                             </FormControl>
                             <FormMessage />
                             </FormItem>
@@ -118,9 +118,9 @@ export default function Contact() {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                            <FormLabel className="text-muted-foreground lg:text-base">Email</FormLabel>
+                            <FormLabel className="text-muted-foreground lg:text-sm">Email</FormLabel>
                             <FormControl>
-                                <Input placeholder="your.email@example.com" {...field} className="bg-background/80 border-border text-foreground focus:ring-accent lg:text-base"/>
+                                <Input placeholder="your.email@example.com" {...field} className="bg-background/80 border-border text-foreground focus:ring-accent lg:text-sm"/>
                             </FormControl>
                             <FormMessage />
                             </FormItem>
@@ -131,11 +131,11 @@ export default function Contact() {
                         name="message"
                         render={({ field }) => (
                             <FormItem>
-                            <FormLabel className="text-muted-foreground lg:text-base">Message</FormLabel>
+                            <FormLabel className="text-muted-foreground lg:text-sm">Message</FormLabel>
                             <FormControl>
                                 <Textarea
                                 placeholder="Tell me what's on your mind..."
-                                className="min-h-[120px] bg-background/80 border-border text-foreground focus:ring-accent lg:text-base"
+                                className="min-h-[120px] bg-background/80 border-border text-foreground focus:ring-accent lg:text-sm"
                                 {...field}
                                 />
                             </FormControl>
@@ -144,7 +144,7 @@ export default function Contact() {
                         )}
                         />
                         <div className="text-center pt-2">
-                        <Button type="submit" size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-10 py-3 text-lg lg:text-xl lg:py-4" disabled={isSubmitting}>
+                        <Button type="submit" size="lg" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group w-full px-8 py-3 text-lg lg:text-xl lg:py-3" disabled={isSubmitting}>
                             {isSubmitting ? (
                                 <>
                                 <Loader2 className="mr-2 h-5 w-5 animate-spin" /> Sending...
@@ -160,7 +160,7 @@ export default function Contact() {
                     </Form>
                 </div>
                 <div className="space-y-6">
-                    <h3 className="text-2xl font-bold text-white lg:text-3xl">Quick Contact</h3>
+                    <h3 className="text-xl font-bold text-white lg:text-2xl">Quick Contact</h3>
                     {contactLinks.map(link => (
                         <div key={link.name} className="flex items-start gap-4 p-4 rounded-lg bg-card/70 border border-white/10 shadow-lg">
                             <div className="bg-secondary p-3 rounded-full">

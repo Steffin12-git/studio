@@ -106,14 +106,14 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-xl font-bold text-white lg:text-2xl">{title}</h3>
+        <h3 className="text-xl font-bold text-white lg:text-xl">{title}</h3>
         <div className="mt-2 flex flex-wrap gap-2">
-            {tags.map(tag => <Badge key={tag} variant="secondary" className="bg-gray-700/70 text-gray-200 border border-gray-500/80 lg:text-sm">{tag}</Badge>)}
+            {tags.map(tag => <Badge key={tag} variant="secondary" className="bg-gray-700/70 text-gray-200 border border-gray-500/80 text-xs lg:text-sm">{tag}</Badge>)}
         </div>
-        <p className="mt-4 flex-1 text-gray-300 lg:text-base">{description}</p>
+        <p className="mt-4 flex-1 text-gray-300 text-sm lg:text-base">{description}</p>
         <div className="mt-6 flex items-center justify-between">
           <div className="flex gap-2">
-            <Button size="sm" asChild className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg lg:text-base lg:px-4 lg:py-2">
+            <Button size="sm" asChild className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg text-sm lg:text-base lg:px-4 lg:py-2">
               <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
                 <Github className="mr-1 h-4 w-4" />
                 GitHub
@@ -121,14 +121,14 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
             </Button>
             <Dialog>
               <DialogTrigger asChild>
-                <Button size="sm" variant="secondary" className="rounded-full bg-gray-800 text-white hover:bg-gray-700 lg:text-base lg:px-4 lg:py-2">
+                <Button size="sm" variant="secondary" className="rounded-full bg-gray-800 text-white hover:bg-gray-700 text-sm lg:text-base lg:px-4 lg:py-2">
                   <FileText className="mr-1 h-4 w-4" />
                   View Details
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-4xl h-[90vh] bg-gray-900/50 backdrop-blur-xl border border-white/20 text-foreground flex flex-col p-0">
                 <DialogHeader className="p-6 pb-0 flex-shrink-0">
-                  <DialogTitle className="font-headline text-2xl text-white lg:text-3xl">{title}</DialogTitle>
+                  <DialogTitle className="font-headline text-xl text-white lg:text-2xl">{title}</DialogTitle>
                 </DialogHeader>
                 <ScrollArea className="flex-1 overflow-y-auto">
                     <div className="p-6 space-y-6">
@@ -142,8 +142,8 @@ export function ProjectCard({ title, description, tags, image, githubUrl, detail
                                 />
                             </div>
                         ))}
-                        <div className="text-left prose prose-base prose-invert max-w-none text-muted-foreground 
-                        [&_h3]:text-white [&_h3]:font-headline [&_h3]:text-xl [&_h3]:border-b [&_h3]:border-accent/50 [&_h3]:pb-2 [&_h3]:mb-3 [&_h3]:mt-6 
+                        <div className="text-left prose prose-sm prose-invert max-w-none text-muted-foreground 
+                        [&_h3]:text-white [&_h3]:font-headline [&_h3]:text-lg [&_h3]:border-b [&_h3]:border-accent/50 [&_h3]:pb-2 [&_h3]:mb-3 [&_h3]:mt-6 
                         [&_p]:my-2 [&_p]:leading-relaxed [&_p]:text-gray-300
                         [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2
                         [&_li]:my-1 [&_li]:text-gray-300

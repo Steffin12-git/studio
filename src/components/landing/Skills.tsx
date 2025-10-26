@@ -63,7 +63,7 @@ export default function Skills() {
       <div className="container mx-auto bg-card/50 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-xl">
         <div className="text-center">
           <AnimatedTitle text="Technical Proficiency" />
-          <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto lg:text-xl">
+          <p className="mt-4 text-base text-muted-foreground max-w-3xl mx-auto lg:text-lg">
             My comprehensive toolkit for turning data into insights, showcasing my proficiency across various technologies.
           </p>
         </div>
@@ -91,7 +91,7 @@ export default function Skills() {
                         <CheckCircle2 className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <span className="text-muted-foreground lg:text-base border-b border-dashed border-muted-foreground/50 cursor-help">{skill.name}</span>
+                            <span className="text-muted-foreground text-sm lg:text-base border-b border-dashed border-muted-foreground/50 cursor-help">{skill.name}</span>
                           </TooltipTrigger>
                           <TooltipContent>
                             <p>{skill.tooltip}</p>

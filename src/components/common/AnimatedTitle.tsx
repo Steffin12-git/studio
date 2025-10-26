@@ -41,7 +41,7 @@ export function AnimatedTitle({ text, className = '' }: AnimatedTitleProps) {
 
   return (
     <motion.h2
-      className={`text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl font-headline text-center ${className}`}
+      className={`text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl font-headline text-center ${className}`}
       variants={container}
       initial="hidden"
       whileInView="visible"

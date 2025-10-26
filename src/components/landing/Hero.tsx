@@ -20,11 +20,11 @@ export default function Hero() {
     <div id="home" className="flex h-screen items-center justify-center text-center">
       <AnimatedSection id="hero-content">
         <div className="mx-auto max-w-5xl">
-          <h1 className="font-headline text-5xl font-bold tracking-tight text-white sm:text-7xl lg:text-8xl">
+          <h1 className="font-headline text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
             Steffin Thomas
           </h1>
 
-          <div className="mt-6 text-lg tracking-tight text-gray-200 min-h-[3em] lg:text-xl">
+          <div className="mt-6 text-base tracking-tight text-gray-200 min-h-[3em] lg:text-lg">
             <Typewriter texts={texts} typingSpeed={50} deletingSpeed={30} />
           </div>
 
@@ -35,7 +35,7 @@ export default function Hero() {
                 size="lg"
                 variant="secondary"
                 asChild
-                className="w-full sm:w-auto rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg lg:text-lg lg:px-10 lg:py-7 border-2 border-primary/30 hover:bg-primary hover:border-primary hover:text-primary-foreground"
+                className="w-full sm:w-auto rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg lg:text-base lg:px-8 lg:py-6 border-2 border-primary/30 hover:bg-primary hover:border-primary hover:text-primary-foreground"
               >
                 <Link href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
                    {typeof link.icon !== 'function' && link.icon.type === 'img' ? (
