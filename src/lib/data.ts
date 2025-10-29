@@ -311,7 +311,8 @@ export const certificationsData = [
       { title: 'The Power of Statistics', credentialId: '', link: 'https://coursera.org/share/2714b2563d7ab4d1059e66e3a4623ef0' },
       { title: 'Regression Analysis: Simplify Complex Data Relationships', credentialId: '', link: 'https://coursera.org/share/0a78c617f413c83d4f3d8f380bdea313' },
       { title: 'The Nuts and Bolts of Machine Learning', credentialId: '', link: 'https://coursera.org/share/dd166fd02392a9e0ec6e5939efc3fa30' },
-      { title: 'Google Advanced Data Analytics Capstone', credentialId: '', link: 'https://coursera.org/share/fc1af344bb9bdb16ce239ffad5e654df'}
+      { title: 'Google Advanced Data Analytics Capstone', credentialId: '', link: 'https://coursera.org/share/fc1af344bb9bdb16ce239ffad5e654df'},
+      { title: 'Accelerate Your Job Search with AI', credentialId: '', link: 'https://coursera.org/share/6e23a2066875073d3a6cac4fae78bcb3' }
     ]
   },
   {
