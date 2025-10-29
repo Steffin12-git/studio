@@ -64,8 +64,22 @@ export default function Certifications() {
                         {cert.issuer} {cert.date && `• ${cert.date}`}
                     </p>
                     <h3 className="mt-1 text-lg font-bold text-white lg:text-xl">{cert.title}</h3>
+                    
+                    {cert.link && cert.link !== '#' && (
+                        <Button
+                            asChild
+                            variant="link"
+                            size="sm"
+                            className="p-0 h-auto mt-1 text-muted-foreground hover:text-white lg:text-base"
+                        >
+                            <Link href={cert.link} target="_blank" rel="noopener noreferrer">
+                                View Credential <ExternalLink className="ml-2 h-4 w-4" />
+                            </Link>
+                        </Button>
+                    )}
+
                     {cert.subCourses && cert.subCourses.length > 0 && (
-                    <div className="mt-3 space-y-3 text-sm">
+                    <div className="mt-4 space-y-3 text-sm">
                         {cert.subCourses.map((sub) => (
                         <div key={sub.title} className="flex flex-col items-start">
                             <div className="flex items-start gap-1.5">
@@ -91,18 +105,6 @@ export default function Certifications() {
                         </div>
                         ))}
                     </div>
-                    )}
-                    {cert.link && cert.link !== '#' && (
-                    <Button
-                        asChild
-                        variant="link"
-                        size="sm"
-                        className="p-0 h-auto mt-3 text-muted-foreground hover:text-white lg:text-base"
-                    >
-                        <Link href={cert.link} target="_blank" rel="noopener noreferrer">
-                        View Credential <ExternalLink className="ml-2 h-4 w-4" />
-                        </Link>
-                    </Button>
                     )}
                 </div>
             );
