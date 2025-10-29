@@ -5,7 +5,7 @@ import { AnimatedTitle } from '../common/AnimatedTitle';
 const keyStrengths = [
   "Data Analysis & Visualization (Python, SQL, Power BI, Tableau)",
   "Predictive Modeling & Machine Learning (Scikit-learn, XGBoost)",
-  "Statistical Analysis & A/B Testing",
+  "Statistical Analysis & A/B Testing (Statsmodels)",
   "Translating Data into Actionable Business Strategy",
   "Data Storytelling & Stakeholder Communication",
   "Critical Thinking & Detail-Oriented Problem Solving",
