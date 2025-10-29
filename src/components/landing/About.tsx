@@ -18,7 +18,7 @@ export default function About() {
         <AnimatedTitle text="About Me" />
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="text-left">
-                <p className="text-base leading-7 text-muted-foreground max-w-4xl mx-auto lg:text-lg lg:leading-8">
+                <p className="text-base leading-7 text-muted-foreground max-w-4xl mx-auto lg:text-lg lg:leading-8 text-justify">
                 {about.bio}
                 </p>
             </div>
