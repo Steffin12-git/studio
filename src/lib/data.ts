@@ -43,7 +43,11 @@ export const socialLinks: { name: string; url: string; icon: IconType }[] = [
 ];
 
 export const about = {
-  bio: 'Hi there! 👋 I’m a data-driven problem solver passionate about transforming complex datasets into actionable insights that drive real business impact.  I specialize in exploratory data analysis, visualization, and predictive modeling, leveraging tools like Python, SQL, Power BI, Tableau, and Excel to uncover trends and optimize performance. My hands-on experience spans machine learning algorithms such as logistic regression, decision trees, random forests, and clustering, as well as advanced ensemble methods like AdaBoost and XGBoost for scalable, high-accuracy predictions.  With a strong foundation in statistical analysis, hypothesis testing, and A/B experimentation, I love bridging the gap between data and decision-making. I thrive on feature engineering, model evaluation, and performance tuning, ensuring every insight is both reliable and actionable.  Curiosity, precision, and clear communication drive my work—whether I’m building predictive systems, designing interactive dashboards, or telling stories that make data come alive.',
+  bio: `Hi there! 👋 I’m a data-driven problem solver passionate about transforming complex datasets into actionable insights that drive real business impact.
+I specialize in exploratory data analysis, visualization, and predictive modeling, leveraging tools like Python, SQL, Power BI, Tableau, and Excel to uncover trends and optimize performance.
+My hands-on experience spans machine learning algorithms such as logistic regression, decision trees, random forests, and clustering, as well as advanced ensemble methods like AdaBoost and XGBoost for scalable, high-accuracy predictions.
+With a strong foundation in statistical analysis, hypothesis testing, and A/B experimentation, I love bridging the gap between data and decision-making. I thrive on feature engineering, model evaluation, and performance tuning, ensuring every insight is both reliable and actionable.
+Curiosity, precision, and clear communication drive my work—whether I’m building predictive systems, designing interactive dashboards, or telling stories that make data come alive.`,
 };
 
 export const skillsData = [
@@ -356,3 +360,4 @@ export const experienceData = [
     
 
     
+

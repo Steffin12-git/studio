@@ -13,14 +13,18 @@ const keyStrengths = [
 ];
 
 export default function About() {
+  const bioParagraphs = about.bio.split('\n');
+
   return (
       <div className="container mx-auto bg-card/50 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-xl">
         <AnimatedTitle text="About Me" />
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="text-left">
-                <p className="text-base leading-7 text-muted-foreground max-w-4xl mx-auto lg:text-lg lg:leading-8 text-justify">
-                {about.bio}
+            <div className="text-left space-y-4">
+              {bioParagraphs.map((paragraph, index) => (
+                <p key={index} className="text-base leading-7 text-muted-foreground max-w-4xl mx-auto lg:text-lg lg:leading-8 text-justify">
+                  {paragraph}
                 </p>
+              ))}
             </div>
             <div className="space-y-4">
                 <h3 className="text-xl font-bold text-white text-center md:text-left lg:text-2xl">My Key Strengths</h3>
