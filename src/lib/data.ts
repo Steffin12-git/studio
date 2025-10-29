@@ -301,8 +301,8 @@ export const certificationsData = [
     {
     title: 'Google Advanced Data Analytics',
     issuer: 'Coursera',
-    date: 'Oct 2025',
-    credentialId: '',
+    date: '',
+    credentialId: 'dd965140d7ce614f94db6602cbe936cf',
     link: 'https://coursera.org/share/dd965140d7ce614f94db6602cbe936cf',
     subCourses: [
       { title: 'Foundations of Data Science by Google', credentialId: '74A181Q36TFM', link: 'https://www.coursera.org/account/accomplishments/verify/74A181Q36TFM' },
@@ -350,5 +350,7 @@ export const experienceData = [
     description: 'Leveraging strong frontend expertise to build robust API integrations and scalable UI components. Proactively handled complex data structures and contributed to the development of intuitive interfaces, demonstrating a keen eye for data flow and visualization.',
   },
 ];
+
+    
 
     
