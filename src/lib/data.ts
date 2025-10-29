@@ -65,6 +65,7 @@ export const skillsData = [
         { name: "Data Cleaning", tooltip: "Processed raw API data, handled missing values, and ensured data integrity for dashboards." },
         { name: "Anomaly Detection", tooltip: "Identified unusual spikes in COVID-19 data to flag potential outbreaks." },
         { name: "Statistical Analysis", tooltip: "Applied statistical methods to validate hypotheses and derive business insights." },
+        { name: "Statsmodels", tooltip: "Used for in-depth statistical modeling and hypothesis testing in Python." },
         { name: "Forecasting & Projections", tooltip: "Projected 2030 EV market sales using CAGR assumptions in Power BI." },
         { name: "A/B Testing", tooltip: "Experience in designing and analyzing A/B tests to drive product decisions." }
     ]
@@ -350,6 +351,8 @@ export const experienceData = [
     description: 'Leveraging strong frontend expertise to build robust API integrations and scalable UI components. Proactively handled complex data structures and contributed to the development of intuitive interfaces, demonstrating a keen eye for data flow and visualization.',
   },
 ];
+
+    
 
     
 
