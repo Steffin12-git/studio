@@ -6,8 +6,9 @@ const keyStrengths = [
   "Data Analysis & Visualization (Python, SQL, Power BI, Tableau)",
   "Predictive Modeling & Machine Learning (Scikit-learn, XGBoost)",
   "Statistical Analysis & A/B Testing",
-  "Feature Engineering & Performance Tuning",
+  "Translating Data into Actionable Business Strategy",
   "Data Storytelling & Stakeholder Communication",
+  "Critical Thinking & Detail-Oriented Problem Solving",
 ];
 
 export default function About() {
