@@ -43,7 +43,7 @@ export const socialLinks: { name: string; url: string; icon: IconType }[] = [
 ];
 
 export const about = {
-  bio: 'Results-driven Data Analyst with expertise in SQL, Python, Power BI, and BigQuery. Skilled in building ETL pipelines, predictive models, and interactive dashboards that turn raw data into actionable business insights. Transitioning from frontend development, bringing a strong foundation in automation, data storytelling, and visualization.',
+  bio: 'Analytical and detail-oriented data professional with hands-on experience in exploratory data analysis, data visualization, statistical modeling, and predictive analytics. Skilled in transforming complex data into actionable business insights using Python, SQL, Power BI, Tableau, and Excel. Proficient in applying machine learning algorithms such as logistic regression, decision trees, random forests, and clustering to solve real-world problems. Strong foundation in data preprocessing, feature engineering, and model evaluation, combined with excellent problem-solving, communication, and storytelling skills. Passionate about leveraging data-driven strategies to optimize performance, enhance decision-making, and drive measurable impact across business domains.',
 };
 
 export const skillsData = [
