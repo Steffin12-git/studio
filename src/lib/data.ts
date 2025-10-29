@@ -44,9 +44,13 @@ export const socialLinks: { name: string; url: string; icon: IconType }[] = [
 
 export const about = {
   bio: `Hi there! 👋 I’m a data-driven problem solver passionate about transforming complex datasets into actionable insights that drive real business impact.
+
 I specialize in exploratory data analysis, visualization, and predictive modeling, leveraging tools like Python, SQL, Power BI, Tableau, and Excel to uncover trends and optimize performance.
+
 My hands-on experience spans machine learning algorithms such as logistic regression, decision trees, random forests, and clustering, as well as advanced ensemble methods like AdaBoost and XGBoost for scalable, high-accuracy predictions.
+
 With a strong foundation in statistical analysis, hypothesis testing, and A/B experimentation, I love bridging the gap between data and decision-making. I thrive on feature engineering, model evaluation, and performance tuning, ensuring every insight is both reliable and actionable.
+
 Curiosity, precision, and clear communication drive my work—whether I’m building predictive systems, designing interactive dashboards, or telling stories that make data come alive.`,
 };
 
@@ -68,7 +72,7 @@ export const skillsData = [
     skills: [
         { name: "Data Cleaning", tooltip: "Processed raw API data, handled missing values, and ensured data integrity for dashboards." },
         { name: "Anomaly Detection", tooltip: "Identified unusual spikes in COVID-19 data to flag potential outbreaks." },
-        { name: "Statistical Analysis", tooltip: "Applied statistical methods to validate hypotheses and derive business insights." },
+        { name: "Statistical Analysis (Statsmodels)", tooltip: "Applied statistical methods to validate hypotheses and derive business insights." },
         { name: "Forecasting & Projections", tooltip: "Projected 2030 EV market sales using CAGR assumptions in Power BI." },
         { name: "A/B Testing", tooltip: "Experience in designing and analyzing A/B tests to drive product decisions." }
     ]
@@ -316,7 +320,7 @@ export const certificationsData = [
       { title: 'Regression Analysis: Simplify Complex Data Relationships', credentialId: '', link: 'https://coursera.org/share/0a78c617f413c83d4f3d8f380bdea313' },
       { title: 'The Nuts and Bolts of Machine Learning', credentialId: '', link: 'https://coursera.org/share/dd166fd02392a9e0ec6e5939efc3fa30' },
       { title: 'Google Advanced Data Analytics Capstone', credentialId: '', link: 'https://coursera.org/share/fc1af344bb9bdb16ce239ffad5e654df'},
-      { title: 'Accelerate Your Job Search with AI', credentialId: '', link: 'https://coursera.org/share/6e23a2066875073d3a6cac4fae78bcb3' }
+      { title: 'Accelerate Your Job Search with AI', credentialId: '6e23a2066875073d3a6cac4fae78bcb3', link: 'https://coursera.org/share/6e23a2066875073d3a6cac4fae78bcb3' }
     ]
   },
   {
@@ -361,3 +365,6 @@ export const experienceData = [
 
     
 
+
+
+    
