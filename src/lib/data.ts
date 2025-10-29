@@ -301,9 +301,9 @@ export const certificationsData = [
     {
     title: 'Google Advanced Data Analytics',
     issuer: 'Coursera',
-    date: 'In Progress – Expected Oct 2025',
+    date: 'Oct 2025',
     credentialId: '',
-    link: '#',
+    link: 'https://coursera.org/share/dd965140d7ce614f94db6602cbe936cf',
     subCourses: [
       { title: 'Foundations of Data Science by Google', credentialId: '74A181Q36TFM', link: 'https://www.coursera.org/account/accomplishments/verify/74A181Q36TFM' },
       { title: 'Get Started with Python by Google', credentialId: 'RXQKAZHPG167', link: 'https://www.coursera.org/account/accomplishments/verify/RXQKAZHPG167' },
